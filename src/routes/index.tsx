@@ -12,12 +12,12 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "HAZOP, 위험성평가, 현장 사진 분석 및 안전교육에 AI를 적용하는 산업안전 프로젝트와 인사이트를 정리합니다.",
+          "산업안전 법령 자문, 위험성평가, 안전교육 자료 제작 등 실무에 필요한 작업을 AI로 지원하는 도구들을 만들고 있습니다.",
       },
       { property: "og:title", content: "AI Safety Lab" },
       {
         property: "og:description",
-        content: "AI로 현장 안전관리의 가능성을 확장하는 프로젝트 포트폴리오",
+        content: "AI로 산업안전 실무를 더 빠르고 정확하게",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -26,13 +26,6 @@ export const Route = createFileRoute("/")({
   component: HomePage,
 });
 
-const workflow = [
-  { step: "01", title: "현장 정보 입력", desc: "공정, 사진, 편차 등 현장 데이터를 업로드합니다." },
-  { step: "02", title: "AI 위험요인 분석", desc: "LLM · Vision 모델이 위험요인을 구조화합니다." },
-  { step: "03", title: "법령 및 기준 연결", desc: "산업안전보건법, KOSHA Guide, PSM 요건과 매칭합니다." },
-  { step: "04", title: "개선조치 도출", desc: "실무에 적용 가능한 개선조치를 우선순위와 함께 제안합니다." },
-  { step: "05", title: "결과 보고서 생성", desc: "안전관리자가 바로 활용할 수 있는 문서로 출력합니다." },
-];
 
 function HomePage() {
   return (
