@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteHeader, SiteFooter } from "@/components/site-chrome";
 import { projects } from "@/data/projects";
 import { insights } from "@/data/insights";
+import { Scale, Camera, HelpCircle, BookOpen, ArrowRight, Sparkles } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   head: () => ({
