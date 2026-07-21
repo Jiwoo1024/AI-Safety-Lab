@@ -10,13 +10,13 @@ const nav = [
 
 export function SiteHeader() {
   return (
-    <header className="sticky top-0 z-40 border-b border-border/60 bg-background/80 backdrop-blur">
+    <header className="sticky top-0 z-40 border-b border-white/10 bg-[var(--navy)]/95 backdrop-blur">
       <div className="container-page flex h-16 items-center justify-between">
         <Link to="/" className="flex items-center gap-2">
-          <span className="grid h-8 w-8 place-items-center rounded-lg bg-[var(--navy)] text-[10px] font-bold tracking-tight text-primary-foreground">
+          <span className="grid h-8 w-8 place-items-center rounded-lg bg-[var(--sky-soft)] text-[10px] font-bold tracking-tight text-[var(--navy)]">
             AI
           </span>
-          <span className="text-[15px] font-semibold tracking-tight text-[var(--navy)]">
+          <span className="text-[15px] font-semibold tracking-tight text-white">
             AI Safety Lab
           </span>
         </Link>
@@ -26,8 +26,8 @@ export function SiteHeader() {
               key={n.to}
               to={n.to}
               activeOptions={{ exact: n.to === "/" }}
-              className="rounded-md px-3 py-2 text-sm text-muted-foreground transition-colors hover:text-[var(--navy)]"
-              activeProps={{ className: "text-[var(--navy)] font-medium" }}
+              className="rounded-md px-3 py-2 text-sm text-white/70 transition-colors hover:text-white"
+              activeProps={{ className: "text-white font-medium" }}
             >
               {n.label}
             </Link>
@@ -35,7 +35,7 @@ export function SiteHeader() {
         </nav>
         <Link
           to="/contact"
-          className="hidden rounded-full border border-border bg-card px-4 py-2 text-sm font-medium text-[var(--navy)] transition-all hover:border-[var(--navy)] md:inline-flex"
+          className="hidden rounded-full bg-[var(--sky-soft)] px-4 py-2 text-sm font-medium text-[var(--navy)] transition-all hover:bg-white md:inline-flex"
         >
           Get in touch
         </Link>
