@@ -93,6 +93,19 @@
   animation: fadeUp 0.7s ease-out both;
 }
 
+@utility gradient-dark {
+  background: linear-gradient(
+    135deg,
+    oklch(0.18 0.06 258) 0%,
+    oklch(0.24 0.07 258) 40%,
+    oklch(0.22 0.08 245) 100%
+  );
+}
+
+@utility glow-soft {
+  box-shadow: 0 0 40px -12px color-mix(in oklab, oklch(0.6 0.1 245) 30%, transparent);
+}
+
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(16px); }
   to { opacity: 1; transform: translateY(0); }

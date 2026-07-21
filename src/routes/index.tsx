@@ -1,7 +1,9 @@
+import * as React from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteHeader, SiteFooter } from "@/components/site-chrome";
 import { projects } from "@/data/projects";
 import { insights } from "@/data/insights";
+import { Scale, Camera, HelpCircle, BookOpen, ArrowRight, Sparkles } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -97,28 +99,40 @@ function HomePage() {
       </section>
 
       {/* PROJECTS */}
-      <section className="container-page py-20 md:py-28">
-        <div className="flex items-end justify-between gap-6">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-              Projects
-            </p>
-            <h2 className="mt-2 text-3xl font-semibold tracking-tight text-[var(--navy)] md:text-4xl">
-              AI 기반 산업안전 프로젝트
-            </h2>
+      <section className="gradient-dark relative overflow-hidden py-20 md:py-28">
+        <div
+          className="pointer-events-none absolute inset-0 -z-10 opacity-40"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle at 80% 10%, color-mix(in oklab, oklch(0.55 0.12 245) 25%, transparent), transparent 40%), radial-gradient(circle at 20% 90%, color-mix(in oklab, oklch(0.4 0.08 230) 20%, transparent), transparent 45%)",
+          }}
+        />
+        <div className="container-page relative">
+          <div className="flex items-end justify-between gap-6">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-widest text-white/60">
+                Projects
+              </p>
+              <h2 className="mt-2 text-3xl font-semibold tracking-tight text-white md:text-4xl">
+                AI 기반 산업안전 프로젝트
+              </h2>
+              <p className="mt-3 max-w-2xl text-sm text-white/70">
+                현장 데이터를 분석하고 안전관리자의 판단을 지원하는 AI 도구들을 확인해보세요.
+              </p>
+            </div>
+            <Link
+              to="/projects"
+              className="hidden text-sm font-medium text-white/80 hover:text-white hover:underline md:inline"
+            >
+              View all →
+            </Link>
           </div>
-          <Link
-            to="/projects"
-            className="hidden text-sm font-medium text-[var(--navy)] hover:underline md:inline"
-          >
-            View all →
-          </Link>
-        </div>
 
-        <div className="mt-10 grid gap-6 md:grid-cols-2">
-          {projects.map((p) => (
-            <ProjectCard key={p.slug} p={p} />
-          ))}
+          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {projects.map((p) => (
+              <ProjectCard key={p.slug} p={p} />
+            ))}
+          </div>
         </div>
       </section>
 
@@ -201,41 +215,32 @@ function HomePage() {
   );
 }
 
+const projectIcons: Record<string, React.ReactNode> = {
+  "ai-hazop-assistant": <Scale className="h-6 w-6" />,
+  "ai-photo-risk-assessment": <Camera className="h-6 w-6" />,
+  "safety-quiz": <HelpCircle className="h-6 w-6" />,
+  "safety-insight-library": <BookOpen className="h-6 w-6" />,
+};
+
 function ProjectCard({ p }: { p: (typeof projects)[number] }) {
   return (
-    <article className="group relative flex flex-col rounded-2xl border border-border bg-card p-7 transition-all hover:-translate-y-1 hover:border-[var(--navy)] hover:shadow-[0_10px_40px_-20px_var(--navy)]">
-      <div className="flex items-center justify-between">
-        <span className="text-xs font-semibold uppercase tracking-widest text-[var(--navy)]/70">
-          {p.type}
-        </span>
-        <span className="text-xs text-muted-foreground">↗</span>
+    <article className="group flex flex-col rounded-2xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur-sm transition-all hover:-translate-y-1 hover:border-white/20 hover:bg-white/[0.06] glow-soft">
+      <div className="grid h-12 w-12 place-items-center rounded-full bg-[var(--sky-soft)] text-[var(--navy)]">
+        {projectIcons[p.slug] ?? <Sparkles className="h-6 w-6" />}
       </div>
-      <h3 className="mt-4 text-xl font-semibold tracking-tight text-[var(--navy)]">{p.title}</h3>
-      <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{p.description}</p>
-      <div className="mt-5 flex flex-wrap gap-2">
-        {p.features.map((f) => (
-          <span
-            key={f}
-            className="rounded-full border border-border bg-background px-2.5 py-1 text-[11px] text-slate-ink"
-          >
-            {f}
-          </span>
-        ))}
-      </div>
-      <div className="mt-6 flex items-center justify-between border-t border-border pt-4">
-        <div className="flex gap-2 text-[11px] text-muted-foreground">
-          {p.tags.map((t) => (
-            <span key={t}>#{t}</span>
-          ))}
-        </div>
-        <Link
-          to="/projects/$slug"
-          params={{ slug: p.slug }}
-          className="inline-flex items-center gap-1 text-sm font-medium text-[var(--navy)] group-hover:gap-2 transition-all"
-        >
-          View Project →
-        </Link>
-      </div>
+      <span className="mt-5 w-fit rounded-full bg-[var(--sky-soft)]/15 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wider text-[var(--sky-soft)]">
+        {p.type}
+      </span>
+      <h3 className="mt-4 text-lg font-semibold tracking-tight text-white">{p.title}</h3>
+      <p className="mt-2 flex-1 text-sm leading-relaxed text-white/60">{p.description}</p>
+      <Link
+        to="/projects/$slug"
+        params={{ slug: p.slug }}
+        className="mt-6 inline-flex items-center gap-2 rounded-full bg-[var(--sky-soft)] px-4 py-2 text-sm font-medium text-[var(--navy)] transition-all hover:bg-white hover:gap-3"
+      >
+        View Project
+        <ArrowRight className="h-4 w-4" />
+      </Link>
     </article>
   );
 }
