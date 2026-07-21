@@ -2,10 +2,9 @@ import { Link } from "@tanstack/react-router";
 
 const nav = [
   { to: "/", label: "Home" },
-  { to: "/projects", label: "Projects" },
+  { to: "/projects", label: "AI 자동화 Tools" },
+  { to: "/vibe-coding-safety-apps", label: "Vibe Coding_Safety Apps" },
   { to: "/insights", label: "Safety Insights" },
-  { to: "/about", label: "About" },
-  { to: "/contact", label: "Contact" },
 ] as const;
 
 export function SiteHeader() {

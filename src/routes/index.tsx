@@ -12,12 +12,12 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "HAZOP, 위험성평가, 현장 사진 분석 및 안전교육에 AI를 적용하는 산업안전 프로젝트와 인사이트를 정리합니다.",
+          "산업안전 법령 자문, 위험성평가, 안전교육 자료 제작 등 실무에 필요한 작업을 AI로 지원하는 도구들을 만들고 있습니다.",
       },
       { property: "og:title", content: "AI Safety Lab" },
       {
         property: "og:description",
-        content: "AI로 현장 안전관리의 가능성을 확장하는 프로젝트 포트폴리오",
+        content: "AI로 산업안전 실무를 더 빠르고 정확하게",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -26,13 +26,6 @@ export const Route = createFileRoute("/")({
   component: HomePage,
 });
 
-const workflow = [
-  { step: "01", title: "현장 정보 입력", desc: "공정, 사진, 편차 등 현장 데이터를 업로드합니다." },
-  { step: "02", title: "AI 위험요인 분석", desc: "LLM · Vision 모델이 위험요인을 구조화합니다." },
-  { step: "03", title: "법령 및 기준 연결", desc: "산업안전보건법, KOSHA Guide, PSM 요건과 매칭합니다." },
-  { step: "04", title: "개선조치 도출", desc: "실무에 적용 가능한 개선조치를 우선순위와 함께 제안합니다." },
-  { step: "05", title: "결과 보고서 생성", desc: "안전관리자가 바로 활용할 수 있는 문서로 출력합니다." },
-];
 
 function HomePage() {
   return (
@@ -55,13 +48,13 @@ function HomePage() {
               AI × Industrial Safety Portfolio
             </span>
             <h1 className="mt-6 text-4xl font-semibold leading-[1.1] tracking-tight text-[var(--navy)] md:text-6xl">
-              AI로 현장 안전관리의
+              AI로 산업안전 실무를
               <br />
-              가능성을 확장합니다
+              더 빠르고 정확하게
             </h1>
             <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">
-              HAZOP, 위험성평가, 현장 사진 분석 및 안전교육에 AI를 적용하여 안전관리자의 판단과
-              업무를 지원하는 프로젝트를 개발합니다.
+              산업안전 법령 자문, 위험성평가, 안전교육 자료 제작 등 실무에 필요한 작업을 AI로
+              지원하는 도구들을 만들고 있습니다.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
@@ -80,12 +73,10 @@ function HomePage() {
             </div>
           </div>
 
-          <div className="mt-16 grid grid-cols-2 gap-6 border-t border-border pt-8 md:grid-cols-4">
+          <div className="mt-16 flex flex-wrap gap-x-12 gap-y-6 border-t border-border pt-8">
             {[
               { k: "4", v: "Active Projects" },
               { k: "5+", v: "Insight Articles" },
-              { k: "KOSHA · PSM", v: "적용 표준" },
-              { k: "LLM · Vision", v: "AI 스택" },
             ].map((s) => (
               <div key={s.v}>
                 <div className="text-2xl font-semibold text-[var(--navy)]">{s.k}</div>
@@ -136,39 +127,6 @@ function HomePage() {
         </div>
       </section>
 
-      {/* WORKFLOW */}
-      <section className="border-y border-border bg-card/40">
-        <div className="container-page py-20 md:py-28">
-          <div className="max-w-2xl">
-            <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-              Safety Workflow
-            </p>
-            <h2 className="mt-2 text-3xl font-semibold tracking-tight text-[var(--navy)] md:text-4xl">
-              데이터에서 개선조치까지, AI가 지원하는 흐름
-            </h2>
-            <p className="mt-4 text-muted-foreground">
-              현장 정보 입력부터 결과 보고서 생성까지, 안전관리자의 판단을 보조하는 5단계 워크플로우.
-            </p>
-          </div>
-          <ol className="mt-12 grid gap-4 md:grid-cols-5">
-            {workflow.map((w, i) => (
-              <li
-                key={w.step}
-                className="relative rounded-2xl border border-border bg-background p-5 transition-all hover:-translate-y-1 hover:border-[var(--navy)]"
-              >
-                <div className="text-xs font-mono text-[var(--navy)]/60">{w.step}</div>
-                <div className="mt-2 text-sm font-semibold text-[var(--navy)]">{w.title}</div>
-                <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{w.desc}</p>
-                {i < workflow.length - 1 && (
-                  <span className="absolute -right-3 top-1/2 hidden -translate-y-1/2 text-border md:block">
-                    →
-                  </span>
-                )}
-              </li>
-            ))}
-          </ol>
-        </div>
-      </section>
 
       {/* INSIGHTS PREVIEW */}
       <section className="container-page py-20 md:py-28">
