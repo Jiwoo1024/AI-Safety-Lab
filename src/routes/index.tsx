@@ -98,28 +98,40 @@ function HomePage() {
       </section>
 
       {/* PROJECTS */}
-      <section className="container-page py-20 md:py-28">
-        <div className="flex items-end justify-between gap-6">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-              Projects
-            </p>
-            <h2 className="mt-2 text-3xl font-semibold tracking-tight text-[var(--navy)] md:text-4xl">
-              AI 기반 산업안전 프로젝트
-            </h2>
+      <section className="gradient-dark relative overflow-hidden py-20 md:py-28">
+        <div
+          className="pointer-events-none absolute inset-0 -z-10 opacity-40"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle at 80% 10%, color-mix(in oklab, oklch(0.55 0.12 245) 25%, transparent), transparent 40%), radial-gradient(circle at 20% 90%, color-mix(in oklab, oklch(0.4 0.08 230) 20%, transparent), transparent 45%)",
+          }}
+        />
+        <div className="container-page relative">
+          <div className="flex items-end justify-between gap-6">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-widest text-white/60">
+                Projects
+              </p>
+              <h2 className="mt-2 text-3xl font-semibold tracking-tight text-white md:text-4xl">
+                AI 기반 산업안전 프로젝트
+              </h2>
+              <p className="mt-3 max-w-2xl text-sm text-white/70">
+                현장 데이터를 분석하고 안전관리자의 판단을 지원하는 AI 도구들을 확인해보세요.
+              </p>
+            </div>
+            <Link
+              to="/projects"
+              className="hidden text-sm font-medium text-white/80 hover:text-white hover:underline md:inline"
+            >
+              View all →
+            </Link>
           </div>
-          <Link
-            to="/projects"
-            className="hidden text-sm font-medium text-[var(--navy)] hover:underline md:inline"
-          >
-            View all →
-          </Link>
-        </div>
 
-        <div className="mt-10 grid gap-6 md:grid-cols-2">
-          {projects.map((p) => (
-            <ProjectCard key={p.slug} p={p} />
-          ))}
+          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {projects.map((p) => (
+              <ProjectCard key={p.slug} p={p} />
+            ))}
+          </div>
         </div>
       </section>
 
