@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as VibeCodingSafetyAppsRouteImport } from './routes/vibe-coding-safety-apps'
 import { Route as ProjectsRouteImport } from './routes/projects'
 import { Route as InsightsRouteImport } from './routes/insights'
 import { Route as ContactRouteImport } from './routes/contact'
@@ -16,6 +17,11 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProjectsSlugRouteImport } from './routes/projects.$slug'
 
+const VibeCodingSafetyAppsRoute = VibeCodingSafetyAppsRouteImport.update({
+  id: '/vibe-coding-safety-apps',
+  path: '/vibe-coding-safety-apps',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProjectsRoute = ProjectsRouteImport.update({
   id: '/projects',
   path: '/projects',
@@ -53,6 +59,7 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/insights': typeof InsightsRoute
   '/projects': typeof ProjectsRouteWithChildren
+  '/vibe-coding-safety-apps': typeof VibeCodingSafetyAppsRoute
   '/projects/$slug': typeof ProjectsSlugRoute
 }
 export interface FileRoutesByTo {
@@ -61,6 +68,7 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/insights': typeof InsightsRoute
   '/projects': typeof ProjectsRouteWithChildren
+  '/vibe-coding-safety-apps': typeof VibeCodingSafetyAppsRoute
   '/projects/$slug': typeof ProjectsSlugRoute
 }
 export interface FileRoutesById {
@@ -70,6 +78,7 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/insights': typeof InsightsRoute
   '/projects': typeof ProjectsRouteWithChildren
+  '/vibe-coding-safety-apps': typeof VibeCodingSafetyAppsRoute
   '/projects/$slug': typeof ProjectsSlugRoute
 }
 export interface FileRouteTypes {
@@ -80,6 +89,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/insights'
     | '/projects'
+    | '/vibe-coding-safety-apps'
     | '/projects/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -88,6 +98,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/insights'
     | '/projects'
+    | '/vibe-coding-safety-apps'
     | '/projects/$slug'
   id:
     | '__root__'
@@ -96,6 +107,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/insights'
     | '/projects'
+    | '/vibe-coding-safety-apps'
     | '/projects/$slug'
   fileRoutesById: FileRoutesById
 }
@@ -105,10 +117,18 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   InsightsRoute: typeof InsightsRoute
   ProjectsRoute: typeof ProjectsRouteWithChildren
+  VibeCodingSafetyAppsRoute: typeof VibeCodingSafetyAppsRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/vibe-coding-safety-apps': {
+      id: '/vibe-coding-safety-apps'
+      path: '/vibe-coding-safety-apps'
+      fullPath: '/vibe-coding-safety-apps'
+      preLoaderRoute: typeof VibeCodingSafetyAppsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/projects': {
       id: '/projects'
       path: '/projects'
@@ -172,7 +192,18 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   InsightsRoute: InsightsRoute,
   ProjectsRoute: ProjectsRouteWithChildren,
+  VibeCodingSafetyAppsRoute: VibeCodingSafetyAppsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
