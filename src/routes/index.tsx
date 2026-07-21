@@ -225,10 +225,10 @@ const projectIcons: Record<string, React.ReactNode> = {
 function ProjectCard({ p }: { p: (typeof projects)[number] }) {
   return (
     <article className="group flex flex-col rounded-2xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur-sm transition-all hover:-translate-y-1 hover:border-white/20 hover:bg-white/[0.06] glow-soft">
-      <div className="grid h-12 w-12 place-items-center rounded-xl bg-[var(--sky-soft)]/15 text-[var(--sky-soft)]">
+      <div className="grid h-12 w-12 place-items-center rounded-full bg-[var(--sky-soft)] text-[var(--navy)]">
         {projectIcons[p.slug] ?? <Sparkles className="h-6 w-6" />}
       </div>
-      <span className="mt-5 w-fit rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wider text-[var(--sky-soft)]">
+      <span className="mt-5 w-fit rounded-full bg-[var(--sky-soft)]/15 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wider text-[var(--sky-soft)]">
         {p.type}
       </span>
       <h3 className="mt-4 text-lg font-semibold tracking-tight text-white">{p.title}</h3>
