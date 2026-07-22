@@ -12,48 +12,50 @@ export function SiteHeader() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-white/10 bg-[var(--navy)]/95 backdrop-blur">
-      <div className="container-page flex h-16 items-center justify-between">
-        <Link to="/" className="flex items-center gap-2">
-          <span className="grid h-8 w-8 place-items-center rounded-lg bg-[var(--sky-soft)] text-[10px] font-bold tracking-tight text-[var(--navy)]">
-            AI
-          </span>
-          <span className="text-[15px] font-semibold tracking-tight text-white">
-            AI Safety Lab
-          </span>
-        </Link>
-        <nav className="hidden items-center gap-1 md:flex">
-          {nav.map((n) => (
-            <Link
-              key={n.to}
-              to={n.to}
-              activeOptions={{ exact: n.to === "/" }}
-              className="rounded-md px-3 py-2 text-sm text-white/70 transition-colors hover:text-white"
-              activeProps={{ className: "text-white font-medium" }}
-            >
-              {n.label}
-            </Link>
-          ))}
-        </nav>
-        <Link
-          to="/contact"
-          className="hidden rounded-full bg-[var(--sky-soft)] px-4 py-2 text-sm font-medium text-[var(--navy)] transition-all hover:bg-white md:inline-flex"
-        >
-          Get in touch
-        </Link>
+    <>
+      <header className="sticky top-0 z-40 border-b border-white/10 bg-[var(--navy)]/95 backdrop-blur">
+        <div className="container-page flex h-16 items-center justify-between">
+          <Link to="/" className="flex items-center gap-2">
+            <span className="grid h-8 w-8 place-items-center rounded-lg bg-[var(--sky-soft)] text-[10px] font-bold tracking-tight text-[var(--navy)]">
+              AI
+            </span>
+            <span className="text-[15px] font-semibold tracking-tight text-white">
+              AI Safety Lab
+            </span>
+          </Link>
+          <nav className="hidden items-center gap-1 md:flex">
+            {nav.map((n) => (
+              <Link
+                key={n.to}
+                to={n.to}
+                activeOptions={{ exact: n.to === "/" }}
+                className="rounded-md px-3 py-2 text-sm text-white/70 transition-colors hover:text-white"
+                activeProps={{ className: "text-white font-medium" }}
+              >
+                {n.label}
+              </Link>
+            ))}
+          </nav>
+          <Link
+            to="/contact"
+            className="hidden rounded-full bg-[var(--sky-soft)] px-4 py-2 text-sm font-medium text-[var(--navy)] transition-all hover:bg-white md:inline-flex"
+          >
+            Get in touch
+          </Link>
 
-        <button
-          onClick={() => setOpen(true)}
-          aria-label="Open menu"
-          className="grid h-10 w-10 place-items-center rounded-md text-white transition-colors hover:bg-white/10 md:hidden"
-        >
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <line x1="4" y1="6" x2="20" y2="6" />
-            <line x1="4" y1="12" x2="20" y2="12" />
-            <line x1="4" y1="18" x2="20" y2="18" />
-          </svg>
-        </button>
-      </div>
+          <button
+            onClick={() => setOpen(true)}
+            aria-label="Open menu"
+            className="grid h-10 w-10 place-items-center rounded-md text-white transition-colors hover:bg-white/10 md:hidden"
+          >
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="4" y1="6" x2="20" y2="6" />
+              <line x1="4" y1="12" x2="20" y2="12" />
+              <line x1="4" y1="18" x2="20" y2="18" />
+            </svg>
+          </button>
+        </div>
+      </header>
 
       {open && (
         <div className="fixed inset-0 z-50 flex flex-col bg-[var(--navy)] p-6 md:hidden">
@@ -96,7 +98,7 @@ export function SiteHeader() {
           </nav>
         </div>
       )}
-    </header>
+    </>
   );
 }
 
