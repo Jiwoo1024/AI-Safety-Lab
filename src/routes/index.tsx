@@ -88,7 +88,7 @@ function HomePage() {
               </div>
             </div>
 
-            <div className="relative min-h-[320px] md:min-h-[500px] lg:col-span-6 lg:min-h-[600px] group">
+            <div className="relative min-h-[320px] md:min-h-[500px] lg:col-span-5 lg:min-h-[600px] group">
               <img
                 src={heroImage}
                 alt="AI 산업안전 시설"
