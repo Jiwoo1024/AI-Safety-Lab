@@ -33,7 +33,7 @@ function AboutPage() {
         <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
           About
         </p>
-        <h1 className="mt-3 max-w-3xl text-4xl font-semibold tracking-tight text-[var(--navy)] md:text-5xl">
+        <h1 className="mt-3 max-w-3xl text-4xl font-semibold tracking-tight text-foreground md:text-5xl">
           산업안전과 AI 사이,
           <br />
           실무에 닿는 도구를 만듭니다.
@@ -51,7 +51,7 @@ function AboutPage() {
               <div className="text-xs uppercase tracking-widest text-muted-foreground">
                 {e.label}
               </div>
-              <div className="mt-2 text-base font-medium text-[var(--navy)]">{e.value}</div>
+              <div className="mt-2 text-base font-medium text-foreground">{e.value}</div>
             </div>
           ))}
         </div>

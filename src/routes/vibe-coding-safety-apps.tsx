@@ -31,7 +31,7 @@ function VibeCodingSafetyAppsPage() {
         <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
           Vibe Coding
         </p>
-        <h1 className="mt-3 max-w-3xl text-4xl font-semibold tracking-tight text-[var(--navy)] md:text-5xl">
+        <h1 className="mt-3 max-w-3xl text-4xl font-semibold tracking-tight text-foreground md:text-5xl">
           빠르게 만들고, 현장에서 검증하는
           <br />
           Safety App 프로젝트
@@ -43,15 +43,13 @@ function VibeCodingSafetyAppsPage() {
 
         <div className="mt-14 rounded-3xl border border-border bg-card p-10 md:p-14">
           <div className="mx-auto max-w-xl text-center">
-            <h2 className="text-2xl font-semibold tracking-tight text-[var(--navy)]">
-              준비 중입니다
-            </h2>
+            <h2 className="text-2xl font-semibold tracking-tight text-foreground">준비 중입니다</h2>
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
               현재 AI 자동화 Tools 섹션에서 먼저 공개된 프로젝트들을 확인하실 수 있습니다.
             </p>
             <Link
               to="/projects"
-              className="mt-6 inline-flex items-center gap-2 rounded-full bg-[var(--navy)] px-5 py-3 text-sm font-medium text-primary-foreground transition-all hover:gap-3"
+              className="mt-6 inline-flex items-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-medium text-primary-foreground transition-all hover:gap-3"
             >
               AI 자동화 Tools 보기
               <ArrowRight className="h-4 w-4" />
@@ -69,12 +67,12 @@ function VibeCodingSafetyAppsPage() {
                 key={p.slug}
                 to="/projects/$slug"
                 params={{ slug: p.slug }}
-                className="group rounded-2xl border border-border bg-card p-5 transition-all hover:-translate-y-1 hover:border-[var(--navy)]"
+                className="group rounded-2xl border border-border bg-card p-5 transition-all hover:-translate-y-1 hover:border-primary"
               >
-                <span className="text-xs font-semibold uppercase tracking-widest text-[var(--navy)]/70">
+                <span className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
                   {p.type}
                 </span>
-                <h3 className="mt-3 text-base font-semibold tracking-tight text-[var(--navy)]">
+                <h3 className="mt-3 text-base font-semibold tracking-tight text-foreground">
                   {p.title}
                 </h3>
                 <p className="mt-2 text-sm text-muted-foreground">{p.description}</p>
