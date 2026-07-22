@@ -36,7 +36,7 @@ function HomePage() {
         {/* HERO — split-screen card */}
         <section className="relative overflow-hidden rounded-[2rem] border border-border bg-card shadow-2xl">
           <div className="grid grid-cols-1 lg:grid-cols-12">
-            <div className="relative z-10 flex flex-col justify-center p-8 md:p-12 lg:col-span-5 lg:p-16">
+            <div className="relative z-10 flex flex-col justify-center p-8 md:p-12 lg:col-span-6 lg:p-16">
               <div className="mb-6 inline-flex w-fit items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-3 py-1">
                 <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
                 <span className="text-[10px] font-bold uppercase tracking-widest text-primary">
@@ -44,10 +44,10 @@ function HomePage() {
                 </span>
               </div>
 
-              <h1 className="font-display text-4xl font-bold leading-tight text-foreground md:text-5xl lg:text-6xl">
+              <h1 className="font-display text-4xl font-bold leading-[1.15] tracking-tight text-foreground md:text-5xl lg:text-[3.5rem]">
                 AI로 <span className="text-primary">산업안전</span>
                 <br />
-                실무를 혁신하다
+                실무를 더 빠르고 정확하게
               </h1>
 
               <p className="mt-6 max-w-md text-base leading-relaxed text-muted-foreground md:text-lg">
@@ -71,8 +71,39 @@ function HomePage() {
                 </Link>
               </div>
 
-              {/* Overlapping stats */}
-              <div className="absolute -bottom-6 -right-4 hidden gap-4 md:flex lg:right-[-10%]">
+              {/* Mobile stats */}
+              <div className="mt-8 grid grid-cols-2 gap-4 md:hidden">
+                <div className="rounded-2xl border border-border bg-card p-4">
+                  <div className="font-display text-2xl font-bold text-foreground">04</div>
+                  <div className="text-[10px] uppercase tracking-tighter text-muted-foreground">
+                    Active Projects
+                  </div>
+                </div>
+                <div className="rounded-2xl border border-border bg-card p-4">
+                  <div className="font-display text-2xl font-bold text-foreground">05+</div>
+                  <div className="text-[10px] uppercase tracking-tighter text-muted-foreground">
+                    Insight Articles
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="relative min-h-[320px] md:min-h-[500px] lg:col-span-6 lg:min-h-[600px] group">
+              <img
+                src={heroImage}
+                alt="AI 산업안전 시설"
+                className="absolute inset-0 h-full w-full object-cover grayscale-[0.4] transition-all duration-700 group-hover:grayscale-0"
+                width={1344}
+                height={768}
+              />
+              <div className="absolute inset-0 hidden bg-gradient-to-r from-card via-card/50 to-transparent lg:block" />
+              <div className="absolute inset-0 bg-gradient-to-t from-card via-card/20 to-transparent" />
+              <div className="absolute right-6 top-6 rounded-lg border border-white/10 bg-black/40 p-3 text-[10px] font-mono text-primary backdrop-blur-md">
+                SCAN_CORE_ALPHA // 0.982
+              </div>
+
+              {/* Desktop stats — overlap the image */}
+              <div className="absolute bottom-6 left-6 hidden gap-4 md:flex">
                 <div className="rounded-2xl border border-border bg-card/90 p-5 shadow-xl backdrop-blur-xl">
                   <div className="font-display text-3xl font-bold text-foreground">04</div>
                   <div className="text-[10px] uppercase tracking-tighter text-muted-foreground">
@@ -85,21 +116,6 @@ function HomePage() {
                     Insight Articles
                   </div>
                 </div>
-              </div>
-            </div>
-
-            <div className="relative min-h-[320px] md:min-h-[500px] lg:col-span-7 lg:min-h-[600px] group">
-              <img
-                src={heroImage}
-                alt="AI 산업안전 시설"
-                className="absolute inset-0 h-full w-full object-cover grayscale-[0.4] transition-all duration-700 group-hover:grayscale-0"
-                width={1344}
-                height={768}
-              />
-              <div className="absolute inset-0 hidden bg-gradient-to-r from-card via-card/50 to-transparent lg:block" />
-              <div className="absolute inset-0 bg-gradient-to-t from-card via-card/20 to-transparent" />
-              <div className="absolute right-6 top-6 rounded-lg border border-white/10 bg-black/40 p-3 text-[10px] font-mono text-primary backdrop-blur-md">
-                SCAN_CORE_ALPHA // 0.982
               </div>
             </div>
           </div>
