@@ -70,6 +70,16 @@ export function SiteFooter() {
                 </Link>
               </li>
             ))}
+            <li>
+              <Link to="/about" className="text-foreground/80 hover:text-primary">
+                About
+              </Link>
+            </li>
+            <li>
+              <Link to="/contact" className="text-foreground/80 hover:text-primary">
+                Contact
+              </Link>
+            </li>
           </ul>
         </div>
         <div>
