@@ -28,8 +28,8 @@ export const Route = createFileRoute("/projects/$slug")({
     <div className="min-h-screen bg-background">
       <SiteHeader />
       <div className="container-page py-32 text-center">
-        <h1 className="text-3xl font-semibold text-[var(--navy)]">프로젝트를 찾을 수 없습니다</h1>
-        <Link to="/projects" className="mt-6 inline-block text-[var(--navy)] underline">
+        <h1 className="text-3xl font-semibold text-foreground">프로젝트를 찾을 수 없습니다</h1>
+        <Link to="/projects" className="mt-6 inline-block text-primary underline">
           ← Projects로 돌아가기
         </Link>
       </div>
@@ -47,15 +47,15 @@ function ProjectDetail() {
     <div className="min-h-screen bg-background">
       <SiteHeader />
       <article className="container-page py-16 md:py-24">
-        <Link to="/projects" className="text-sm text-muted-foreground hover:text-[var(--navy)]">
+        <Link to="/projects" className="text-sm text-muted-foreground hover:text-primary">
           ← Projects
         </Link>
 
         <header className="mt-6 max-w-3xl">
-          <span className="text-xs font-semibold uppercase tracking-widest text-[var(--navy)]/70">
+          <span className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
             {project.type}
           </span>
-          <h1 className="mt-3 text-4xl font-semibold tracking-tight text-[var(--navy)] md:text-5xl">
+          <h1 className="mt-3 text-4xl font-semibold tracking-tight text-foreground md:text-5xl">
             {project.title}
           </h1>
           <p className="mt-5 text-lg leading-relaxed text-muted-foreground">{project.description}</p>
@@ -71,7 +71,7 @@ function ProjectDetail() {
                 <div className="text-xs uppercase tracking-widest text-muted-foreground">
                   {h.label}
                 </div>
-                <div className="mt-2 text-lg font-semibold text-[var(--navy)]">{h.value}</div>
+                <div className="mt-2 text-lg font-semibold text-foreground">{h.value}</div>
               </div>
             ))}
           </div>
@@ -95,7 +95,7 @@ function ProjectDetail() {
                   key={f}
                   className="flex items-start gap-3 rounded-xl border border-border bg-card p-4 text-sm"
                 >
-                  <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-[var(--navy)] text-[10px] text-primary-foreground">
+                  <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-primary text-[10px] text-primary-foreground">
                     ✓
                   </span>
                   {f}
@@ -112,7 +112,7 @@ function ProjectDetail() {
               {project.tags.map((t) => (
                 <span
                   key={t}
-                  className="rounded-full border border-border px-2.5 py-1 text-xs text-slate-ink"
+                  className="rounded-full border border-border px-2.5 py-1 text-xs text-muted-foreground"
                 >
                   #{t}
                 </span>
@@ -124,7 +124,7 @@ function ProjectDetail() {
               </p>
               <Link
                 to="/contact"
-                className="mt-4 inline-flex w-full items-center justify-center rounded-full bg-[var(--navy)] px-4 py-2.5 text-sm font-medium text-primary-foreground"
+                className="mt-4 inline-flex w-full items-center justify-center rounded-full bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground"
               >
                 문의하기
               </Link>
@@ -142,13 +142,13 @@ function ProjectDetail() {
                 key={p.slug}
                 to="/projects/$slug"
                 params={{ slug: p.slug }}
-                className="group flex items-start justify-between gap-6 rounded-2xl border border-border bg-card p-6 transition-all hover:-translate-y-0.5 hover:border-[var(--navy)]"
+                className="group flex items-start justify-between gap-6 rounded-2xl border border-border bg-card p-6 transition-all hover:-translate-y-0.5 hover:border-primary"
               >
                 <div>
-                  <div className="text-xs uppercase tracking-widest text-[var(--navy)]/70">
+                  <div className="text-xs uppercase tracking-widest text-muted-foreground">
                     {p.type}
                   </div>
-                  <div className="mt-2 text-lg font-semibold text-[var(--navy)]">{p.title}</div>
+                  <div className="mt-2 text-lg font-semibold text-foreground">{p.title}</div>
                 </div>
                 <span className="text-muted-foreground transition-transform group-hover:translate-x-1">
                   →
