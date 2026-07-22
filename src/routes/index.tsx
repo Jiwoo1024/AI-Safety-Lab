@@ -4,6 +4,7 @@ import { SiteHeader, SiteFooter } from "@/components/site-chrome";
 import { projects } from "@/data/projects";
 import { insights } from "@/data/insights";
 import { Scale, Camera, HelpCircle, BookOpen, ArrowRight, Sparkles } from "lucide-react";
+import heroImage from "@/assets/hero.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -26,147 +27,160 @@ export const Route = createFileRoute("/")({
   component: HomePage,
 });
 
-
 function HomePage() {
   return (
     <div className="min-h-screen bg-background">
       <SiteHeader />
 
-      {/* HERO */}
-      <section className="relative overflow-hidden">
-        <div
-          className="pointer-events-none absolute inset-0 -z-10 opacity-60"
-          style={{
-            backgroundImage:
-              "radial-gradient(circle at 20% 20%, var(--sky-soft), transparent 55%), radial-gradient(circle at 80% 0%, color-mix(in oklab, var(--navy) 12%, transparent), transparent 50%)",
-          }}
-        />
-        <div className="container-page py-24 md:py-32">
-          <div className="fade-up max-w-3xl">
-            <span className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-xs font-medium text-[var(--navy)]">
-              <span className="h-1.5 w-1.5 rounded-full bg-[var(--navy)]" />
-              AI × Industrial Safety Portfolio
-            </span>
-            <h1 className="mt-6 text-4xl font-semibold leading-[1.1] tracking-tight text-[var(--navy)] md:text-6xl">
-              AI로 산업안전 실무를
-              <br />
-              더 빠르고 정확하게
-            </h1>
-            <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">
-              산업안전 법령 자문, 위험성평가, 안전교육 자료 제작 등 실무에 필요한 작업을 AI로
-              지원하는 도구들을 만들고 있습니다.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Link
-                to="/projects"
-                className="inline-flex items-center gap-2 rounded-full bg-[var(--navy)] px-5 py-3 text-sm font-medium text-primary-foreground transition-transform hover:-translate-y-0.5"
-              >
-                Explore Projects
-                <span aria-hidden>→</span>
-              </Link>
-              <Link
-                to="/insights"
-                className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-5 py-3 text-sm font-medium text-[var(--navy)] transition-colors hover:border-[var(--navy)]"
-              >
-                View Safety Insights
-              </Link>
-            </div>
-          </div>
+      <main className="container-page py-8 md:py-12">
+        {/* HERO — split-screen card */}
+        <section className="relative overflow-hidden rounded-[2rem] border border-border bg-card shadow-2xl">
+          <div className="grid grid-cols-1 lg:grid-cols-12">
+            <div className="relative z-10 flex flex-col justify-center p-8 md:p-12 lg:col-span-5 lg:p-16">
+              <div className="mb-6 inline-flex w-fit items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-3 py-1">
+                <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
+                <span className="text-[10px] font-bold uppercase tracking-widest text-primary">
+                  AI × Industrial Safety Portfolio
+                </span>
+              </div>
 
-          <div className="mt-16 flex flex-wrap gap-x-12 gap-y-6 border-t border-border pt-8">
-            {[
-              { k: "4", v: "Active Projects" },
-              { k: "5+", v: "Insight Articles" },
-            ].map((s) => (
-              <div key={s.v}>
-                <div className="text-2xl font-semibold text-[var(--navy)]">{s.k}</div>
-                <div className="mt-1 text-xs uppercase tracking-widest text-muted-foreground">
-                  {s.v}
+              <h1 className="font-display text-4xl font-bold leading-tight text-foreground md:text-5xl lg:text-6xl">
+                AI로 <span className="text-primary">산업안전</span>
+                <br />
+                실무를 혁신하다
+              </h1>
+
+              <p className="mt-6 max-w-md text-base leading-relaxed text-muted-foreground md:text-lg">
+                산업안전 법령 자문, 위험성평가, 안전교육 자료 제작 등 실무에 필요한 작업을 AI로
+                지원하는 도구들을 만들고 있습니다.
+              </p>
+
+              <div className="mt-8 flex flex-wrap gap-4">
+                <Link
+                  to="/projects"
+                  className="inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/20 transition-all hover:-translate-y-0.5"
+                >
+                  Explore Projects
+                  <span aria-hidden>→</span>
+                </Link>
+                <Link
+                  to="/insights"
+                  className="inline-flex items-center gap-2 rounded-xl border border-border bg-secondary/50 px-6 py-3.5 text-sm font-semibold text-foreground transition-all hover:bg-secondary"
+                >
+                  View Safety Insights
+                </Link>
+              </div>
+
+              {/* Overlapping stats */}
+              <div className="absolute -bottom-6 -right-4 hidden gap-4 md:flex lg:right-[-10%]">
+                <div className="rounded-2xl border border-border bg-card/90 p-5 shadow-xl backdrop-blur-xl">
+                  <div className="font-display text-3xl font-bold text-foreground">04</div>
+                  <div className="text-[10px] uppercase tracking-tighter text-muted-foreground">
+                    Active Projects
+                  </div>
+                </div>
+                <div className="rounded-2xl border border-border bg-card/90 p-5 shadow-xl backdrop-blur-xl">
+                  <div className="font-display text-3xl font-bold text-foreground">05+</div>
+                  <div className="text-[10px] uppercase tracking-tighter text-muted-foreground">
+                    Insight Articles
+                  </div>
                 </div>
               </div>
+            </div>
+
+            <div className="relative min-h-[320px] md:min-h-[500px] lg:col-span-7 lg:min-h-[600px] group">
+              <img
+                src={heroImage}
+                alt="AI 산업안전 시설"
+                className="absolute inset-0 h-full w-full object-cover grayscale-[0.4] transition-all duration-700 group-hover:grayscale-0"
+                width={1344}
+                height={768}
+              />
+              <div className="absolute inset-0 hidden bg-gradient-to-r from-card via-card/50 to-transparent lg:block" />
+              <div className="absolute inset-0 bg-gradient-to-t from-card via-card/20 to-transparent" />
+              <div className="absolute right-6 top-6 rounded-lg border border-white/10 bg-black/40 p-3 text-[10px] font-mono text-primary backdrop-blur-md">
+                SCAN_CORE_ALPHA // 0.982
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* PROJECT STRIP — horizontal image cards */}
+        <section className="mt-10 md:mt-14">
+          <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
+            {projects.map((p) => (
+              <Link
+                key={p.slug}
+                to="/projects/$slug"
+                params={{ slug: p.slug }}
+                className="group block"
+              >
+                <div className="relative mb-3 aspect-[4/3] overflow-hidden rounded-2xl border border-border bg-secondary transition-all group-hover:border-primary/50">
+                  <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-primary/10 to-transparent">
+                    <div className="grid h-12 w-12 place-items-center rounded-xl border border-white/10 bg-card/80 text-primary transition-all group-hover:scale-110">
+                      {projectIcons[p.slug] ?? <Sparkles className="h-6 w-6" />}
+                    </div>
+                  </div>
+                  <div className="absolute inset-0 flex items-center justify-center bg-black/20 transition-all group-hover:bg-transparent">
+                    <div className="grid h-8 w-8 place-items-center rounded-full border border-white/20 text-white opacity-0 transition-all group-hover:opacity-100">
+                      <ArrowRight className="h-4 w-4" />
+                    </div>
+                  </div>
+                </div>
+                <p className="mb-1 text-[10px] font-bold uppercase tracking-widest text-primary/80">
+                  {p.type}
+                </p>
+                <h3 className="font-display text-sm font-bold text-foreground transition-colors group-hover:text-primary">
+                  {p.title} +
+                </h3>
+              </Link>
             ))}
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* PROJECTS */}
-      <section className="gradient-dark relative overflow-hidden py-20 md:py-28">
-        <div
-          className="pointer-events-none absolute inset-0 -z-10 opacity-40"
-          style={{
-            backgroundImage:
-              "radial-gradient(circle at 80% 10%, color-mix(in oklab, oklch(0.55 0.12 245) 25%, transparent), transparent 40%), radial-gradient(circle at 20% 90%, color-mix(in oklab, oklch(0.4 0.08 230) 20%, transparent), transparent 45%)",
-          }}
-        />
-        <div className="container-page relative">
+        {/* INSIGHTS PREVIEW */}
+        <section className="mt-24 md:mt-32">
           <div className="flex items-end justify-between gap-6">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-widest text-white/60">
-                Projects
+              <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+                Safety Insights
               </p>
-              <h2 className="mt-2 text-3xl font-semibold tracking-tight text-white md:text-4xl">
-                AI 기반 산업안전 프로젝트
+              <h2 className="font-display mt-2 text-3xl font-semibold tracking-tight text-foreground md:text-4xl">
+                실무 관점의 안전 인사이트
               </h2>
-              <p className="mt-3 max-w-2xl text-sm text-white/70">
-                현장 데이터를 분석하고 안전관리자의 판단을 지원하는 AI 도구들을 확인해보세요.
-              </p>
             </div>
             <Link
-              to="/projects"
-              className="hidden text-sm font-medium text-white/80 hover:text-white hover:underline md:inline"
+              to="/insights"
+              className="hidden text-sm font-medium text-muted-foreground transition-colors hover:text-primary md:inline"
             >
               View all →
             </Link>
           </div>
-
-          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {projects.map((p) => (
-              <ProjectCard key={p.slug} p={p} />
+          <div className="mt-10 grid gap-6 md:grid-cols-3">
+            {insights.slice(0, 3).map((i) => (
+              <InsightCard key={i.slug} i={i} />
             ))}
           </div>
-        </div>
-      </section>
+        </section>
 
-
-      {/* INSIGHTS PREVIEW */}
-      <section className="container-page py-20 md:py-28">
-        <div className="flex items-end justify-between gap-6">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-              Safety Insights
+        {/* CTA */}
+        <section className="mt-24 pb-8 md:mt-32">
+          <div className="rounded-3xl border border-border bg-card px-8 py-14 text-center md:px-16 md:py-20">
+            <h3 className="font-display mx-auto max-w-2xl text-3xl font-semibold tracking-tight md:text-4xl">
+              AI와 산업안전의 접점에서 함께 이야기해요
+            </h3>
+            <p className="mx-auto mt-4 max-w-xl text-sm text-muted-foreground">
+              프로젝트 협업, 리서치, 실무 적용 문의 모두 환영합니다.
             </p>
-            <h2 className="mt-2 text-3xl font-semibold tracking-tight text-[var(--navy)] md:text-4xl">
-              실무 관점의 안전 인사이트
-            </h2>
+            <Link
+              to="/contact"
+              className="mt-8 inline-flex items-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-medium text-primary-foreground transition-all hover:bg-primary/90"
+            >
+              Contact →
+            </Link>
           </div>
-          <Link to="/insights" className="hidden text-sm font-medium text-[var(--navy)] hover:underline md:inline">
-            View all →
-          </Link>
-        </div>
-        <div className="mt-10 grid gap-6 md:grid-cols-3">
-          {insights.slice(0, 3).map((i) => (
-            <InsightCard key={i.slug} i={i} />
-          ))}
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="container-page pb-24">
-        <div className="rounded-3xl border border-border bg-[var(--navy)] px-8 py-14 text-center text-primary-foreground md:px-16 md:py-20">
-          <h3 className="mx-auto max-w-2xl text-3xl font-semibold tracking-tight md:text-4xl">
-            AI와 산업안전의 접점에서 함께 이야기해요
-          </h3>
-          <p className="mx-auto mt-4 max-w-xl text-sm text-primary-foreground/70">
-            프로젝트 협업, 리서치, 실무 적용 문의 모두 환영합니다.
-          </p>
-          <Link
-            to="/contact"
-            className="mt-8 inline-flex items-center gap-2 rounded-full bg-background px-5 py-3 text-sm font-medium text-[var(--navy)]"
-          >
-            Contact →
-          </Link>
-        </div>
-      </section>
+        </section>
+      </main>
 
       <SiteFooter />
     </div>
@@ -180,43 +194,20 @@ const projectIcons: Record<string, React.ReactNode> = {
   "safety-insight-library": <BookOpen className="h-6 w-6" />,
 };
 
-function ProjectCard({ p }: { p: (typeof projects)[number] }) {
-  return (
-    <article className="group flex flex-col rounded-2xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur-sm transition-all hover:-translate-y-1 hover:border-white/20 hover:bg-white/[0.06] glow-soft">
-      <div className="grid h-12 w-12 place-items-center rounded-full bg-[var(--sky-soft)] text-[var(--navy)]">
-        {projectIcons[p.slug] ?? <Sparkles className="h-6 w-6" />}
-      </div>
-      <span className="mt-5 w-fit rounded-full bg-[var(--sky-soft)]/15 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wider text-[var(--sky-soft)]">
-        {p.type}
-      </span>
-      <h3 className="mt-4 text-lg font-semibold tracking-tight text-white">{p.title}</h3>
-      <p className="mt-2 flex-1 text-sm leading-relaxed text-white/60">{p.description}</p>
-      <Link
-        to="/projects/$slug"
-        params={{ slug: p.slug }}
-        className="mt-6 inline-flex items-center gap-2 rounded-full bg-[var(--sky-soft)] px-4 py-2 text-sm font-medium text-[var(--navy)] transition-all hover:bg-white hover:gap-3"
-      >
-        View Project
-        <ArrowRight className="h-4 w-4" />
-      </Link>
-    </article>
-  );
-}
-
 function InsightCard({ i }: { i: (typeof insights)[number] }) {
   return (
-    <article className="flex flex-col rounded-2xl border border-border bg-card p-6 transition-all hover:-translate-y-1 hover:border-[var(--navy)]">
+    <article className="group flex flex-col rounded-2xl border border-border bg-card p-6 transition-all hover:-translate-y-1 hover:border-primary">
       <div className="flex items-center justify-between text-xs text-muted-foreground">
-        <span className="rounded-full bg-[var(--sky-soft)]/40 px-2.5 py-1 text-[11px] font-medium text-[var(--navy)]">
+        <span className="rounded-full bg-primary/20 px-2.5 py-1 text-[11px] font-medium text-primary">
           {i.category}
         </span>
         <span>{i.readTime}</span>
       </div>
-      <h4 className="mt-4 text-lg font-semibold leading-snug tracking-tight text-[var(--navy)]">
+      <h4 className="mt-4 text-lg font-semibold leading-snug tracking-tight text-foreground">
         {i.title}
       </h4>
       <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">{i.excerpt}</p>
-      <span className="mt-5 text-sm font-medium text-[var(--navy)]">Read →</span>
+      <span className="mt-5 text-sm font-medium text-primary">Read →</span>
     </article>
   );
 }

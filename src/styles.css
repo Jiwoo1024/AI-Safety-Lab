@@ -33,34 +33,35 @@
   --color-navy: var(--navy);
   --color-slate-ink: var(--slate-ink);
   --color-sky-soft: var(--sky-soft);
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
   --font-serif: "Instrument Serif", ui-serif, Georgia, serif;
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
 }
 
 :root {
   --radius: 0.75rem;
-  --background: oklch(0.995 0.002 240);
-  --foreground: oklch(0.22 0.03 250);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.22 0.03 250);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.22 0.03 250);
-  --primary: oklch(0.28 0.06 255);
-  --primary-foreground: oklch(0.985 0.003 250);
-  --secondary: oklch(0.965 0.01 250);
-  --secondary-foreground: oklch(0.28 0.06 255);
-  --muted: oklch(0.965 0.01 250);
-  --muted-foreground: oklch(0.5 0.03 255);
-  --accent: oklch(0.93 0.04 240);
-  --accent-foreground: oklch(0.28 0.06 255);
+  --background: oklch(0.15 0.04 250);
+  --foreground: oklch(0.97 0.003 250);
+  --card: oklch(0.19 0.05 250);
+  --card-foreground: oklch(0.97 0.003 250);
+  --popover: oklch(0.19 0.05 250);
+  --popover-foreground: oklch(0.97 0.003 250);
+  --primary: oklch(0.6 0.2 250);
+  --primary-foreground: oklch(0.15 0.04 250);
+  --secondary: oklch(0.25 0.05 250);
+  --secondary-foreground: oklch(0.97 0.003 250);
+  --muted: oklch(0.25 0.05 250);
+  --muted-foreground: oklch(0.65 0.03 250);
+  --accent: oklch(0.7 0.15 250);
+  --accent-foreground: oklch(0.15 0.04 250);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.92 0.01 250);
-  --input: oklch(0.92 0.01 250);
-  --ring: oklch(0.6 0.05 250);
-  --navy: oklch(0.24 0.07 258);
-  --slate-ink: oklch(0.34 0.03 255);
-  --sky-soft: oklch(0.88 0.05 235);
+  --border: oklch(0.25 0.05 250);
+  --input: oklch(0.25 0.05 250);
+  --ring: oklch(0.6 0.15 250);
+  --navy: oklch(0.18 0.06 258);
+  --slate-ink: oklch(0.6 0.03 250);
+  --sky-soft: oklch(0.75 0.1 250);
 }
 
 @layer base {
@@ -78,6 +79,7 @@
     -webkit-font-smoothing: antialiased;
   }
   h1, h2, h3, h4 {
+    font-family: var(--font-display);
     letter-spacing: -0.02em;
   }
 }

@@ -27,7 +27,7 @@ function ProjectsPage() {
         <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
           Projects
         </p>
-        <h1 className="mt-3 max-w-3xl text-4xl font-semibold tracking-tight text-[var(--navy)] md:text-5xl">
+        <h1 className="mt-3 max-w-3xl text-4xl font-semibold tracking-tight text-foreground md:text-5xl">
           AI를 현장에 적용한 산업안전 프로젝트
         </h1>
         <p className="mt-4 max-w-2xl text-muted-foreground">
@@ -41,17 +41,17 @@ function ProjectsPage() {
               key={p.slug}
               to="/projects/$slug"
               params={{ slug: p.slug }}
-              className="group flex flex-col rounded-2xl border border-border bg-card p-7 transition-all hover:-translate-y-1 hover:border-[var(--navy)] hover:shadow-[0_10px_40px_-20px_var(--navy)]"
+              className="group flex flex-col rounded-2xl border border-border bg-card p-7 transition-all hover:-translate-y-1 hover:border-primary hover:shadow-[0_10px_40px_-20px_var(--primary)]"
             >
               <div className="flex items-center justify-between">
-                <span className="text-xs font-semibold uppercase tracking-widest text-[var(--navy)]/70">
+                <span className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
                   {p.type}
                 </span>
                 <span className="text-muted-foreground transition-transform group-hover:translate-x-1">
                   →
                 </span>
               </div>
-              <h3 className="mt-4 text-xl font-semibold tracking-tight text-[var(--navy)]">
+              <h3 className="mt-4 text-xl font-semibold tracking-tight text-foreground">
                 {p.title}
               </h3>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{p.description}</p>
@@ -59,7 +59,7 @@ function ProjectsPage() {
                 {p.features.map((f) => (
                   <span
                     key={f}
-                    className="rounded-full border border-border bg-background px-2.5 py-1 text-[11px] text-slate-ink"
+                    className="rounded-full border border-border bg-secondary px-2.5 py-1 text-[11px] text-muted-foreground"
                   >
                     {f}
                   </span>

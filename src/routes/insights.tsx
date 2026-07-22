@@ -27,7 +27,7 @@ function InsightsPage() {
         <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
           Safety Insights
         </p>
-        <h1 className="mt-3 max-w-3xl text-4xl font-semibold tracking-tight text-[var(--navy)] md:text-5xl">
+        <h1 className="mt-3 max-w-3xl text-4xl font-semibold tracking-tight text-foreground md:text-5xl">
           실무 관점의 산업안전 인사이트
         </h1>
         <p className="mt-4 max-w-2xl text-muted-foreground">
@@ -38,21 +38,21 @@ function InsightsPage() {
           {insights.map((i) => (
             <article
               key={i.slug}
-              className="flex flex-col rounded-2xl border border-border bg-card p-6 transition-all hover:-translate-y-1 hover:border-[var(--navy)]"
+              className="flex flex-col rounded-2xl border border-border bg-card p-6 transition-all hover:-translate-y-1 hover:border-primary"
             >
               <div className="flex items-center justify-between text-xs text-muted-foreground">
-                <span className="rounded-full bg-[var(--sky-soft)]/40 px-2.5 py-1 text-[11px] font-medium text-[var(--navy)]">
+                <span className="rounded-full bg-primary/20 px-2.5 py-1 text-[11px] font-medium text-primary">
                   {i.category}
                 </span>
                 <span>{i.readTime}</span>
               </div>
-              <h3 className="mt-4 text-lg font-semibold leading-snug tracking-tight text-[var(--navy)]">
+              <h3 className="mt-4 text-lg font-semibold leading-snug tracking-tight text-foreground">
                 {i.title}
               </h3>
               <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">
                 {i.excerpt}
               </p>
-              <span className="mt-5 text-sm font-medium text-[var(--navy)]">Read →</span>
+              <span className="mt-5 text-sm font-medium text-primary">Read →</span>
             </article>
           ))}
         </div>
