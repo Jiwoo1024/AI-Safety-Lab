@@ -47,7 +47,7 @@ function HomePage() {
               <h1 className="font-display text-4xl font-bold leading-[1.15] tracking-tight text-foreground md:text-5xl lg:text-[3.5rem]">
                 AI로 <span className="text-primary">산업안전</span>
                 <br />
-                실무를 더 빠르고 정확하게
+                실무를 더 빠르고 <span className="whitespace-nowrap">정확하게</span>
               </h1>
 
               <p className="mt-6 max-w-md text-base leading-relaxed text-muted-foreground md:text-lg">
