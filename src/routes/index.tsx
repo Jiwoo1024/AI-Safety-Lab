@@ -36,7 +36,7 @@ function HomePage() {
         {/* HERO — split-screen card */}
         <section className="relative overflow-hidden rounded-[2rem] border border-border bg-card shadow-2xl">
           <div className="grid grid-cols-1 lg:grid-cols-12">
-            <div className="relative z-10 flex flex-col justify-center p-8 md:p-12 lg:col-span-6 lg:p-16">
+            <div className="relative z-10 flex flex-col justify-center p-8 md:p-12 lg:col-span-7 lg:p-16">
               <div className="mb-6 inline-flex w-fit items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-3 py-1">
                 <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
                 <span className="text-[10px] font-bold uppercase tracking-widest text-primary">
