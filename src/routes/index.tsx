@@ -4,7 +4,8 @@ import { SiteHeader, SiteFooter } from "@/components/site-chrome";
 import { projects } from "@/data/projects";
 import { insights } from "@/data/insights";
 import { Scale, Camera, HelpCircle, BookOpen, ArrowRight, Sparkles } from "lucide-react";
-import heroImage from "@/assets/hero.jpg";
+import { HeroAnimation } from "@/components/hero-animation";
+import { useReveal } from "@/hooks/use-reveal";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -88,21 +89,15 @@ function HomePage() {
               </div>
             </div>
 
-            <div className="relative min-h-[320px] md:min-h-[500px] lg:col-span-5 lg:min-h-[600px] group">
-              <img
-                src={heroImage}
-                alt="AI 산업안전 시설"
-                className="absolute inset-0 h-full w-full object-cover grayscale-[0.4] transition-all duration-700 group-hover:grayscale-0"
-                width={1344}
-                height={768}
-              />
-              <div className="absolute inset-0 hidden bg-gradient-to-r from-card via-card/50 to-transparent lg:block" />
-              <div className="absolute inset-0 bg-gradient-to-t from-card via-card/20 to-transparent" />
+            <div className="relative min-h-[320px] md:min-h-[500px] lg:col-span-5 lg:min-h-[600px] group bg-secondary/30">
+              <HeroAnimation />
+              <div className="pointer-events-none absolute inset-0 hidden bg-gradient-to-r from-card via-card/40 to-transparent lg:block" />
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-card via-card/10 to-transparent" />
               <div className="absolute right-6 top-6 rounded-lg border border-border bg-card/80 p-3 text-[10px] font-mono text-primary backdrop-blur-md">
                 SCAN_CORE_ALPHA // 0.982
               </div>
 
-              {/* Desktop stats — overlap the image */}
+              {/* Desktop stats — overlap the animation */}
               <div className="absolute bottom-6 left-6 hidden gap-4 md:flex">
                 <div className="rounded-2xl border border-border bg-card/90 p-5 shadow-xl backdrop-blur-xl">
                   <div className="font-display text-3xl font-bold text-foreground">04</div>
@@ -122,18 +117,19 @@ function HomePage() {
         </section>
 
         {/* PROJECT STRIP — horizontal image cards */}
-        <section className="mt-10 md:mt-14">
+        <RevealSection className="mt-10 md:mt-14">
           <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
-            {projects.map((p) => (
+            {projects.map((p, idx) => (
               <Link
                 key={p.slug}
                 to="/projects/$slug"
                 params={{ slug: p.slug }}
-                className="group block"
+                className="group block reveal is-visible"
+                style={{ transitionDelay: `${idx * 80}ms` }}
               >
-                <div className="relative mb-3 aspect-[4/3] overflow-hidden rounded-2xl border border-border bg-secondary transition-all group-hover:border-primary/50">
+                <div className="relative mb-3 aspect-[4/3] overflow-hidden rounded-2xl border border-border bg-secondary transition-all group-hover:border-primary/50 group-hover:-translate-y-1 group-hover:shadow-xl">
                   <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-primary/10 to-transparent">
-                    <div className="grid h-12 w-12 place-items-center rounded-xl border border-border bg-card/80 text-primary transition-all group-hover:scale-110">
+                    <div className="grid h-12 w-12 place-items-center rounded-xl border border-border bg-card/80 text-primary transition-all group-hover:scale-110 group-hover:rotate-6">
                       {projectIcons[p.slug] ?? <Sparkles className="h-6 w-6" />}
                     </div>
                   </div>
@@ -152,10 +148,10 @@ function HomePage() {
               </Link>
             ))}
           </div>
-        </section>
+        </RevealSection>
 
         {/* INSIGHTS PREVIEW */}
-        <section className="mt-24 md:mt-32">
+        <RevealSection className="mt-24 md:mt-32">
           <div className="flex items-end justify-between gap-6">
             <div>
               <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
@@ -177,10 +173,10 @@ function HomePage() {
               <InsightCard key={i.slug} i={i} />
             ))}
           </div>
-        </section>
+        </RevealSection>
 
         {/* CTA */}
-        <section className="mt-24 pb-8 md:mt-32">
+        <RevealSection className="mt-24 pb-8 md:mt-32">
           <div className="rounded-3xl border border-border bg-card px-8 py-14 text-center md:px-16 md:py-20">
             <h3 className="font-display mx-auto max-w-2xl text-3xl font-semibold tracking-tight md:text-4xl">
               AI와 산업안전의 접점에서 함께 이야기해요
@@ -195,7 +191,7 @@ function HomePage() {
               Contact →
             </Link>
           </div>
-        </section>
+        </RevealSection>
       </main>
 
       <SiteFooter />
@@ -227,3 +223,19 @@ function InsightCard({ i }: { i: (typeof insights)[number] }) {
     </article>
   );
 }
+
+function RevealSection({
+  className,
+  children,
+}: {
+  className?: string;
+  children: React.ReactNode;
+}) {
+  const ref = useReveal<HTMLElement>();
+  return (
+    <section ref={ref} className={`reveal ${className ?? ""}`}>
+      {children}
+    </section>
+  );
+}
+
