@@ -40,28 +40,28 @@
 
 :root {
   --radius: 0.75rem;
-  --background: oklch(0.15 0.04 250);
-  --foreground: oklch(0.97 0.003 250);
-  --card: oklch(0.19 0.05 250);
-  --card-foreground: oklch(0.97 0.003 250);
-  --popover: oklch(0.19 0.05 250);
-  --popover-foreground: oklch(0.97 0.003 250);
-  --primary: oklch(0.6 0.2 250);
-  --primary-foreground: oklch(0.15 0.04 250);
-  --secondary: oklch(0.25 0.05 250);
-  --secondary-foreground: oklch(0.97 0.003 250);
-  --muted: oklch(0.25 0.05 250);
-  --muted-foreground: oklch(0.65 0.03 250);
-  --accent: oklch(0.7 0.15 250);
-  --accent-foreground: oklch(0.15 0.04 250);
+  --background: oklch(0.97 0.01 250);
+  --foreground: oklch(0.25 0.05 250);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.25 0.05 250);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.25 0.05 250);
+  --primary: oklch(0.55 0.18 250);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.94 0.02 250);
+  --secondary-foreground: oklch(0.25 0.05 250);
+  --muted: oklch(0.94 0.02 250);
+  --muted-foreground: oklch(0.55 0.05 250);
+  --accent: oklch(0.95 0.03 250);
+  --accent-foreground: oklch(0.25 0.05 250);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.25 0.05 250);
-  --input: oklch(0.25 0.05 250);
-  --ring: oklch(0.6 0.15 250);
-  --navy: oklch(0.18 0.06 258);
-  --slate-ink: oklch(0.6 0.03 250);
-  --sky-soft: oklch(0.75 0.1 250);
+  --border: oklch(0.88 0.02 250);
+  --input: oklch(0.88 0.02 250);
+  --ring: oklch(0.55 0.18 250);
+  --navy: oklch(0.25 0.08 250);
+  --slate-ink: oklch(0.45 0.05 250);
+  --sky-soft: oklch(0.75 0.12 250);
 }
 
 @layer base {
@@ -98,14 +98,14 @@
 @utility gradient-dark {
   background: linear-gradient(
     135deg,
-    oklch(0.18 0.06 258) 0%,
-    oklch(0.24 0.07 258) 40%,
-    oklch(0.22 0.08 245) 100%
+    oklch(0.97 0.01 250) 0%,
+    oklch(0.95 0.02 250) 40%,
+    oklch(0.93 0.02 250) 100%
   );
 }
 
 @utility glow-soft {
-  box-shadow: 0 0 40px -12px color-mix(in oklab, oklch(0.6 0.1 245) 30%, transparent);
+  box-shadow: 0 0 40px -12px color-mix(in oklab, oklch(0.55 0.15 250) 18%, transparent);
 }
 
 @keyframes fadeUp {
