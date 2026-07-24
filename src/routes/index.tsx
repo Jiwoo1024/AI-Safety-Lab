@@ -98,7 +98,7 @@ function HomePage() {
               />
               <div className="absolute inset-0 hidden bg-gradient-to-r from-card via-card/50 to-transparent lg:block" />
               <div className="absolute inset-0 bg-gradient-to-t from-card via-card/20 to-transparent" />
-              <div className="absolute right-6 top-6 rounded-lg border border-white/10 bg-black/40 p-3 text-[10px] font-mono text-primary backdrop-blur-md">
+              <div className="absolute right-6 top-6 rounded-lg border border-border bg-card/80 p-3 text-[10px] font-mono text-primary backdrop-blur-md">
                 SCAN_CORE_ALPHA // 0.982
               </div>
 
@@ -133,12 +133,12 @@ function HomePage() {
               >
                 <div className="relative mb-3 aspect-[4/3] overflow-hidden rounded-2xl border border-border bg-secondary transition-all group-hover:border-primary/50">
                   <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-primary/10 to-transparent">
-                    <div className="grid h-12 w-12 place-items-center rounded-xl border border-white/10 bg-card/80 text-primary transition-all group-hover:scale-110">
+                    <div className="grid h-12 w-12 place-items-center rounded-xl border border-border bg-card/80 text-primary transition-all group-hover:scale-110">
                       {projectIcons[p.slug] ?? <Sparkles className="h-6 w-6" />}
                     </div>
                   </div>
-                  <div className="absolute inset-0 flex items-center justify-center bg-black/20 transition-all group-hover:bg-transparent">
-                    <div className="grid h-8 w-8 place-items-center rounded-full border border-white/20 text-white opacity-0 transition-all group-hover:opacity-100">
+                  <div className="absolute inset-0 flex items-center justify-center bg-foreground/5 transition-all group-hover:bg-transparent">
+                    <div className="grid h-8 w-8 place-items-center rounded-full border border-foreground/20 text-foreground opacity-0 transition-all group-hover:opacity-100">
                       <ArrowRight className="h-4 w-4" />
                     </div>
                   </div>
