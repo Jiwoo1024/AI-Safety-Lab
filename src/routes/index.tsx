@@ -151,7 +151,7 @@ function HomePage() {
         </RevealSection>
 
         {/* INSIGHTS PREVIEW */}
-        <section className="mt-24 md:mt-32">
+        <RevealSection className="mt-24 md:mt-32">
           <div className="flex items-end justify-between gap-6">
             <div>
               <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
@@ -173,10 +173,10 @@ function HomePage() {
               <InsightCard key={i.slug} i={i} />
             ))}
           </div>
-        </section>
+        </RevealSection>
 
         {/* CTA */}
-        <section className="mt-24 pb-8 md:mt-32">
+        <RevealSection className="mt-24 pb-8 md:mt-32">
           <div className="rounded-3xl border border-border bg-card px-8 py-14 text-center md:px-16 md:py-20">
             <h3 className="font-display mx-auto max-w-2xl text-3xl font-semibold tracking-tight md:text-4xl">
               AI와 산업안전의 접점에서 함께 이야기해요
@@ -191,7 +191,7 @@ function HomePage() {
               Contact →
             </Link>
           </div>
-        </section>
+        </RevealSection>
       </main>
 
       <SiteFooter />
