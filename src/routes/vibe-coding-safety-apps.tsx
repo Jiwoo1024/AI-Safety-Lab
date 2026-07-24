@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteHeader, SiteFooter } from "@/components/site-chrome";
-import { projects } from "@/data/projects";
-import { ArrowRight } from "lucide-react";
+import { vibeApps } from "@/data/vibe-apps";
+import { ArrowUpRight, Code2 } from "lucide-react";
 
 export const Route = createFileRoute("/vibe-coding-safety-apps")({
   head: () => ({
@@ -38,47 +38,93 @@ function VibeCodingSafetyAppsPage() {
         </h1>
         <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
           Vibe Coding으로 아이디어를 빠르게 프로토타입하고, 실무 피드백을 반영하며 발전시키는
-          Safety App 실험 공간입니다. 곧 새로운 프로젝트가 추가됩니다.
+          Safety App 실험 공간입니다.
         </p>
 
-        <div className="mt-14 rounded-3xl border border-border bg-card p-10 md:p-14">
-          <div className="mx-auto max-w-xl text-center">
-            <h2 className="text-2xl font-semibold tracking-tight text-foreground">준비 중입니다</h2>
-            <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-              현재 AI 자동화 Tools 섹션에서 먼저 공개된 프로젝트들을 확인하실 수 있습니다.
-            </p>
-            <Link
-              to="/projects"
-              className="mt-6 inline-flex items-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-medium text-primary-foreground transition-all hover:gap-3"
-            >
-              AI 자동화 Tools 보기
-              <ArrowRight className="h-4 w-4" />
-            </Link>
-          </div>
+        <div className="mt-14 grid gap-6 md:grid-cols-2">
+          {vibeApps.map((app) => {
+            const isReady = Boolean(app.url);
+            const CardInner = (
+              <>
+                <div className="flex items-center justify-between">
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-primary/10 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-widest text-primary">
+                    <Code2 className="h-3 w-3" />
+                    {app.type}
+                  </span>
+                  {isReady ? (
+                    <ArrowUpRight className="h-4 w-4 text-muted-foreground transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary" />
+                  ) : (
+                    <span className="rounded-full border border-border bg-secondary px-2 py-0.5 text-[10px] font-medium text-muted-foreground">
+                      Coming soon
+                    </span>
+                  )}
+                </div>
+                <h3 className="mt-4 text-xl font-semibold tracking-tight text-foreground">
+                  {app.title}
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                  {app.description}
+                </p>
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {app.features.map((f) => (
+                    <span
+                      key={f}
+                      className="rounded-full border border-border bg-secondary px-2.5 py-1 text-[11px] text-muted-foreground"
+                    >
+                      {f}
+                    </span>
+                  ))}
+                </div>
+                <span
+                  className={`mt-6 inline-flex items-center gap-1.5 text-sm font-medium ${
+                    isReady ? "text-primary" : "text-muted-foreground"
+                  }`}
+                >
+                  {isReady ? "Open App" : "링크 준비 중"}
+                  {isReady && <ArrowUpRight className="h-3.5 w-3.5" />}
+                </span>
+              </>
+            );
+
+            const baseClass =
+              "group flex flex-col rounded-2xl border border-border bg-card p-7 transition-all";
+            const activeClass =
+              " hover:-translate-y-1 hover:border-primary hover:shadow-[0_10px_40px_-20px_var(--primary)]";
+
+            return isReady ? (
+              <a
+                key={app.id}
+                href={app.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={baseClass + activeClass}
+              >
+                {CardInner}
+              </a>
+            ) : (
+              <div
+                key={app.id}
+                aria-disabled
+                className={baseClass + " opacity-80"}
+              >
+                {CardInner}
+              </div>
+            );
+          })}
         </div>
 
-        <div className="mt-16">
-          <h2 className="text-sm font-semibold uppercase tracking-widest text-muted-foreground">
-            Related Projects
-          </h2>
-          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {projects.map((p) => (
-              <Link
-                key={p.slug}
-                to="/projects/$slug"
-                params={{ slug: p.slug }}
-                className="group rounded-2xl border border-border bg-card p-5 transition-all hover:-translate-y-1 hover:border-primary"
-              >
-                <span className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-                  {p.type}
-                </span>
-                <h3 className="mt-3 text-base font-semibold tracking-tight text-foreground">
-                  {p.title}
-                </h3>
-                <p className="mt-2 text-sm text-muted-foreground">{p.description}</p>
-              </Link>
-            ))}
-          </div>
+        <div className="mt-14 rounded-2xl border border-dashed border-border bg-card/50 p-6 text-sm text-muted-foreground">
+          <p>
+            새 앱을 추가하려면 <code className="rounded bg-secondary px-1.5 py-0.5 text-foreground">src/data/vibe-apps.ts</code>{" "}
+            파일에 항목을 추가하고 <code className="rounded bg-secondary px-1.5 py-0.5 text-foreground">url</code> 값을 채우면
+            버튼이 자동으로 활성화됩니다.
+          </p>
+          <Link
+            to="/projects"
+            className="mt-4 inline-flex items-center gap-1.5 text-primary hover:gap-2"
+          >
+            AI 자동화 Tools 보기 <ArrowUpRight className="h-3.5 w-3.5" />
+          </Link>
         </div>
       </section>
       <SiteFooter />
