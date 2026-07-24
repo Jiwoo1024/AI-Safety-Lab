@@ -117,18 +117,19 @@ function HomePage() {
         </section>
 
         {/* PROJECT STRIP — horizontal image cards */}
-        <section className="mt-10 md:mt-14">
+        <RevealSection className="mt-10 md:mt-14">
           <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
-            {projects.map((p) => (
+            {projects.map((p, idx) => (
               <Link
                 key={p.slug}
                 to="/projects/$slug"
                 params={{ slug: p.slug }}
-                className="group block"
+                className="group block reveal is-visible"
+                style={{ transitionDelay: `${idx * 80}ms` }}
               >
-                <div className="relative mb-3 aspect-[4/3] overflow-hidden rounded-2xl border border-border bg-secondary transition-all group-hover:border-primary/50">
+                <div className="relative mb-3 aspect-[4/3] overflow-hidden rounded-2xl border border-border bg-secondary transition-all group-hover:border-primary/50 group-hover:-translate-y-1 group-hover:shadow-xl">
                   <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-primary/10 to-transparent">
-                    <div className="grid h-12 w-12 place-items-center rounded-xl border border-border bg-card/80 text-primary transition-all group-hover:scale-110">
+                    <div className="grid h-12 w-12 place-items-center rounded-xl border border-border bg-card/80 text-primary transition-all group-hover:scale-110 group-hover:rotate-6">
                       {projectIcons[p.slug] ?? <Sparkles className="h-6 w-6" />}
                     </div>
                   </div>
@@ -147,7 +148,7 @@ function HomePage() {
               </Link>
             ))}
           </div>
-        </section>
+        </RevealSection>
 
         {/* INSIGHTS PREVIEW */}
         <section className="mt-24 md:mt-32">
