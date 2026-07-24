@@ -89,21 +89,15 @@ function HomePage() {
               </div>
             </div>
 
-            <div className="relative min-h-[320px] md:min-h-[500px] lg:col-span-5 lg:min-h-[600px] group">
-              <img
-                src={heroImage}
-                alt="AI 산업안전 시설"
-                className="absolute inset-0 h-full w-full object-cover grayscale-[0.4] transition-all duration-700 group-hover:grayscale-0"
-                width={1344}
-                height={768}
-              />
-              <div className="absolute inset-0 hidden bg-gradient-to-r from-card via-card/50 to-transparent lg:block" />
-              <div className="absolute inset-0 bg-gradient-to-t from-card via-card/20 to-transparent" />
+            <div className="relative min-h-[320px] md:min-h-[500px] lg:col-span-5 lg:min-h-[600px] group bg-secondary/30">
+              <HeroAnimation />
+              <div className="pointer-events-none absolute inset-0 hidden bg-gradient-to-r from-card via-card/40 to-transparent lg:block" />
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-card via-card/10 to-transparent" />
               <div className="absolute right-6 top-6 rounded-lg border border-border bg-card/80 p-3 text-[10px] font-mono text-primary backdrop-blur-md">
                 SCAN_CORE_ALPHA // 0.982
               </div>
 
-              {/* Desktop stats — overlap the image */}
+              {/* Desktop stats — overlap the animation */}
               <div className="absolute bottom-6 left-6 hidden gap-4 md:flex">
                 <div className="rounded-2xl border border-border bg-card/90 p-5 shadow-xl backdrop-blur-xl">
                   <div className="font-display text-3xl font-bold text-foreground">04</div>
