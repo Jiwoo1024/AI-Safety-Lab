@@ -223,3 +223,19 @@ function InsightCard({ i }: { i: (typeof insights)[number] }) {
     </article>
   );
 }
+
+function RevealSection({
+  className,
+  children,
+}: {
+  className?: string;
+  children: React.ReactNode;
+}) {
+  const ref = useReveal<HTMLElement>();
+  return (
+    <section ref={ref} className={`reveal ${className ?? ""}`}>
+      {children}
+    </section>
+  );
+}
+
