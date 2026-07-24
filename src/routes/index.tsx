@@ -4,7 +4,8 @@ import { SiteHeader, SiteFooter } from "@/components/site-chrome";
 import { projects } from "@/data/projects";
 import { insights } from "@/data/insights";
 import { Scale, Camera, HelpCircle, BookOpen, ArrowRight, Sparkles } from "lucide-react";
-import heroImage from "@/assets/hero.jpg";
+import { HeroAnimation } from "@/components/hero-animation";
+import { useReveal } from "@/hooks/use-reveal";
 
 export const Route = createFileRoute("/")({
   head: () => ({
