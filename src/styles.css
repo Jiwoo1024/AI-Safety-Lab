@@ -40,28 +40,28 @@
 
 :root {
   --radius: 0.75rem;
-  --background: oklch(0.97 0.01 250);
-  --foreground: oklch(0.25 0.05 250);
+  --background: oklch(0.98 0.008 180);
+  --foreground: oklch(0.22 0.03 200);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.25 0.05 250);
+  --card-foreground: oklch(0.22 0.03 200);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.25 0.05 250);
-  --primary: oklch(0.55 0.18 250);
-  --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(0.94 0.02 250);
-  --secondary-foreground: oklch(0.25 0.05 250);
-  --muted: oklch(0.94 0.02 250);
-  --muted-foreground: oklch(0.55 0.05 250);
-  --accent: oklch(0.95 0.03 250);
-  --accent-foreground: oklch(0.25 0.05 250);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.88 0.02 250);
-  --input: oklch(0.88 0.02 250);
-  --ring: oklch(0.55 0.18 250);
-  --navy: oklch(0.25 0.08 250);
-  --slate-ink: oklch(0.45 0.05 250);
-  --sky-soft: oklch(0.75 0.12 250);
+  --popover-foreground: oklch(0.22 0.03 200);
+  --primary: oklch(0.62 0.14 175);
+  --primary-foreground: oklch(0.99 0.01 180);
+  --secondary: oklch(0.95 0.02 180);
+  --secondary-foreground: oklch(0.25 0.04 200);
+  --muted: oklch(0.95 0.015 190);
+  --muted-foreground: oklch(0.5 0.03 200);
+  --accent: oklch(0.93 0.05 175);
+  --accent-foreground: oklch(0.25 0.05 200);
+  --destructive: oklch(0.62 0.22 30);
+  --destructive-foreground: oklch(0.99 0.005 0);
+  --border: oklch(0.9 0.015 190);
+  --input: oklch(0.9 0.015 190);
+  --ring: oklch(0.62 0.14 175);
+  --navy: oklch(0.28 0.06 200);
+  --slate-ink: oklch(0.42 0.04 200);
+  --sky-soft: oklch(0.78 0.1 190);
 }
 
 @layer base {
@@ -96,16 +96,14 @@
 }
 
 @utility gradient-dark {
-  background: linear-gradient(
-    135deg,
-    oklch(0.97 0.01 250) 0%,
-    oklch(0.95 0.02 250) 40%,
-    oklch(0.93 0.02 250) 100%
-  );
+  background:
+    radial-gradient(1200px 600px at 10% -10%, oklch(0.92 0.08 175 / 0.55), transparent 60%),
+    radial-gradient(900px 500px at 110% 10%, oklch(0.88 0.09 200 / 0.45), transparent 60%),
+    linear-gradient(135deg, oklch(0.98 0.01 180) 0%, oklch(0.95 0.03 185) 55%, oklch(0.92 0.05 175) 100%);
 }
 
 @utility glow-soft {
-  box-shadow: 0 0 40px -12px color-mix(in oklab, oklch(0.55 0.15 250) 18%, transparent);
+  box-shadow: 0 0 60px -18px color-mix(in oklab, oklch(0.62 0.14 175) 45%, transparent);
 }
 
 @keyframes fadeUp {
