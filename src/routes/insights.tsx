@@ -8,16 +8,35 @@ export const Route = createFileRoute("/insights")({
       { title: "Safety Insights — AI Safety Lab" },
       {
         name: "description",
-        content: "산업안전 실무자 관점에서 정리한 HAZOP, 법령, 사고사례 인사이트",
+        content:
+          "HAZOP, 위험성평가, 산업안전보건법과 KOSHA Guide 해석, 중대재해 사고사례를 산업안전 실무자 관점에서 정리한 인사이트 모음입니다.",
       },
       { property: "og:title", content: "Safety Insights — AI Safety Lab" },
-      { property: "og:description", content: "실무 관점의 산업안전 인사이트 라이브러리" },
+      {
+        property: "og:description",
+        content: "HAZOP·법령·사고사례를 실무 관점으로 재구성한 산업안전 인사이트 라이브러리",
+      },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://ai-safety-craft.lovable.app/insights" },
       { name: "twitter:card", content: "summary_large_image" },
+    ],
+    links: [{ rel: "canonical", href: "https://ai-safety-craft.lovable.app/insights" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          name: "Safety Insights",
+          description: "산업안전 실무자 관점의 HAZOP·법령·사고사례 인사이트 모음",
+          url: "https://ai-safety-craft.lovable.app/insights",
+        }),
+      },
     ],
   }),
   component: InsightsPage,
 });
+
 
 function InsightsPage() {
   return (
