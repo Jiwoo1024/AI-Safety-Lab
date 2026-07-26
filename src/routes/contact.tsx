@@ -5,13 +5,23 @@ export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
       { title: "Contact — AI Safety Lab" },
-      { name: "description", content: "협업, 리서치, 실무 적용 문의를 남겨주세요." },
+      {
+        name: "description",
+        content:
+          "AI 기반 산업안전 도구 협업, 리서치 파트너십, 현장 실무 적용 문의를 남겨주세요. HAZOP·위험성평가·안전교육 관련 제안을 환영합니다.",
+      },
       { property: "og:title", content: "Contact — AI Safety Lab" },
-      { property: "og:description", content: "AI Safety Lab에 문의하기" },
+      {
+        property: "og:description",
+        content: "AI Safety Lab에 협업·리서치·실무 적용 문의를 남기는 방법",
+      },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://ai-safety-craft.lovable.app/contact" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
+    links: [{ rel: "canonical", href: "https://ai-safety-craft.lovable.app/contact" }],
   }),
+
   component: ContactPage,
 });
 
