@@ -53,7 +53,10 @@ function InsightsPage() {
           HAZOP, 위험성평가, 법령 해석, 사고사례를 실무 관점으로 재구성한 짧은 글 모음입니다.
         </p>
 
-        <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <h2 className="mt-14 text-2xl font-semibold tracking-tight text-foreground">
+          전체 인사이트
+        </h2>
+        <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {insights.map((i) => (
             <article
               key={i.slug}

@@ -11,16 +11,35 @@ export const Route = createFileRoute("/projects/")({
       { title: "Projects — AI Safety Lab" },
       {
         name: "description",
-        content: "HAZOP, 위험성평가, 현장 사진 분석 등 AI 기반 산업안전 프로젝트 모음",
+        content:
+          "HAZOP 분석, 사진 기반 위험성평가, 안전교육 퀴즈, 법령 검토 커스텀 GPT까지 산업안전 실무를 지원하는 AI 도구 프로젝트를 한 곳에 모았습니다.",
       },
       { property: "og:title", content: "Projects — AI Safety Lab" },
-      { property: "og:description", content: "AI × 산업안전 프로젝트 카탈로그" },
+      {
+        property: "og:description",
+        content: "HAZOP·위험성평가·안전교육을 지원하는 AI 산업안전 프로젝트 카탈로그",
+      },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://ai-safety-craft.lovable.app/projects" },
       { name: "twitter:card", content: "summary_large_image" },
+    ],
+    links: [{ rel: "canonical", href: "https://ai-safety-craft.lovable.app/projects" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          name: "AI Safety Lab Projects",
+          description: "AI 기반 산업안전 도구 프로젝트 모음",
+          url: "https://ai-safety-craft.lovable.app/projects",
+        }),
+      },
     ],
   }),
   component: ProjectsPage,
 });
+
 
 function ProjectsPage() {
   return (
