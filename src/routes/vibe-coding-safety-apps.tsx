@@ -9,17 +9,29 @@ export const Route = createFileRoute("/vibe-coding-safety-apps")({
       { title: "Vibe Coding_Safety Apps — AI Safety Lab" },
       {
         name: "description",
-        content: "Vibe Coding으로 빠르게 만들어보는 Safety App 프로토타입과 실험 프로젝트",
+        content:
+          "Vibe Coding으로 빠르게 만든 산업안전 앱 프로토타입 모음입니다. 사진 기반 위험성평가, 사고사례 아카이브 등 현장 검증용 실험 프로젝트를 소개합니다.",
       },
       { property: "og:title", content: "Vibe Coding_Safety Apps — AI Safety Lab" },
       {
         property: "og:description",
-        content: "Vibe Coding으로 빠르게 만들어보는 Safety App 프로토타입과 실험 프로젝트",
+        content: "현장 검증을 위한 Safety App 프로토타입과 실험 프로젝트 모음",
       },
       { property: "og:type", content: "website" },
+      {
+        property: "og:url",
+        content: "https://ai-safety-craft.lovable.app/vibe-coding-safety-apps",
+      },
       { name: "twitter:card", content: "summary_large_image" },
     ],
+    links: [
+      {
+        rel: "canonical",
+        href: "https://ai-safety-craft.lovable.app/vibe-coding-safety-apps",
+      },
+    ],
   }),
+
   component: VibeCodingSafetyAppsPage,
 });
 
@@ -41,7 +53,10 @@ function VibeCodingSafetyAppsPage() {
           Safety App 실험 공간입니다.
         </p>
 
-        <div className="mt-14 grid gap-6 md:grid-cols-2">
+        <h2 className="mt-14 text-2xl font-semibold tracking-tight text-foreground">
+          공개된 Safety Apps
+        </h2>
+        <div className="mt-8 grid gap-6 md:grid-cols-2">
           {vibeApps.map((app) => {
             const isReady = Boolean(app.url);
             const CardInner = (

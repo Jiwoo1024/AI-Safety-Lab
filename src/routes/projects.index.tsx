@@ -57,7 +57,10 @@ function ProjectsPage() {
           프로젝트를 소개합니다.
         </p>
 
-        <div className="mt-14 grid gap-6 md:grid-cols-2">
+        <h2 className="mt-14 text-2xl font-semibold tracking-tight text-foreground">
+          전체 프로젝트
+        </h2>
+        <div className="mt-8 grid gap-6 md:grid-cols-2">
           {projects.map((p) => (
             <Link
               key={p.slug}
