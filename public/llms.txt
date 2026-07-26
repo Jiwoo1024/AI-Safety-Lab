@@ -1,0 +1,21 @@
+# AI Safety Lab
+
+> 산업안전 실무(HAZOP, 위험성평가, 법령 검토, 안전교육)에 AI를 적용한 도구와 인사이트를 모은 포트폴리오 사이트입니다.
+
+산업안전공학 전공자가 위험성평가·공정안전·화학안전 현장 경험을 바탕으로 개발한 AI 기반 산업안전 도구, 커스텀 GPT, Vibe Coding 프로토타입, 그리고 실무 관점의 안전 인사이트를 소개합니다.
+
+## Pages
+
+- [Home](/): AI Safety Lab 소개와 주요 프로젝트·인사이트 요약
+- [AI 자동화 Tools](/projects): AI 기반 산업안전 프로젝트와 커스텀 GPT 목록
+- [Vibe Coding Safety Apps](/vibe-coding-safety-apps): 빠르게 만든 안전 앱 프로토타입 모음
+- [Safety Insights](/insights): HAZOP, 산업안전보건법, KOSHA Guide, 사고사례 인사이트
+- [About](/about): 개발자 배경과 산업안전 실무 경험
+- [Contact](/contact): 협업 및 문의
+
+## Projects
+
+- [AI HAZOP Assistant](/projects/ai-hazop-assistant): 공정 편차 기반 원인·결과·안전조치·법령 분석 도구
+- [AI Photo Risk Assessment](/projects/ai-photo-risk-assessment): 현장 사진 기반 위험요인 식별 및 개선조치 제안
+- [Safety Quiz](/projects/safety-quiz): 산업안전 지식 학습용 인터랙티브 퀴즈
+- [Safety Insight Library](/projects/safety-insight-library): 법령·기준·사고사례 실무 정리 라이브러리
