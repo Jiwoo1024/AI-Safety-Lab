@@ -8,11 +8,12 @@ export const Route = createFileRoute("/projects/$slug")({
     if (!project) throw notFound();
     return { project };
   },
-  head: ({ loaderData }) => {
+  head: ({ params, loaderData }) => {
     const title = loaderData?.project
       ? `${loaderData.project.title} — AI Safety Lab`
       : "Project — AI Safety Lab";
     const description = loaderData?.project?.description ?? "AI 기반 산업안전 프로젝트";
+    const url = `https://ai-safety-craft.lovable.app/projects/${params.slug}`;
     return {
       meta: [
         { title },
@@ -20,10 +21,27 @@ export const Route = createFileRoute("/projects/$slug")({
         { property: "og:title", content: title },
         { property: "og:description", content: description },
         { property: "og:type", content: "article" },
+        { property: "og:url", content: url },
         { name: "twitter:card", content: "summary_large_image" },
+      ],
+      links: [{ rel: "canonical", href: url }],
+      scripts: [
+        {
+          type: "application/ld+json",
+          children: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "SoftwareApplication",
+            name: loaderData?.project?.title ?? "AI Safety Lab Project",
+            description,
+            url,
+            applicationCategory: "BusinessApplication",
+            operatingSystem: "Web",
+          }),
+        },
       ],
     };
   },
+
   notFoundComponent: () => (
     <div className="min-h-screen bg-background">
       <SiteHeader />

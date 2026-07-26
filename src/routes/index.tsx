@@ -81,7 +81,11 @@ function HomePage() {
 
         {/* PROJECT STRIP — horizontal image cards */}
         <RevealSection className="mt-10 md:mt-14">
+          <h2 className="font-display mb-6 text-2xl font-semibold tracking-tight text-foreground md:text-3xl">
+            AI 산업안전 프로젝트
+          </h2>
           <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
+
             {projects.map((p, idx) => (
               <Link
                 key={p.slug}
