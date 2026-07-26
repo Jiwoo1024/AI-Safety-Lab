@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as VibeCodingSafetyAppsRouteImport } from './routes/vibe-coding-safety-apps'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ProjectsRouteImport } from './routes/projects'
 import { Route as InsightsRouteImport } from './routes/insights'
 import { Route as ContactRouteImport } from './routes/contact'
@@ -21,6 +22,11 @@ import { Route as ProjectsSlugRouteImport } from './routes/projects.$slug'
 const VibeCodingSafetyAppsRoute = VibeCodingSafetyAppsRouteImport.update({
   id: '/vibe-coding-safety-apps',
   path: '/vibe-coding-safety-apps',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProjectsRoute = ProjectsRouteImport.update({
@@ -65,6 +71,7 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/insights': typeof InsightsRoute
   '/projects': typeof ProjectsRouteWithChildren
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/vibe-coding-safety-apps': typeof VibeCodingSafetyAppsRoute
   '/projects/$slug': typeof ProjectsSlugRoute
   '/projects/': typeof ProjectsIndexRoute
@@ -74,6 +81,7 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/insights': typeof InsightsRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/vibe-coding-safety-apps': typeof VibeCodingSafetyAppsRoute
   '/projects/$slug': typeof ProjectsSlugRoute
   '/projects': typeof ProjectsIndexRoute
@@ -85,6 +93,7 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/insights': typeof InsightsRoute
   '/projects': typeof ProjectsRouteWithChildren
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/vibe-coding-safety-apps': typeof VibeCodingSafetyAppsRoute
   '/projects/$slug': typeof ProjectsSlugRoute
   '/projects/': typeof ProjectsIndexRoute
@@ -97,6 +106,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/insights'
     | '/projects'
+    | '/sitemap.xml'
     | '/vibe-coding-safety-apps'
     | '/projects/$slug'
     | '/projects/'
@@ -106,6 +116,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/contact'
     | '/insights'
+    | '/sitemap.xml'
     | '/vibe-coding-safety-apps'
     | '/projects/$slug'
     | '/projects'
@@ -116,6 +127,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/insights'
     | '/projects'
+    | '/sitemap.xml'
     | '/vibe-coding-safety-apps'
     | '/projects/$slug'
     | '/projects/'
@@ -127,6 +139,7 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   InsightsRoute: typeof InsightsRoute
   ProjectsRoute: typeof ProjectsRouteWithChildren
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   VibeCodingSafetyAppsRoute: typeof VibeCodingSafetyAppsRoute
 }
 
@@ -137,6 +150,13 @@ declare module '@tanstack/react-router' {
       path: '/vibe-coding-safety-apps'
       fullPath: '/vibe-coding-safety-apps'
       preLoaderRoute: typeof VibeCodingSafetyAppsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/projects': {
@@ -211,6 +231,7 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   InsightsRoute: InsightsRoute,
   ProjectsRoute: ProjectsRouteWithChildren,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   VibeCodingSafetyAppsRoute: VibeCodingSafetyAppsRoute,
 }
 export const routeTree = rootRouteImport

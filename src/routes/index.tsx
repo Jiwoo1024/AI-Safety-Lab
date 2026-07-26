@@ -16,15 +16,19 @@ export const Route = createFileRoute("/")({
         content:
           "산업안전 법령 자문, 위험성평가, 안전교육 자료 제작 등 실무에 필요한 작업을 AI로 지원하는 도구들을 만들고 있습니다.",
       },
-      { property: "og:title", content: "AI Safety Lab" },
+      { property: "og:title", content: "AI Safety Lab — AI 기반 산업안전 프로젝트 포트폴리오" },
       {
         property: "og:description",
-        content: "AI로 산업안전 실무를 더 빠르고 정확하게",
+        content:
+          "HAZOP, 위험성평가, 법령 검토, 안전교육을 지원하는 AI 산업안전 도구와 인사이트 모음",
       },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://ai-safety-craft.lovable.app/" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
+    links: [{ rel: "canonical", href: "https://ai-safety-craft.lovable.app/" }],
   }),
+
   component: HomePage,
 });
 
@@ -77,7 +81,11 @@ function HomePage() {
 
         {/* PROJECT STRIP — horizontal image cards */}
         <RevealSection className="mt-10 md:mt-14">
+          <h2 className="font-display mb-6 text-2xl font-semibold tracking-tight text-foreground md:text-3xl">
+            AI 산업안전 프로젝트
+          </h2>
           <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
+
             {projects.map((p, idx) => (
               <Link
                 key={p.slug}

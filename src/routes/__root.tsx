@@ -96,7 +96,30 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
     ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "Organization",
+              name: "AI Safety Lab",
+              url: "https://ai-safety-craft.lovable.app",
+              description: "AI 기반 산업안전 도구와 인사이트를 만드는 프로젝트 랩",
+            },
+            {
+              "@type": "WebSite",
+              name: "AI Safety Lab",
+              url: "https://ai-safety-craft.lovable.app",
+              inLanguage: "ko",
+            },
+          ],
+        }),
+      },
+    ],
   }),
+
   shellComponent: RootShell,
   component: RootComponent,
   notFoundComponent: NotFoundComponent,

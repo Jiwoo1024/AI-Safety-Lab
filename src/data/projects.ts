@@ -47,7 +47,8 @@ export const projects: Project[] = [
     slug: "safety-quiz",
     type: "Interactive Learning",
     title: "Safety Quiz",
-    description: "산업안전 지식을 문제와 사례를 통해 학습할 수 있는 인터랙티브 퀴즈 웹앱",
+    description:
+      "산업안전 지식을 문제와 실제 사고사례를 통해 학습할 수 있는 인터랙티브 퀴즈 웹앱으로, 법령·위험성평가·작업안전 주제를 반복 학습하며 이해도를 점검할 수 있습니다.",
     longDescription:
       "산업안전보건법, KOSHA Guide, PSM, HAZOP, 사고사례를 기반으로 한 문제 은행에서 랜덤으로 출제되는 인터랙티브 퀴즈. 오답 해설과 관련 법령 링크를 제공하여 실무 학습에 활용할 수 있습니다.",
     features: ["문제 은행", "오답 해설", "카테고리별 학습", "진도 추적"],

@@ -7,14 +7,22 @@ export const Route = createFileRoute("/about")({
       { title: "About — AI Safety Lab" },
       {
         name: "description",
-        content: "산업안전공학 기반으로 AI를 안전관리 업무에 적용하는 사람의 이야기",
+        content:
+          "산업안전공학을 전공하고 위험성평가, 공정안전, 화학안전, 현장 안전관리 경험을 바탕으로 AI를 안전관리 실무에 적용하는 도구를 개발하는 사람의 이야기입니다.",
       },
       { property: "og:title", content: "About — AI Safety Lab" },
-      { property: "og:description", content: "AI Safety Lab을 만든 사람 소개" },
+      {
+        property: "og:description",
+        content:
+          "산업안전공학 전공과 현장 안전관리 경험을 바탕으로 AI 안전 도구를 만드는 AI Safety Lab 소개",
+      },
       { property: "og:type", content: "profile" },
+      { property: "og:url", content: "https://ai-safety-craft.lovable.app/about" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
+    links: [{ rel: "canonical", href: "https://ai-safety-craft.lovable.app/about" }],
   }),
+
   component: AboutPage,
 });
 
