@@ -35,86 +35,45 @@ function HomePage() {
 
       <main className="container-page py-8 md:py-12">
         {/* HERO — split-screen card */}
-        <section className="relative overflow-hidden rounded-[2rem] border border-border bg-card shadow-2xl">
-          <div className="grid grid-cols-1 lg:grid-cols-12">
-            <div className="relative z-10 flex flex-col justify-center p-8 md:p-12 lg:col-span-7 lg:p-16">
-              <div className="mb-6 inline-flex w-fit items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-3 py-1">
-                <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
-                <span className="text-[10px] font-bold uppercase tracking-widest text-primary">
+        <section className="relative isolate overflow-hidden rounded-[2rem] border border-border shadow-2xl">
+          <div className="relative min-h-[440px] md:min-h-[560px] lg:min-h-[640px]">
+            <HeroAnimation />
+
+            {/* 가독성용 좌→우 다크 그라데이션 */}
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[oklch(0.18_0.02_200/0.88)] via-[oklch(0.18_0.02_200/0.55)] to-transparent" />
+
+            <div className="relative z-10 flex min-h-[440px] flex-col justify-center p-8 md:min-h-[560px] md:p-14 lg:min-h-[640px] lg:p-20">
+              <div className="mb-6 inline-flex w-fit items-center gap-2 rounded-full border border-primary/30 bg-primary/15 px-3 py-1 backdrop-blur-sm">
+                <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-primary" />
+                <span className="text-[10px] font-bold uppercase tracking-widest text-primary-foreground/90">
                   AI × Industrial Safety Portfolio
                 </span>
               </div>
 
-              <h1 className="font-display text-4xl font-bold leading-[1.15] tracking-tight text-foreground md:text-5xl lg:text-[3.5rem]">
+              <h1 className="font-display max-w-2xl text-4xl font-bold leading-[1.15] tracking-tight text-white md:text-5xl lg:text-[3.5rem]">
                 AI로 <span className="text-primary">산업안전</span>
                 <br />
                 실무를 더 빠르고 <span className="whitespace-nowrap">정확하게</span>
               </h1>
 
-              <p className="mt-6 max-w-md text-base leading-relaxed text-muted-foreground md:text-lg">
+              <p className="mt-6 max-w-lg text-base leading-relaxed text-white/75 md:text-lg">
                 산업안전 법령 자문, 위험성평가, 안전교육 자료 제작 등 실무에 필요한 작업을 AI로
                 지원하는 도구들을 만들고 있습니다.
               </p>
 
-              <div className="mt-8 flex flex-wrap gap-4">
+              <div className="mt-9">
                 <Link
                   to="/projects"
-                  className="inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/20 transition-all hover:-translate-y-0.5"
+                  className="inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/25 transition-all hover:-translate-y-0.5"
                 >
                   Explore Projects
                   <span aria-hidden>→</span>
                 </Link>
-                <Link
-                  to="/insights"
-                  className="inline-flex items-center gap-2 rounded-xl border border-border bg-secondary/50 px-6 py-3.5 text-sm font-semibold text-foreground transition-all hover:bg-secondary"
-                >
-                  View Safety Insights
-                </Link>
-              </div>
-
-              {/* Mobile stats */}
-              <div className="mt-8 grid grid-cols-2 gap-4 md:hidden">
-                <div className="rounded-2xl border border-border bg-card p-4">
-                  <div className="font-display text-2xl font-bold text-foreground">04</div>
-                  <div className="text-[10px] uppercase tracking-tighter text-muted-foreground">
-                    Active Projects
-                  </div>
-                </div>
-                <div className="rounded-2xl border border-border bg-card p-4">
-                  <div className="font-display text-2xl font-bold text-foreground">05+</div>
-                  <div className="text-[10px] uppercase tracking-tighter text-muted-foreground">
-                    Insight Articles
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="relative min-h-[320px] md:min-h-[500px] lg:col-span-5 lg:min-h-[600px] group bg-secondary/30">
-              <HeroAnimation />
-              <div className="pointer-events-none absolute inset-0 hidden bg-gradient-to-r from-card via-card/40 to-transparent lg:block" />
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-card via-card/10 to-transparent" />
-              <div className="absolute right-6 top-6 rounded-lg border border-border bg-card/80 p-3 text-[10px] font-mono text-primary backdrop-blur-md">
-                SCAN_CORE_ALPHA // 0.982
-              </div>
-
-              {/* Desktop stats — overlap the animation */}
-              <div className="absolute bottom-6 left-6 hidden gap-4 md:flex">
-                <div className="rounded-2xl border border-border bg-card/90 p-5 shadow-xl backdrop-blur-xl">
-                  <div className="font-display text-3xl font-bold text-foreground">04</div>
-                  <div className="text-[10px] uppercase tracking-tighter text-muted-foreground">
-                    Active Projects
-                  </div>
-                </div>
-                <div className="rounded-2xl border border-border bg-card/90 p-5 shadow-xl backdrop-blur-xl">
-                  <div className="font-display text-3xl font-bold text-foreground">05+</div>
-                  <div className="text-[10px] uppercase tracking-tighter text-muted-foreground">
-                    Insight Articles
-                  </div>
-                </div>
               </div>
             </div>
           </div>
         </section>
+
 
         {/* PROJECT STRIP — horizontal image cards */}
         <RevealSection className="mt-10 md:mt-14">
