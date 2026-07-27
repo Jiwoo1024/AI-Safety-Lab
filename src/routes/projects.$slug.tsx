@@ -77,6 +77,16 @@ function ProjectDetail() {
             {project.title}
           </h1>
           <p className="mt-5 text-lg leading-relaxed text-muted-foreground">{project.description}</p>
+          <div className="mt-4 flex flex-wrap gap-2">
+            {project.tags.map((t) => (
+              <span
+                key={t}
+                className="rounded-full border border-border bg-card px-3 py-1 text-xs text-muted-foreground"
+              >
+                #{t}
+              </span>
+            ))}
+          </div>
         </header>
 
         {project.highlights && (
@@ -137,15 +147,33 @@ function ProjectDetail() {
               ))}
             </div>
             <div className="mt-6 border-t border-border pt-6">
-              <p className="text-sm text-muted-foreground">
-                Live 데모는 준비 중입니다. 문의는 아래 버튼을 눌러 남겨주세요.
-              </p>
-              <Link
-                to="/contact"
-                className="mt-4 inline-flex w-full items-center justify-center rounded-full bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground"
-              >
-                문의하기
-              </Link>
+              {project.link ? (
+                <>
+                  <p className="text-sm text-muted-foreground">
+                    배포된 앱에서 직접 기능을 확인해볼 수 있습니다.
+                  </p>
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-4 inline-flex w-full items-center justify-center rounded-full bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground"
+                  >
+                    앱 사용해보기 →
+                  </a>
+                </>
+              ) : (
+                <>
+                  <p className="text-sm text-muted-foreground">
+                    Live 데모는 준비 중입니다. 문의는 아래 버튼을 눌러 남겨주세요.
+                  </p>
+                  <Link
+                    to="/contact"
+                    className="mt-4 inline-flex w-full items-center justify-center rounded-full bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground"
+                  >
+                    문의하기
+                  </Link>
+                </>
+              )}
             </div>
           </aside>
         </div>
