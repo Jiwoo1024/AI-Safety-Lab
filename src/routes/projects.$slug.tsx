@@ -77,6 +77,16 @@ function ProjectDetail() {
             {project.title}
           </h1>
           <p className="mt-5 text-lg leading-relaxed text-muted-foreground">{project.description}</p>
+          <div className="mt-4 flex flex-wrap gap-2">
+            {project.tags.map((t) => (
+              <span
+                key={t}
+                className="rounded-full border border-border bg-card px-3 py-1 text-xs text-muted-foreground"
+              >
+                #{t}
+              </span>
+            ))}
+          </div>
         </header>
 
         {project.highlights && (
