@@ -32,11 +32,12 @@ export const projects: Project[] = [
     type: "Vision AI",
     title: "AI Photo Risk Assessment",
     description:
-      "현장 사진을 바탕으로 위험요인을 식별하고 위험성, 관련 법령 및 개선조치를 제안하는 도구",
+      "현장 사진을 업로드하면 위험요인을 식별하고 위험성 등급과 개선조치를 제안하는 AI 기반 위험성평가 앱",
     longDescription:
       "현장에서 촬영한 사진을 업로드하면 Vision 모델이 위험요인을 식별하고, 위험성 매트릭스(빈도 × 강도)로 등급을 산정합니다. 관련 산업안전보건법 조항 및 KOSHA Guide를 연결하여 개선조치를 문서화합니다.",
-    features: ["Vision 기반 위험요인 식별", "위험성 매트릭스", "법령 매핑", "보고서 생성"],
-    tags: ["Vision", "Risk Assessment", "현장"],
+    features: ["Vision 기반 위험요인 식별", "위험성 매트릭스", "법령 매핑", "개선조치 제안", "보고서 생성"],
+    tags: ["Vision", "Risk Assessment", "현장", "AI Photo Analysis"],
+    link: "https://hazard-sight-ai.lovable.app/",
     highlights: [
       { label: "입력", value: "현장 사진" },
       { label: "평가 방식", value: "5×5 매트릭스" },
