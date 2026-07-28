@@ -4,6 +4,7 @@ export type Insight = {
   excerpt: string;
   category: string;
   readTime: string;
+  date: string;
   image: string;
 };
 
@@ -15,6 +16,7 @@ export const insights: Insight[] = [
       "AI와 데이터 기반 분석을 통해 공정 위험을 더 정확하고 효율적으로 평가하는 방법을 정리합니다.",
     category: "PROCESS SAFETY",
     readTime: "6 min read",
+    date: "2024.05.25",
     image: "/insight-hazop.jpg",
   },
   {
@@ -24,6 +26,7 @@ export const insights: Insight[] = [
       "현장 사진 분석을 통해 숨겨진 위험을 발견하고 선제적으로 대응하는 방법",
     category: "WORKPLACE SAFETY",
     readTime: "5 min read",
+    date: "2024.05.13",
     image: "/insight-photo-risk.jpg",
   },
   {
@@ -32,6 +35,7 @@ export const insights: Insight[] = [
     excerpt: "AI와 자동화 기술이 반도체 산업의 안전관리 패러다임을 어떻게 혁신하는가",
     category: "TECHNOLOGY INSIGHT",
     readTime: "7 min read",
+    date: "2024.05.06",
     image: "/insight-ai-manager.jpg",
   },
   {
@@ -40,6 +44,7 @@ export const insights: Insight[] = [
     excerpt: "법적 강제력과 기술 가이드의 관계를 정리하고, 실무에서 어떻게 활용해야 하는지 설명합니다.",
     category: "법령",
     readTime: "7 min read",
+    date: "2024.04.28",
     image: "/insight-hazop.jpg",
   },
   {
@@ -49,6 +54,7 @@ export const insights: Insight[] = [
       "숙련된 안전관리자가 사용하는 체계적인 관찰 프레임과 놓치기 쉬운 위험요인 체크리스트를 공유합니다.",
     category: "현장",
     readTime: "5 min read",
+    date: "2024.04.15",
     image: "/insight-photo-risk.jpg",
   },
 ];
