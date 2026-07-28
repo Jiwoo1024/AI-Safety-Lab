@@ -46,98 +46,94 @@ function HomePage() {
     <div className="min-h-screen bg-background">
       <SiteHeader />
 
-      <main className="container-page py-6 md:py-10">
-        {/* HERO — split-screen card with overlaid stats */}
-        <section className="relative isolate overflow-hidden rounded-[2rem] border border-border shadow-2xl shadow-black/40">
-          <div className="relative min-h-[440px] md:min-h-[560px] lg:min-h-[640px]">
-            <HeroAnimation />
+      {/* HERO — full-width bleed */}
+      <section className="relative isolate min-h-[520px] overflow-hidden md:min-h-[640px] lg:min-h-[720px]">
+        <HeroAnimation />
 
-            {/* 가독성용 좌→우 다크 그라데이션 */}
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[oklch(0.08_0.02_250/0.95)] via-[oklch(0.08_0.02_250/0.7)] to-[oklch(0.08_0.02_250/0.25)]" />
+        {/* 좌→우 다크 그라데이션 */}
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[oklch(0.06_0.02_250/0.97)] via-[oklch(0.06_0.02_250/0.75)] to-[oklch(0.06_0.02_250/0.2)]" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[oklch(0.06_0.02_250/0.85)] via-transparent to-transparent" />
 
-            <div className="relative z-10 grid min-h-[440px] grid-cols-1 items-center md:min-h-[560px] md:grid-cols-2 lg:min-h-[640px]">
-              {/* 좌측 카피 */}
-              <div className="p-8 md:p-12 lg:p-16">
-                <div className="mb-6 inline-flex w-fit items-center gap-2 rounded-full border border-primary/30 bg-primary/15 px-3 py-1 backdrop-blur-sm">
-                  <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-primary" />
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-primary-foreground/90">
-                    AI × Industrial Safety Portfolio
-                  </span>
-                </div>
+        {/* DRAM label */}
+        <div className="pointer-events-none absolute right-8 top-1/2 z-10 hidden -translate-y-1/2 text-xs font-semibold tracking-[0.3em] text-white/40 md:right-16 lg:right-24 lg:block">
+          DRAM
+        </div>
 
-                <h1 className="font-display max-w-2xl text-4xl font-bold leading-[1.15] tracking-tight text-white md:text-5xl lg:text-[3.5rem]">
-                  AI로 <span className="text-primary">산업안전</span>
-                  <br />
-                  실무를 더 빠르고 <span className="whitespace-nowrap">정확하게</span>
-                </h1>
+        <div className="container-page relative z-10 flex min-h-[520px] flex-col justify-between py-16 md:min-h-[640px] md:py-20 lg:min-h-[720px] lg:py-24">
+          {/* 좌측 상단 카피 */}
+          <div className="max-w-2xl pt-4 md:pt-8">
+            <div className="mb-6 inline-flex w-fit items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 backdrop-blur-sm">
+              <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-primary" />
+              <span className="text-[10px] font-bold uppercase tracking-widest text-primary-foreground/90">
+                AI × Industrial Safety Portfolio
+              </span>
+            </div>
 
-                <p className="mt-6 max-w-lg text-base leading-relaxed text-white/75 md:text-lg">
-                  AI Safety Lab은 산업현장의 위험을 예측하고, 분석하며,
-                  안전한 의사결정을 지원하는 AI 기반 솔루션을 개발합니다.
-                </p>
+            <h1 className="font-display max-w-xl text-4xl font-bold leading-[1.15] tracking-tight text-white md:text-5xl lg:text-[3.5rem]">
+              AI로 <span className="text-primary">산업안전</span>
+              <br />
+              실무를 더 빠르고
+              <br />
+              <span className="whitespace-nowrap">정확하게</span>
+            </h1>
 
-                <div className="mt-9">
-                  <Link
-                    to="/projects"
-                    className="inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/25 transition-all hover:-translate-y-0.5"
-                  >
-                    Explore Projects
-                    <span aria-hidden>→</span>
-                  </Link>
-                </div>
-              </div>
+            <p className="mt-6 max-w-md text-base leading-relaxed text-white/70 md:text-lg">
+              AI Safety Lab은 산업현장의 위험을 예측하고, 분석하며,
+              안전한 의사결정을 지원하는 AI 기반 솔루션을 개발합니다.
+            </p>
 
-              {/* 우측 통계 카드 오버레이 */}
-              <div className="relative hidden items-end justify-end p-8 md:flex md:p-12 lg:p-16">
-                <div className="flex flex-col gap-4 lg:flex-row">
-                  <StatCard
-                    number="04"
-                    label="Active Projects"
-                    icon={<TrendingUp className="h-5 w-5" />}
-                  />
-                  <StatCard
-                    number="05+"
-                    label="Insight Articles"
-                    icon={<FileText className="h-5 w-5" />}
-                  />
-                </div>
-              </div>
+            <div className="mt-8">
+              <Link
+                to="/projects"
+                className="inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/20 transition-all hover:bg-primary/90"
+              >
+                Explore Projects
+                <span aria-hidden>→</span>
+              </Link>
             </div>
           </div>
-        </section>
 
+          {/* 우측 하단 통계 카드 */}
+          <div className="flex justify-start gap-4 md:justify-end">
+            <StatCard
+              number="04"
+              label="Active Projects"
+              icon={<TrendingUp className="h-5 w-5" />}
+            />
+            <StatCard
+              number="05+"
+              label="Insight Articles"
+              icon={<FileText className="h-5 w-5" />}
+            />
+          </div>
+        </div>
+      </section>
+
+      <main className="container-page py-10 md:py-16">
         {/* PROJECT STRIP — horizontal cards */}
-        <RevealSection className="mt-10 md:mt-14">
-          <h2 className="font-display mb-6 text-2xl font-semibold tracking-tight text-foreground md:text-3xl">
-            AI 산업안전 프로젝트
-          </h2>
+        <RevealSection className="reveal is-visible">
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
             {projects.map((p, idx) => (
               <ProjectCard key={p.slug} p={p} idx={idx} />
             ))}
           </div>
-
         </RevealSection>
 
         {/* INSIGHTS PREVIEW */}
-        <RevealSection className="mt-24 md:mt-32">
+        <RevealSection className="mt-20 md:mt-28">
           <div className="flex items-end justify-between gap-6">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-                Safety Insights
-              </p>
-              <h2 className="font-display mt-2 text-3xl font-semibold tracking-tight text-foreground md:text-4xl">
-                실무 관점의 안전 인사이트
-              </h2>
-            </div>
+            <h2 className="font-display text-2xl font-semibold tracking-tight text-foreground md:text-3xl">
+              Safety Insights
+            </h2>
             <Link
               to="/insights"
-              className="hidden text-sm font-medium text-muted-foreground transition-colors hover:text-primary md:inline"
+              className="hidden items-center gap-1 text-sm font-medium text-muted-foreground transition-colors hover:text-primary md:inline-flex"
             >
-              View all →
+              View All Insights
+              <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
-          <div className="mt-10 grid gap-6 md:grid-cols-3">
+          <div className="mt-8 grid gap-4 md:grid-cols-3">
             {insights.slice(0, 3).map((i) => (
               <InsightCard key={i.slug} i={i} />
             ))}
@@ -159,18 +155,15 @@ const projectIcons: Record<string, React.ReactNode> = {
 
 function ProjectCard({ p, idx }: { p: (typeof projects)[number]; idx: number }) {
   const card = (
-    <div className="flex items-center gap-4 rounded-2xl border border-border bg-card p-5 transition-all group-hover:-translate-y-1 group-hover:border-primary/50 group-hover:shadow-xl">
-      <div className="grid h-12 w-12 shrink-0 place-items-center rounded-xl border border-border bg-background text-primary transition-all group-hover:scale-110">
+    <div className="group flex items-center gap-4 rounded-xl border border-border/60 bg-[oklch(0.10_0.015_250)] p-5 transition-all hover:-translate-y-1 hover:border-primary/50 hover:bg-[oklch(0.11_0.015_250)]">
+      <div className="grid h-12 w-12 shrink-0 place-items-center rounded-lg border border-primary/50 text-primary transition-all group-hover:scale-110">
         {projectIcons[p.slug] ?? <Sparkles className="h-6 w-6" />}
       </div>
       <div className="min-w-0 flex-1">
-        <p className="text-[10px] font-bold uppercase tracking-widest text-primary/80">
-          {p.type}
-        </p>
-        <h3 className="font-display text-sm font-bold text-foreground transition-colors group-hover:text-primary">
+        <h3 className="font-display text-sm font-semibold text-foreground transition-colors group-hover:text-primary">
           {p.title}
         </h3>
-        <p className="mt-1 line-clamp-2 text-xs text-muted-foreground">
+        <p className="mt-1 line-clamp-2 text-xs leading-relaxed text-muted-foreground">
           {p.description}
         </p>
       </div>
@@ -178,7 +171,7 @@ function ProjectCard({ p, idx }: { p: (typeof projects)[number]; idx: number }) 
     </div>
   );
 
-  const className = "group block reveal is-visible";
+  const className = "block reveal is-visible";
   const style = { transitionDelay: `${idx * 80}ms` };
 
   if (p.link) {
@@ -207,7 +200,6 @@ function ProjectCard({ p, idx }: { p: (typeof projects)[number]; idx: number }) 
   );
 }
 
-
 function StatCard({
   number,
   label,
@@ -233,36 +225,39 @@ function StatCard({
 
 function InsightCard({ i }: { i: (typeof insights)[number] }) {
   return (
-    <article className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all hover:-translate-y-1 hover:border-primary md:flex-row">
-      <div className="relative aspect-[16/10] w-full shrink-0 overflow-hidden md:aspect-auto md:w-[42%]">
-        <img
-          src={i.image}
-          alt={i.title}
-          loading="lazy"
-          width={400}
-          height={240}
-          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-        />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-card/90 md:bg-gradient-to-l md:from-card/90 md:via-card/40 md:to-transparent" />
-      </div>
-      <div className="flex flex-1 flex-col justify-between p-5">
-        <div>
-          <span className="text-[10px] font-bold uppercase tracking-widest text-primary">
-            {i.category}
-          </span>
-          <h4 className="mt-2 text-lg font-semibold leading-snug tracking-tight text-foreground">
-            {i.title}
-          </h4>
-          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-            {i.excerpt}
-          </p>
+    <Link to="/insights/$slug" params={{ slug: i.slug }} className="group block">
+      <article className="flex h-full flex-col overflow-hidden rounded-2xl border border-border/60 bg-[oklch(0.10_0.015_250)] transition-all hover:-translate-y-1 hover:border-primary/50">
+        <div className="relative aspect-[16/10] w-full overflow-hidden">
+          <img
+            src={i.image}
+            alt={i.title}
+            loading="lazy"
+            width={400}
+            height={240}
+            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+          />
         </div>
-        <div className="mt-4 flex items-center justify-between text-xs text-muted-foreground">
-          <span>{i.readTime}</span>
-          <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1 group-hover:text-primary" />
+        <div className="flex flex-1 flex-col justify-between p-5">
+          <div>
+            <span className="text-[10px] font-bold uppercase tracking-widest text-primary">
+              {i.category}
+            </span>
+            <h4 className="mt-2 text-base font-semibold leading-snug tracking-tight text-foreground">
+              {i.title}
+            </h4>
+            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+              {i.excerpt}
+            </p>
+          </div>
+          <div className="mt-4 flex items-center justify-between text-xs text-muted-foreground">
+            <span>
+              {i.date} · {i.readTime}
+            </span>
+            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1 group-hover:text-primary" />
+          </div>
         </div>
-      </div>
-    </article>
+      </article>
+    </Link>
   );
 }
 
