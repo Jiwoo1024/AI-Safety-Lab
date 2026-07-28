@@ -113,35 +113,10 @@ function HomePage() {
           </h2>
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
             {projects.map((p, idx) => (
-              <Link
-                key={p.slug}
-                to={p.link ? p.link : "/projects/$slug"}
-                params={p.link ? undefined : { slug: p.slug }}
-                target={p.link ? "_blank" : undefined}
-                rel={p.link ? "noopener noreferrer" : undefined}
-                className="group block reveal is-visible"
-                style={{ transitionDelay: `${idx * 80}ms` }}
-              >
-                <div className="flex items-center gap-4 rounded-2xl border border-border bg-card p-5 transition-all group-hover:-translate-y-1 group-hover:border-primary/50 group-hover:shadow-xl">
-                  <div className="grid h-12 w-12 shrink-0 place-items-center rounded-xl border border-border bg-background text-primary transition-all group-hover:scale-110">
-                    {projectIcons[p.slug] ?? <Sparkles className="h-6 w-6" />}
-                  </div>
-                  <div className="min-w-0 flex-1">
-                    <p className="text-[10px] font-bold uppercase tracking-widest text-primary/80">
-                      {p.type}
-                    </p>
-                    <h3 className="font-display text-sm font-bold text-foreground transition-colors group-hover:text-primary">
-                      {p.title}
-                    </h3>
-                    <p className="mt-1 line-clamp-2 text-xs text-muted-foreground">
-                      {p.description}
-                    </p>
-                  </div>
-                  <ArrowRight className="h-4 w-4 shrink-0 text-muted-foreground transition-all group-hover:translate-x-1 group-hover:text-primary" />
-                </div>
-              </Link>
+              <ProjectCard key={p.slug} p={p} idx={idx} />
             ))}
           </div>
+
         </RevealSection>
 
         {/* INSIGHTS PREVIEW */}
