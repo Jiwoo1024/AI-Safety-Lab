@@ -225,9 +225,9 @@ function StatCard({
 
 function InsightCard({ i }: { i: (typeof insights)[number] }) {
   return (
-    <Link to="/insights/$slug" params={{ slug: i.slug }} className="group block">
-      <article className="flex h-full flex-col overflow-hidden rounded-2xl border border-border/60 bg-[oklch(0.10_0.015_250)] transition-all hover:-translate-y-1 hover:border-primary/50">
-        <div className="relative aspect-[16/10] w-full overflow-hidden">
+    <Link to="/insights/$slug" params={{ slug: i.slug }} className="group block h-full">
+      <article className="flex h-full flex-col overflow-hidden rounded-2xl border border-border/60 bg-[oklch(0.10_0.015_250)] transition-all hover:-translate-y-1 hover:border-primary/50 md:flex-row">
+        <div className="relative aspect-[16/10] w-full shrink-0 overflow-hidden md:aspect-auto md:w-[45%]">
           <img
             src={i.image}
             alt={i.title}
