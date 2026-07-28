@@ -16,7 +16,7 @@ export const projects: Project[] = [
     type: "AI Analysis Tool",
     title: "AI HAZOP Assistant",
     description:
-      "공정 정보와 편차를 입력하면 원인, 결과, 기존 안전조치, 개선조치 및 관련 법령을 분석하는 AI 기반 HAZOP 도구",
+      "HAZOP 분석을 시가 지정하여 위험요소 식별과 권고를 더 빠르게",
     longDescription:
       "공정 노드와 편차(Deviation)를 입력하면 LLM이 원인(Cause), 결과(Consequence), 기존 안전조치(Safeguards), 추가 개선조치(Recommendations)를 구조화된 형태로 제안합니다. 산업안전보건법, KOSHA Guide, PSM 요구사항과 매칭하여 실무에 바로 활용할 수 있는 HAZOP 워크시트를 생성합니다.",
     features: ["Deviation 분석", "법령 자동 매칭", "Worksheet 자동 생성", "PSM 연계"],
