@@ -4,38 +4,43 @@ export type Insight = {
   excerpt: string;
   category: string;
   readTime: string;
+  image: string;
 };
 
 export const insights: Insight[] = [
   {
     slug: "why-hazop-takes-long",
-    title: "HAZOP 분석은 왜 시간이 오래 걸릴까?",
+    title: "AI 기반 공정 위험성 평가의 최신 동향",
     excerpt:
-      "노드 분할, 편차 정의, 팀 협의 등 HAZOP이 오래 걸리는 구조적 이유와 AI로 단축 가능한 지점을 정리합니다.",
-    category: "HAZOP",
-    readTime: "6분",
+      "AI와 데이터 기반 분석을 통해 공정 위험을 더 정확하고 효율적으로 평가하는 방법을 정리합니다.",
+    category: "PROCESS SAFETY",
+    readTime: "6 min read",
+    image: "/insight-hazop.jpg",
   },
   {
     slug: "photo-risk-assessment",
-    title: "사진 기반 위험성평가의 가능성과 한계",
+    title: "사진 한 장이 사고를 막는다: AI 위험성 평가 활용법",
     excerpt:
-      "Vision 모델이 현장 위험을 식별하는 방식과, 사람의 판단이 여전히 필요한 상황을 사례로 살펴봅니다.",
-    category: "Risk Assessment",
-    readTime: "5분",
+      "현장 사진 분석을 통해 숨겨진 위험을 발견하고 선제적으로 대응하는 방법",
+    category: "WORKPLACE SAFETY",
+    readTime: "5 min read",
+    image: "/insight-photo-risk.jpg",
   },
   {
     slug: "ai-cannot-replace-safety-manager",
-    title: "AI가 안전관리자를 대체할 수 없는 이유",
-    excerpt: "AI가 잘 하는 것과 못 하는 것, 그리고 안전관리자의 역할이 어떻게 재정의되는지 논의합니다.",
-    category: "Perspective",
-    readTime: "4분",
+    title: "반도체 산업의 안전관리, AI가 바꾸는 미래",
+    excerpt: "AI와 자동화 기술이 반도체 산업의 안전관리 패러다임을 어떻게 혁신하는가",
+    category: "TECHNOLOGY INSIGHT",
+    readTime: "7 min read",
+    image: "/insight-ai-manager.jpg",
   },
   {
     slug: "osha-vs-kosha-guide",
     title: "산업안전보건법과 KOSHA Guide의 차이",
     excerpt: "법적 강제력과 기술 가이드의 관계를 정리하고, 실무에서 어떻게 활용해야 하는지 설명합니다.",
     category: "법령",
-    readTime: "7분",
+    readTime: "7 min read",
+    image: "/insight-hazop.jpg",
   },
   {
     slug: "field-hazard-observation",
@@ -43,6 +48,7 @@ export const insights: Insight[] = [
     excerpt:
       "숙련된 안전관리자가 사용하는 체계적인 관찰 프레임과 놓치기 쉬운 위험요인 체크리스트를 공유합니다.",
     category: "현장",
-    readTime: "5분",
+    readTime: "5 min read",
+    image: "/insight-photo-risk.jpg",
   },
 ];

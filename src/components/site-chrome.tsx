@@ -3,8 +3,8 @@ import { useState } from "react";
 
 const nav = [
   { to: "/", label: "Home" },
-  { to: "/projects", label: "AI 자동화 Tools" },
-  { to: "/vibe-coding-safety-apps", label: "Vibe Coding_Safety Apps" },
+  { to: "/projects", label: "AI Tools" },
+  { to: "/vibe-coding-safety-apps", label: "Vibe Coding Apps" },
   { to: "/insights", label: "Safety Insights" },
 ] as const;
 
@@ -40,7 +40,7 @@ export function SiteHeader() {
             to="/contact"
             className="hidden rounded-full bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-all hover:bg-primary/90 md:inline-flex"
           >
-            Get in touch
+            Contact
           </Link>
 
           <button
@@ -93,7 +93,7 @@ export function SiteHeader() {
               onClick={() => setOpen(false)}
               className="mt-4 inline-flex w-fit items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground"
             >
-              Get in touch
+              Contact
             </Link>
           </nav>
         </div>
@@ -104,57 +104,20 @@ export function SiteHeader() {
 
 export function SiteFooter() {
   return (
-    <footer className="mt-24 border-t border-border bg-card">
-      <div className="container-page grid gap-10 py-14 md:grid-cols-3">
-        <div>
-          <div className="flex items-center gap-2">
-            <span className="grid h-8 w-8 place-items-center rounded-lg bg-primary text-[10px] font-bold text-primary-foreground">
-              AI
-            </span>
-            <span className="text-[15px] font-semibold text-foreground">AI Safety Lab</span>
-          </div>
-          <p className="mt-3 max-w-sm text-sm text-muted-foreground">
-            AI를 산업안전 실무에 적용하는 프로젝트와 인사이트를 정리하는 개인 포트폴리오입니다.
-          </p>
+    <footer className="mt-24 border-t border-border bg-background">
+      <div className="container-page flex flex-col items-center justify-between gap-4 py-8 md:flex-row">
+        <div className="flex items-center gap-2">
+          <span className="grid h-8 w-8 place-items-center rounded-lg bg-primary text-[10px] font-bold text-primary-foreground">
+            AI
+          </span>
+          <span className="text-[15px] font-semibold text-foreground">AI Safety Lab</span>
         </div>
-        <div>
-          <h4 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-            Explore
-          </h4>
-          <ul className="mt-4 space-y-2 text-sm">
-            {nav.map((n) => (
-              <li key={n.to}>
-                <Link to={n.to} className="text-foreground/80 hover:text-primary">
-                  {n.label}
-                </Link>
-              </li>
-            ))}
-            <li>
-              <Link to="/about" className="text-foreground/80 hover:text-primary">
-                About
-              </Link>
-            </li>
-            <li>
-              <Link to="/contact" className="text-foreground/80 hover:text-primary">
-                Contact
-              </Link>
-            </li>
-          </ul>
-        </div>
-        <div>
-          <h4 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-            Focus
-          </h4>
-          <ul className="mt-4 space-y-2 text-sm text-foreground/80">
-            <li>HAZOP · 위험성평가</li>
-            <li>공정안전(PSM) · 화학안전</li>
-            <li>현장 안전관리 · 교육</li>
-          </ul>
-        </div>
-      </div>
-      <div className="border-t border-border">
-        <div className="container-page py-5 text-xs text-muted-foreground">
+        <div className="text-xs text-muted-foreground">
           © {new Date().getFullYear()} AI Safety Lab. All rights reserved.
+        </div>
+        <div className="flex items-center gap-6 text-xs text-muted-foreground">
+          <Link to="/" className="transition-colors hover:text-foreground">Privacy Policy</Link>
+          <Link to="/" className="transition-colors hover:text-foreground">Terms of Use</Link>
         </div>
       </div>
     </footer>
