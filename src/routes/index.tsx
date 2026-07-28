@@ -157,6 +157,57 @@ const projectIcons: Record<string, React.ReactNode> = {
   "safety-insight-library": <BookOpen className="h-6 w-6" />,
 };
 
+function ProjectCard({ p, idx }: { p: (typeof projects)[number]; idx: number }) {
+  const card = (
+    <div className="flex items-center gap-4 rounded-2xl border border-border bg-card p-5 transition-all group-hover:-translate-y-1 group-hover:border-primary/50 group-hover:shadow-xl">
+      <div className="grid h-12 w-12 shrink-0 place-items-center rounded-xl border border-border bg-background text-primary transition-all group-hover:scale-110">
+        {projectIcons[p.slug] ?? <Sparkles className="h-6 w-6" />}
+      </div>
+      <div className="min-w-0 flex-1">
+        <p className="text-[10px] font-bold uppercase tracking-widest text-primary/80">
+          {p.type}
+        </p>
+        <h3 className="font-display text-sm font-bold text-foreground transition-colors group-hover:text-primary">
+          {p.title}
+        </h3>
+        <p className="mt-1 line-clamp-2 text-xs text-muted-foreground">
+          {p.description}
+        </p>
+      </div>
+      <ArrowRight className="h-4 w-4 shrink-0 text-muted-foreground transition-all group-hover:translate-x-1 group-hover:text-primary" />
+    </div>
+  );
+
+  const className = "group block reveal is-visible";
+  const style = { transitionDelay: `${idx * 80}ms` };
+
+  if (p.link) {
+    return (
+      <a
+        href={p.link}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={className}
+        style={style}
+      >
+        {card}
+      </a>
+    );
+  }
+
+  return (
+    <Link
+      to="/projects/$slug"
+      params={{ slug: p.slug }}
+      className={className}
+      style={style}
+    >
+      {card}
+    </Link>
+  );
+}
+
+
 function StatCard({
   number,
   label,
