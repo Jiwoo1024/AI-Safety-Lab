@@ -24,25 +24,24 @@ export function SiteHeader() {
               AI Safety Lab
             </span>
           </Link>
-          <nav className="hidden items-center gap-1 md:flex">
+          <nav className="hidden items-center gap-7 md:flex">
             {nav.map((n) => (
               <Link
                 key={n.to}
                 to={n.to}
                 activeOptions={{ exact: n.to === "/" }}
-                className="rounded-md px-3 py-2 text-sm text-foreground/70 transition-colors hover:text-foreground"
-                activeProps={{ className: "text-foreground font-medium" }}
+                className="relative py-5 text-sm text-foreground/70 transition-colors hover:text-foreground"
+                activeProps={{
+                  className:
+                    "text-foreground font-medium after:absolute after:bottom-3 after:left-0 after:h-0.5 after:w-full after:rounded-full after:bg-primary",
+                }}
               >
                 {n.label}
               </Link>
             ))}
           </nav>
-          <Link
-            to="/contact"
-            className="hidden rounded-full bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-all hover:bg-primary/90 md:inline-flex"
-          >
-            Contact
-          </Link>
+          <div className="hidden md:block md:w-24" />
+
 
           <button
             onClick={() => setOpen(true)}
