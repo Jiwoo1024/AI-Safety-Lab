@@ -6,6 +6,7 @@ const nav = [
   { to: "/projects", label: "AI Tools" },
   { to: "/vibe-coding-safety-apps", label: "Vibe Coding Apps" },
   { to: "/insights", label: "Safety Insights" },
+  { to: "/contact", label: "Contact" },
 ] as const;
 
 export function SiteHeader() {

@@ -47,45 +47,35 @@ function HomePage() {
       <SiteHeader />
 
       {/* HERO — full-width bleed */}
-      <section className="relative isolate min-h-[520px] overflow-hidden md:min-h-[640px] lg:min-h-[720px]">
+      <section className="relative isolate overflow-hidden">
         <HeroAnimation />
 
         {/* 좌→우 다크 그라데이션 */}
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[oklch(0.06_0.02_250/0.97)] via-[oklch(0.06_0.02_250/0.75)] to-[oklch(0.06_0.02_250/0.2)]" />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[oklch(0.06_0.02_250/0.85)] via-transparent to-transparent" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[oklch(0.08_0.02_20/0.98)] via-[oklch(0.08_0.02_20/0.78)] to-[oklch(0.08_0.02_20/0.15)]" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[oklch(0.08_0.02_20/0.7)] via-transparent to-transparent" />
 
         {/* DRAM label */}
-        <div className="pointer-events-none absolute right-8 top-1/2 z-10 hidden -translate-y-1/2 text-xs font-semibold tracking-[0.3em] text-white/40 md:right-16 lg:right-24 lg:block">
+        <div className="pointer-events-none absolute right-8 top-1/2 z-10 hidden -translate-y-1/2 text-sm font-medium tracking-[0.25em] text-white/45 md:right-14 lg:right-20 lg:block">
           DRAM
         </div>
 
-        <div className="container-page relative z-10 flex min-h-[520px] flex-col justify-between py-16 md:min-h-[640px] md:py-20 lg:min-h-[720px] lg:py-24">
-          {/* 좌측 상단 카피 */}
-          <div className="max-w-2xl pt-4 md:pt-8">
-            <div className="mb-6 inline-flex w-fit items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 backdrop-blur-sm">
-              <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-primary" />
-              <span className="text-[10px] font-bold uppercase tracking-widest text-primary-foreground/90">
-                AI × Industrial Safety Portfolio
-              </span>
-            </div>
-
-            <h1 className="font-display max-w-xl text-4xl font-bold leading-[1.15] tracking-tight text-white md:text-5xl lg:text-[3.5rem]">
-              AI로 <span className="text-primary">산업안전</span>
-              <br />
-              실무를 더 빠르고
-              <br />
-              <span className="whitespace-nowrap">정확하게</span>
+        <div className="container-page relative z-10 grid min-h-[420px] items-center gap-10 py-14 md:min-h-[480px] md:grid-cols-[1fr_auto] md:py-16">
+          {/* 좌측 카피 */}
+          <div className="max-w-xl">
+            <h1 className="font-display text-4xl font-bold leading-[1.2] tracking-tight text-white md:text-5xl">
+              AI로 산업안전 실무를
+              <br />더 빠르고 정확하게
             </h1>
 
-            <p className="mt-6 max-w-md text-base leading-relaxed text-white/70 md:text-lg">
+            <p className="mt-5 max-w-md text-sm leading-relaxed text-white/65 md:text-base">
               AI Safety Lab은 산업현장의 위험을 예측하고, 분석하며,
               안전한 의사결정을 지원하는 AI 기반 솔루션을 개발합니다.
             </p>
 
-            <div className="mt-8">
+            <div className="mt-7">
               <Link
                 to="/projects"
-                className="inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/20 transition-all hover:bg-primary/90"
+                className="inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/25 transition-all hover:bg-primary/90"
               >
                 Explore Projects
                 <span aria-hidden>→</span>
@@ -93,8 +83,8 @@ function HomePage() {
             </div>
           </div>
 
-          {/* 우측 하단 통계 카드 */}
-          <div className="flex justify-start gap-4 md:justify-end">
+          {/* 통계 카드 */}
+          <div className="flex gap-4">
             <StatCard
               number="04"
               label="Active Projects"
@@ -109,36 +99,41 @@ function HomePage() {
         </div>
       </section>
 
-      <main className="container-page py-10 md:py-16">
+      <main>
         {/* PROJECT STRIP — horizontal cards */}
-        <RevealSection className="reveal is-visible">
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
-            {projects.map((p, idx) => (
-              <ProjectCard key={p.slug} p={p} idx={idx} />
-            ))}
+        <section className="border-b border-border/50 bg-[oklch(0.09_0.008_20)]">
+          <div className="container-page py-6">
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
+              {projects.map((p, idx) => (
+                <ProjectCard key={p.slug} p={p} idx={idx} />
+              ))}
+            </div>
           </div>
-        </RevealSection>
+        </section>
 
         {/* INSIGHTS PREVIEW */}
-        <RevealSection className="mt-20 md:mt-28">
-          <div className="flex items-end justify-between gap-6">
-            <h2 className="font-display text-2xl font-semibold tracking-tight text-foreground md:text-3xl">
-              Safety Insights
-            </h2>
-            <Link
-              to="/insights"
-              className="hidden items-center gap-1 text-sm font-medium text-muted-foreground transition-colors hover:text-primary md:inline-flex"
-            >
-              View All Insights
-              <ArrowRight className="h-4 w-4" />
-            </Link>
-          </div>
-          <div className="mt-8 grid gap-4 md:grid-cols-3">
-            {insights.slice(0, 3).map((i) => (
-              <InsightCard key={i.slug} i={i} />
-            ))}
-          </div>
-        </RevealSection>
+        <div className="container-page py-12 md:py-14">
+          <RevealSection>
+            <div className="flex items-end justify-between gap-6">
+              <h2 className="font-display relative pb-3 text-2xl font-semibold tracking-tight text-foreground md:text-3xl">
+                Safety Insights
+                <span className="absolute bottom-0 left-0 h-0.5 w-14 rounded-full bg-primary" />
+              </h2>
+              <Link
+                to="/insights"
+                className="hidden items-center gap-1 text-sm font-medium text-muted-foreground transition-colors hover:text-primary md:inline-flex"
+              >
+                View All Insights
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+            <div className="mt-6 grid gap-4 md:grid-cols-3">
+              {insights.slice(0, 3).map((i) => (
+                <InsightCard key={i.slug} i={i} />
+              ))}
+            </div>
+          </RevealSection>
+        </div>
       </main>
 
       <SiteFooter />
