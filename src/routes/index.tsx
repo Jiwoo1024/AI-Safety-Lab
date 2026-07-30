@@ -229,8 +229,9 @@ function InsightCard({ i, idx = 0 }: { i: (typeof insights)[number]; idx?: numbe
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1 group-hover:text-primary" />
           </div>
         </div>
-      </article>
-    </Link>
+        </article>
+      </Link>
+    </div>
   );
 }
 
