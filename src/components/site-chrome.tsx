@@ -22,7 +22,7 @@ export function SiteHeader() {
             <img
               src={logoAsset.url}
               alt="AI Safety Lab"
-              className="h-8 w-auto"
+              className="h-10 w-auto"
             />
           </Link>
           <nav className="hidden items-center gap-7 md:flex">
@@ -66,7 +66,7 @@ export function SiteHeader() {
               <img
                 src={logoAsset.url}
                 alt="AI Safety Lab"
-                className="h-8 w-auto"
+                className="h-10 w-auto"
               />
             </Link>
             <button
@@ -114,7 +114,7 @@ export function SiteFooter() {
           <img
             src={logoAsset.url}
             alt="AI Safety Lab"
-            className="h-8 w-auto"
+            className="h-10 w-auto"
           />
         </div>
         <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs text-muted-foreground">
