@@ -44,39 +44,36 @@ function HomePage() {
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[oklch(0.08_0.02_20/0.98)] from-[8%] via-[oklch(0.08_0.02_20/0.55)] via-[38%] to-transparent to-[62%]" />
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[oklch(0.08_0.02_20/0.45)] via-transparent to-transparent" />
 
-        <div className="container-page relative z-10 grid min-h-[285px] items-center gap-4 py-6 md:min-h-[320px] md:grid-cols-[1fr_1.1fr] md:py-8">
+        <div className="container-page relative z-10 grid min-h-[285px] items-center gap-4 py-6 md:min-h-[320px] md:grid-cols-[1fr_1.15fr] md:py-8">
           {/* 좌측 카피 */}
           <div className="max-w-xl">
-            <h1 className="font-display text-2xl font-bold leading-[1.2] tracking-tight text-white md:text-[1.7rem]">
+            <h1 className="font-display text-[1.85rem] font-bold leading-[1.18] tracking-tight text-white md:text-[2.25rem]">
               AI로 산업안전 실무를
               <br />더 빠르고 정확하게
             </h1>
 
-            <p className="mt-3 text-xs leading-relaxed text-white/65 md:text-[13px]">
-              AI Safety Lab은 산업현장의 위험을 예측하고, 분석하며,
-              <br />
-              안전한 의사결정을 지원하는 AI 기반 솔루션을 개발합니다.
+            <p className="mt-3.5 max-w-[360px] text-[13px] leading-relaxed text-white/70">
+              AI Safety Lab은 산업현장의 위험을 예측하고, 분석하며, 안전한 의사결정을 지원하는 AI 기반 솔루션을 개발합니다.
             </p>
 
-            <div className="mt-4">
+            <div className="mt-5">
               <Link
                 to="/projects"
-                className="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-[13px] font-semibold text-primary-foreground shadow-lg shadow-primary/25 transition-all hover:bg-primary/90"
+                className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-[13px] font-semibold text-primary-foreground shadow-lg shadow-primary/25 transition-all hover:bg-primary/90"
               >
                 Explore Projects
                 <span aria-hidden>→</span>
               </Link>
             </div>
+          </div>
 
-            {/* 통계 카드 */}
-            <div className="mt-5 flex items-center gap-3">
+          {/* 우측 이미지 공간 + 떠 있는 통계 카드 */}
+          <div className="relative hidden h-full min-h-[inherit] md:block">
+            <div className="absolute bottom-[18%] right-[4%] flex items-end gap-3">
               <StatCard number="04" label="Active Projects" icon={<TrendingUp className="h-4 w-4" />} size="lg" />
               <StatCard number="05+" label="Insight Articles" icon={<FileText className="h-4 w-4" />} />
             </div>
           </div>
-
-          {/* 우측 이미지 공간 */}
-          <div className="hidden md:block" />
         </div>
       </section>
 
