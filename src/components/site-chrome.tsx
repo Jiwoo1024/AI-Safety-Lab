@@ -1,5 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
+import logoAsset from "@/assets/logo.png.asset.json";
+
 
 const nav = [
   { to: "/", label: "Home" },
