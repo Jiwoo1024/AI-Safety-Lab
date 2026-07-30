@@ -78,6 +78,9 @@ function HomePage() {
       </section>
 
       <main className="bg-[oklch(0.145_0_0)]">
+        {/* SAFETY WORKFLOW — step component */}
+        <WorkflowSection />
+
         {/* PROJECT STRIP — horizontal cards */}
         <section className="border-y border-border/60 bg-[oklch(0.145_0_0)]">
           <div className="container-page py-3">
