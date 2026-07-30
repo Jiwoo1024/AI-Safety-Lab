@@ -19,14 +19,14 @@ export function SiteHeader() {
       <header className="sticky top-0 z-40 border-b border-border bg-background/95 backdrop-blur">
         <div className="container-page flex h-16 items-center justify-between">
           <Link to="/" className="flex items-center gap-2">
-            <span className="grid h-8 w-8 place-items-center rounded-lg bg-primary text-[10px] font-bold tracking-tight text-primary-foreground">
-              AI
-            </span>
-            <span className="text-[15px] font-semibold tracking-tight text-foreground">
-              AI Safety Lab
-            </span>
+            <img
+              src={logoAsset.url}
+              alt="AI Safety Lab"
+              className="h-8 w-auto"
+            />
           </Link>
           <nav className="hidden items-center gap-7 md:flex">
+
             {nav.map((n) => (
               <Link
                 key={n.to}
