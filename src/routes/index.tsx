@@ -85,7 +85,7 @@ function HomePage() {
           </div>
 
           {/* 통계 카드 */}
-          <div className="flex gap-4 lg:mr-[26%]">
+          <div className="flex justify-start gap-4">
             <StatCard
               number="04"
               label="Active Projects"
