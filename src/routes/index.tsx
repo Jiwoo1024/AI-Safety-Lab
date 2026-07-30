@@ -112,7 +112,7 @@ function HomePage() {
 
 
         {/* INSIGHTS PREVIEW */}
-        <div className="container-page py-12 md:py-14">
+        <div className="container-page py-8 md:py-9">
           <RevealSection>
             <div className="flex items-end justify-between gap-6">
               <h2 className="font-display relative pb-3 text-2xl font-semibold tracking-tight text-foreground md:text-3xl">
