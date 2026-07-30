@@ -106,8 +106,8 @@ function HomePage() {
               </Link>
             </div>
             <div className="mt-2.5 grid gap-3 md:grid-cols-3">
-              {insights.slice(0, 3).map((i) => (
-                <InsightCard key={i.slug} i={i} />
+              {insights.slice(0, 3).map((i, idx) => (
+                <InsightCard key={i.slug} i={i} idx={idx} />
               ))}
             </div>
           </RevealSection>
@@ -127,9 +127,12 @@ const projectIcons: Record<string, React.ReactNode> = {
 };
 
 function ProjectCard({ p, idx }: { p: (typeof projects)[number]; idx: number }) {
+  const ref = useReveal<HTMLDivElement>();
   const card = (
-    <div className="group flex h-full items-center gap-3 rounded-xl border border-border/60 bg-[oklch(0.205_0_0)] p-3 transition-all hover:-translate-y-1 hover:border-primary/50 hover:bg-[oklch(0.24_0_0)]">
-      <div className="grid h-10 w-10 shrink-0 place-items-center rounded-lg border border-primary/50 text-primary transition-all group-hover:scale-110">
+    <div className="group relative flex h-full items-center gap-3 overflow-hidden rounded-2xl border border-white/[0.09] bg-[oklch(0.185_0_0)] p-3.5 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05),0_2px_10px_-6px_rgba(0,0,0,0.7)] transition-all duration-300 hover:-translate-y-1 hover:border-primary/45 hover:bg-[oklch(0.215_0_0)] hover:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.07),0_14px_32px_-16px_oklch(0.55_0.2_25/0.55)]">
+      {/* hover sheen */}
+      <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/[0.06] to-transparent transition-transform duration-700 group-hover:translate-x-full" />
+      <div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl border border-primary/40 bg-primary/[0.07] text-primary transition-all duration-300 group-hover:scale-110 group-hover:border-primary/70 group-hover:shadow-[0_0_18px_-4px_oklch(0.55_0.2_25/0.7)]">
         {projectIcons[p.slug] ?? <Sparkles className="h-5 w-5" />}
       </div>
       <div className="min-w-0 flex-1">
@@ -138,25 +141,25 @@ function ProjectCard({ p, idx }: { p: (typeof projects)[number]; idx: number }) 
         </h3>
         <p className="mt-0.5 line-clamp-2 text-[11px] leading-relaxed text-muted-foreground">{p.description}</p>
       </div>
-      <ArrowRight className="h-4 w-4 shrink-0 text-muted-foreground transition-all group-hover:translate-x-1 group-hover:text-primary" />
+      <ArrowRight className="h-4 w-4 shrink-0 text-muted-foreground transition-all duration-300 group-hover:translate-x-1 group-hover:text-primary" />
     </div>
   );
 
-  const className = "block h-full reveal is-visible";
-  const style = { transitionDelay: `${idx * 80}ms` };
-
-  if (p.link) {
-    return (
-      <a href={p.link} target="_blank" rel="noopener noreferrer" className={className} style={style}>
-        {card}
-      </a>
-    );
-  }
+  const className = "block h-full";
+  const style = { transitionDelay: `${idx * 90}ms` };
 
   return (
-    <Link to="/projects/$slug" params={{ slug: p.slug }} className={className} style={style}>
-      {card}
-    </Link>
+    <div ref={ref} className="reveal h-full" style={style}>
+      {p.link ? (
+        <a href={p.link} target="_blank" rel="noopener noreferrer" className={className}>
+          {card}
+        </a>
+      ) : (
+        <Link to="/projects/$slug" params={{ slug: p.slug }} className={className}>
+          {card}
+        </Link>
+      )}
+    </div>
   );
 }
 
@@ -192,10 +195,14 @@ function StatCard({
   );
 }
 
-function InsightCard({ i }: { i: (typeof insights)[number] }) {
+function InsightCard({ i, idx = 0 }: { i: (typeof insights)[number]; idx?: number }) {
+  const ref = useReveal<HTMLDivElement>();
   return (
-    <Link to="/insights" hash={i.slug} className="group block h-full">
-      <article className="flex h-full flex-col gap-2.5 rounded-xl border border-border/60 bg-[oklch(0.205_0_0)] p-2 transition-all hover:-translate-y-1 hover:border-primary/50 md:flex-row">
+    <div ref={ref} className="reveal h-full" style={{ transitionDelay: `${idx * 90}ms` }}>
+      <Link to="/insights" hash={i.slug} className="group block h-full">
+        <article className="relative flex h-full flex-col gap-2.5 overflow-hidden rounded-2xl border border-white/[0.09] bg-[oklch(0.185_0_0)] p-2 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05),0_2px_10px_-6px_rgba(0,0,0,0.7)] transition-all duration-300 hover:-translate-y-1 hover:border-primary/45 hover:bg-[oklch(0.215_0_0)] hover:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.07),0_14px_32px_-16px_oklch(0.55_0.2_25/0.55)] md:flex-row">
+          <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/[0.06] to-transparent transition-transform duration-700 group-hover:translate-x-full" />
+
         <div className="relative aspect-[16/10] w-full shrink-0 overflow-hidden rounded-lg md:aspect-auto md:h-[64px] md:w-[88px] md:self-center">
           <img
             src={i.image}
@@ -222,8 +229,9 @@ function InsightCard({ i }: { i: (typeof insights)[number] }) {
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1 group-hover:text-primary" />
           </div>
         </div>
-      </article>
-    </Link>
+        </article>
+      </Link>
+    </div>
   );
 }
 
