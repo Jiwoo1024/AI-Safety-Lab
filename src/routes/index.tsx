@@ -55,30 +55,31 @@ function HomePage() {
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[oklch(0.08_0.02_20/0.45)] via-transparent to-transparent" />
 
 
-        <div className="container-page relative z-10 grid min-h-[330px] items-center gap-10 py-10 md:min-h-[360px] md:grid-cols-[1fr_1.15fr] md:py-12">
+        <div className="container-page relative z-10 grid min-h-[280px] items-center gap-8 py-8 md:min-h-[300px] md:grid-cols-[1fr_1.1fr] md:py-9">
           {/* 좌측 카피 */}
           <div className="max-w-xl">
-            <h1 className="font-display text-4xl font-bold leading-[1.2] tracking-tight text-white md:text-5xl">
+            <h1 className="font-display text-3xl font-bold leading-[1.2] tracking-tight text-white md:text-[2.6rem]">
               AI로 산업안전 실무를
               <br />더 빠르고 정확하게
             </h1>
 
-            <p className="mt-5 text-sm leading-relaxed text-white/65 md:text-base">
+            <p className="mt-4 text-[13px] leading-relaxed text-white/65 md:text-sm">
               AI Safety Lab은 산업현장의 위험을 예측하고, 분석하며,
               <br />
               안전한 의사결정을 지원하는 AI 기반 솔루션을 개발합니다.
             </p>
 
-            <div className="mt-7">
+            <div className="mt-6">
               <Link
                 to="/projects"
-                className="inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/25 transition-all hover:bg-primary/90"
+                className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/25 transition-all hover:bg-primary/90"
               >
                 Explore Projects
                 <span aria-hidden>→</span>
               </Link>
             </div>
           </div>
+
 
           {/* 통계 카드 */}
           <div className="flex items-center justify-start gap-3">
