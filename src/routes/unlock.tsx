@@ -1,5 +1,5 @@
 import * as React from "react";
-import { createFileRoute, useRouter } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import { unlockSite } from "@/lib/gate.functions";
 import { Lock } from "lucide-react";
@@ -20,7 +20,6 @@ export const Route = createFileRoute("/unlock")({
 });
 
 function UnlockPage() {
-  const router = useRouter();
   const unlock = useServerFn(unlockSite);
   const [error, setError] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
@@ -30,13 +29,17 @@ function UnlockPage() {
     setLoading(true);
     setError(false);
     const password = String(new FormData(e.currentTarget).get("password") ?? "");
-    const res = await unlock({ data: { password } });
-    setLoading(false);
-    if (res.ok) {
-      await router.navigate({ to: "/" });
-      router.invalidate();
-    } else {
+    try {
+      const res = await unlock({ data: { password } });
+      if (res.ok) {
+        window.location.assign("/");
+        return;
+      }
       setError(true);
+    } catch {
+      setError(true);
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -60,6 +63,7 @@ function UnlockPage() {
             autoComplete="current-password"
             aria-label="비밀번호"
             placeholder="비밀번호"
+            required
             className="w-full rounded-lg border border-border bg-background px-4 py-2.5 text-sm text-foreground outline-none focus:border-primary"
           />
           {error && <p className="text-sm text-destructive">비밀번호가 올바르지 않습니다.</p>}
