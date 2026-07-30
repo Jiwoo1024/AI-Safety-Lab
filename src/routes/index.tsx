@@ -77,9 +77,9 @@ function HomePage() {
         </div>
       </section>
 
-      <main>
+      <main className="bg-[oklch(0.145_0_0)]">
         {/* PROJECT STRIP — horizontal cards */}
-        <section className="border-y border-border/60 bg-[oklch(0.06_0.008_20)]">
+        <section className="border-y border-border/60 bg-[oklch(0.145_0_0)]">
           <div className="container-page py-3">
             <div className="grid grid-cols-1 items-stretch gap-4 md:grid-cols-2 lg:grid-cols-4">
               {projects.map((p, idx) => (
@@ -128,7 +128,7 @@ const projectIcons: Record<string, React.ReactNode> = {
 
 function ProjectCard({ p, idx }: { p: (typeof projects)[number]; idx: number }) {
   const card = (
-    <div className="group flex h-full items-center gap-3 rounded-xl border border-border/60 bg-[oklch(0.16_0.015_250)] p-3 transition-all hover:-translate-y-1 hover:border-primary/50 hover:bg-[oklch(0.19_0.015_250)]">
+    <div className="group flex h-full items-center gap-3 rounded-xl border border-border/60 bg-[oklch(0.205_0_0)] p-3 transition-all hover:-translate-y-1 hover:border-primary/50 hover:bg-[oklch(0.24_0_0)]">
       <div className="grid h-10 w-10 shrink-0 place-items-center rounded-lg border border-primary/50 text-primary transition-all group-hover:scale-110">
         {projectIcons[p.slug] ?? <Sparkles className="h-5 w-5" />}
       </div>
@@ -195,7 +195,7 @@ function StatCard({
 function InsightCard({ i }: { i: (typeof insights)[number] }) {
   return (
     <Link to="/insights" hash={i.slug} className="group block h-full">
-      <article className="flex h-full flex-col gap-2.5 rounded-xl border border-border/60 bg-[oklch(0.16_0.008_250)] p-2 transition-all hover:-translate-y-1 hover:border-primary/50 md:flex-row">
+      <article className="flex h-full flex-col gap-2.5 rounded-xl border border-border/60 bg-[oklch(0.205_0_0)] p-2 transition-all hover:-translate-y-1 hover:border-primary/50 md:flex-row">
         <div className="relative aspect-[16/10] w-full shrink-0 overflow-hidden rounded-lg md:aspect-auto md:h-[64px] md:w-[88px] md:self-center">
           <img
             src={i.image}
