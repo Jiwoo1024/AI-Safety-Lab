@@ -1,8 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { requireUnlocked } from "@/lib/gate.functions";
 import { SiteHeader, SiteFooter } from "@/components/site-chrome";
 import { insights } from "@/data/insights";
 
 export const Route = createFileRoute("/insights")({
+  beforeLoad: () => requireUnlocked(),
   head: () => ({
     meta: [
       { title: "Safety Insights — AI Safety Lab" },

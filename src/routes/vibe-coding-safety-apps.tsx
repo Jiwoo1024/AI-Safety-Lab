@@ -1,9 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { requireUnlocked } from "@/lib/gate.functions";
 import { SiteHeader, SiteFooter } from "@/components/site-chrome";
 import { vibeApps } from "@/data/vibe-apps";
 import { ArrowUpRight, Code2 } from "lucide-react";
 
 export const Route = createFileRoute("/vibe-coding-safety-apps")({
+  beforeLoad: () => requireUnlocked(),
   head: () => ({
     meta: [
       { title: "Vibe Coding_Safety Apps — AI Safety Lab" },
