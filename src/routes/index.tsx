@@ -174,20 +174,20 @@ function StatCard({
   const isLg = size === "lg";
   return (
     <div
-      className={`rounded-xl border border-white/15 bg-white/5 backdrop-blur-md ${
-        isLg ? "min-w-[150px] p-4 lg:min-w-[164px]" : "min-w-[124px] p-3 lg:min-w-[134px]"
+      className={`rounded-xl border border-white/[0.14] bg-[oklch(0.10_0.01_20/0.42)] shadow-[0_12px_40px_-12px_rgba(0,0,0,0.55)] backdrop-blur-xl ${
+        isLg ? "min-w-[156px] p-4 lg:min-w-[170px]" : "min-w-[132px] p-3.5 lg:min-w-[146px]"
       }`}
     >
-      <div className="flex items-start justify-between gap-4">
+      <div className="flex items-start justify-between gap-3">
         <div
-          className={`font-display font-bold leading-none tracking-tight text-white ${isLg ? "text-4xl" : "text-2xl"}`}
+          className={`font-display font-bold leading-none tracking-tight text-white ${isLg ? "text-[2.5rem]" : "text-[2.1rem]"}`}
         >
           {number}
         </div>
         <div className="text-primary">{icon}</div>
       </div>
-      <div className={`mt-2 font-medium text-white/75 ${isLg ? "text-sm" : "text-xs"}`}>{label}</div>
-      <div className="mt-2 h-0.5 w-8 rounded-full bg-primary" />
+      <div className={`mt-2.5 font-medium text-white/80 ${isLg ? "text-[13px]" : "text-xs"}`}>{label}</div>
+      <div className="mt-2.5 h-[3px] w-10 rounded-full bg-primary" />
     </div>
   );
 }
