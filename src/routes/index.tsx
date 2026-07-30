@@ -59,7 +59,7 @@ function HomePage() {
           DRAM
         </div>
 
-        <div className="container-page relative z-10 grid min-h-[420px] items-center gap-10 py-14 md:min-h-[480px] md:grid-cols-[1fr_auto] md:py-16">
+        <div className="container-page relative z-10 grid min-h-[330px] items-center gap-10 py-10 md:min-h-[360px] md:grid-cols-[1fr_auto] md:py-12">
           {/* 좌측 카피 */}
           <div className="max-w-xl">
             <h1 className="font-display text-4xl font-bold leading-[1.2] tracking-tight text-white md:text-5xl">
