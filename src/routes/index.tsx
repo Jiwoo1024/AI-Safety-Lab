@@ -54,10 +54,6 @@ function HomePage() {
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[oklch(0.08_0.02_20/0.98)] via-[oklch(0.08_0.02_20/0.78)] to-[oklch(0.08_0.02_20/0.15)]" />
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[oklch(0.08_0.02_20/0.7)] via-transparent to-transparent" />
 
-        {/* DRAM label */}
-        <div className="pointer-events-none absolute right-8 top-1/2 z-10 hidden -translate-y-1/2 text-sm font-medium tracking-[0.25em] text-white/45 md:right-14 lg:right-20 lg:block">
-          DRAM
-        </div>
 
         <div className="container-page relative z-10 grid min-h-[330px] items-center gap-10 py-10 md:min-h-[360px] md:grid-cols-[1fr_1.15fr] md:py-12">
           {/* 좌측 카피 */}
