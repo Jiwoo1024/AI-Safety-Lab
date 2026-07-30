@@ -51,8 +51,8 @@ function HomePage() {
         <HeroAnimation />
 
         {/* 좌→우 다크 그라데이션 */}
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[oklch(0.08_0.02_20/0.98)] via-[oklch(0.08_0.02_20/0.78)] to-[oklch(0.08_0.02_20/0.15)]" />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[oklch(0.08_0.02_20/0.7)] via-transparent to-transparent" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[oklch(0.08_0.02_20/0.98)] from-[8%] via-[oklch(0.08_0.02_20/0.55)] via-[38%] to-transparent to-[62%]" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[oklch(0.08_0.02_20/0.45)] via-transparent to-transparent" />
 
 
         <div className="container-page relative z-10 grid min-h-[330px] items-center gap-10 py-10 md:min-h-[360px] md:grid-cols-[1fr_1.15fr] md:py-12">
