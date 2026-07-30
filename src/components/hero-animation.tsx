@@ -27,8 +27,8 @@ export function HeroAnimation() {
         <div className="valve-core absolute inset-[35%] rounded-full blur-md" />
       </div>
 
-      {/* 비네트 */}
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_45%,oklch(0.18_0.02_200/0.55)_100%)]" />
+      {/* 비네트 (약하게) */}
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_60%,oklch(0.18_0.02_200/0.28)_100%)]" />
 
       <style>{`
         @keyframes heroFlow {
