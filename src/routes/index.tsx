@@ -4,16 +4,7 @@ import { requireUnlocked } from "@/lib/gate.functions";
 import { SiteHeader, SiteFooter } from "@/components/site-chrome";
 import { projects } from "@/data/projects";
 import { insights } from "@/data/insights";
-import {
-  Scale,
-  Camera,
-  HelpCircle,
-  BookOpen,
-  ArrowRight,
-  Sparkles,
-  TrendingUp,
-  FileText,
-} from "lucide-react";
+import { Scale, Camera, HelpCircle, BookOpen, ArrowRight, Sparkles, TrendingUp, FileText } from "lucide-react";
 import { HeroAnimation } from "@/components/hero-animation";
 import { useReveal } from "@/hooks/use-reveal";
 
@@ -30,8 +21,7 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: "AI Safety Lab — AI 기반 산업안전 프로젝트 포트폴리오" },
       {
         property: "og:description",
-        content:
-          "HAZOP, 위험성평가, 법령 검토, 안전교육을 지원하는 AI 산업안전 도구와 인사이트 모음",
+        content: "HAZOP, 위험성평가, 법령 검토, 안전교육을 지원하는 AI 산업안전 도구와 인사이트 모음",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "https://ai-safety-craft.lovable.app/" },
@@ -55,7 +45,6 @@ function HomePage() {
         {/* 좌→우 다크 그라데이션 */}
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[oklch(0.08_0.02_20/0.98)] from-[8%] via-[oklch(0.08_0.02_20/0.55)] via-[38%] to-transparent to-[62%]" />
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[oklch(0.08_0.02_20/0.45)] via-transparent to-transparent" />
-
 
         <div className="container-page relative z-10 grid min-h-[150px] items-center gap-4 py-3 md:min-h-[160px] md:grid-cols-[1fr_1.1fr] md:py-5">
           {/* 좌측 카피 */}
@@ -82,27 +71,17 @@ function HomePage() {
             </div>
           </div>
 
-
           {/* 통계 카드 */}
           <div className="flex items-center justify-start gap-3">
-            <StatCard
-              number="04"
-              label="Active Projects"
-              icon={<TrendingUp className="h-4 w-4" />}
-            />
-            <StatCard
-              number="05+"
-              label="Insight Articles"
-              icon={<FileText className="h-4 w-4" />}
-            />
+            <StatCard number="04" label="Active Projects" icon={<TrendingUp className="h-4 w-4" />} />
+            <StatCard number="05+" label="Insight Articles" icon={<FileText className="h-4 w-4" />} />
           </div>
         </div>
-
       </section>
 
       <main>
         {/* PROJECT STRIP — horizontal cards */}
-        <section className="border-y border-border/60 bg-[oklch(0.09_0.008_20)]">
+        <section className="border-y border-border/60 bg-[oklch(0.06_0.008_20)]">
           <div className="container-page py-3">
             <div className="grid grid-cols-1 items-stretch gap-4 md:grid-cols-2 lg:grid-cols-4">
               {projects.map((p, idx) => (
@@ -111,7 +90,6 @@ function HomePage() {
             </div>
           </div>
         </section>
-
 
         {/* INSIGHTS PREVIEW */}
         <div className="container-page py-3.5">
@@ -152,7 +130,7 @@ const projectIcons: Record<string, React.ReactNode> = {
 
 function ProjectCard({ p, idx }: { p: (typeof projects)[number]; idx: number }) {
   const card = (
-    <div className="group flex h-full items-center gap-3 rounded-xl border border-border/60 bg-[oklch(0.10_0.015_250)] p-3 transition-all hover:-translate-y-1 hover:border-primary/50 hover:bg-[oklch(0.11_0.015_250)]">
+    <div className="group flex h-full items-center gap-3 rounded-xl border border-border/60 bg-[oklch(0.16_0.015_250)] p-3 transition-all hover:-translate-y-1 hover:border-primary/50 hover:bg-[oklch(0.19_0.015_250)]">
       <div className="grid h-10 w-10 shrink-0 place-items-center rounded-lg border border-primary/50 text-primary transition-all group-hover:scale-110">
         {projectIcons[p.slug] ?? <Sparkles className="h-5 w-5" />}
       </div>
@@ -160,9 +138,7 @@ function ProjectCard({ p, idx }: { p: (typeof projects)[number]; idx: number }) 
         <h3 className="font-display text-[13px] font-semibold leading-snug text-foreground transition-colors group-hover:text-primary">
           {p.title}
         </h3>
-        <p className="mt-0.5 line-clamp-2 text-[11px] leading-relaxed text-muted-foreground">
-          {p.description}
-        </p>
+        <p className="mt-0.5 line-clamp-2 text-[11px] leading-relaxed text-muted-foreground">{p.description}</p>
       </div>
       <ArrowRight className="h-4 w-4 shrink-0 text-muted-foreground transition-all group-hover:translate-x-1 group-hover:text-primary" />
     </div>
@@ -171,48 +147,26 @@ function ProjectCard({ p, idx }: { p: (typeof projects)[number]; idx: number }) 
   const className = "block h-full reveal is-visible";
   const style = { transitionDelay: `${idx * 80}ms` };
 
-
   if (p.link) {
     return (
-      <a
-        href={p.link}
-        target="_blank"
-        rel="noopener noreferrer"
-        className={className}
-        style={style}
-      >
+      <a href={p.link} target="_blank" rel="noopener noreferrer" className={className} style={style}>
         {card}
       </a>
     );
   }
 
   return (
-    <Link
-      to="/projects/$slug"
-      params={{ slug: p.slug }}
-      className={className}
-      style={style}
-    >
+    <Link to="/projects/$slug" params={{ slug: p.slug }} className={className} style={style}>
       {card}
     </Link>
   );
 }
 
-function StatCard({
-  number,
-  label,
-  icon,
-}: {
-  number: string;
-  label: string;
-  icon: React.ReactNode;
-}) {
+function StatCard({ number, label, icon }: { number: string; label: string; icon: React.ReactNode }) {
   return (
     <div className="min-w-[124px] rounded-xl border border-white/15 bg-white/5 p-3 backdrop-blur-md lg:min-w-[134px]">
       <div className="flex items-start justify-between gap-4">
-        <div className="font-display text-2xl font-bold leading-none tracking-tight text-white">
-          {number}
-        </div>
+        <div className="font-display text-2xl font-bold leading-none tracking-tight text-white">{number}</div>
         <div className="text-primary">{icon}</div>
       </div>
       <div className="mt-2 text-xs font-medium text-white/75">{label}</div>
@@ -224,8 +178,7 @@ function StatCard({
 function InsightCard({ i }: { i: (typeof insights)[number] }) {
   return (
     <Link to="/insights" hash={i.slug} className="group block h-full">
-      <article className="flex h-full flex-col gap-2.5 rounded-xl border border-border/60 bg-[oklch(0.10_0.008_20)] p-2 transition-all hover:-translate-y-1 hover:border-primary/50 md:flex-row">
-
+      <article className="flex h-full flex-col gap-2.5 rounded-xl border border-border/60 bg-[oklch(0.16_0.008_20)] p-2 transition-all hover:-translate-y-1 hover:border-primary/50 md:flex-row">
         <div className="relative aspect-[16/10] w-full shrink-0 overflow-hidden rounded-lg md:aspect-auto md:h-[64px] md:w-[88px] md:self-center">
           <img
             src={i.image}
@@ -238,15 +191,11 @@ function InsightCard({ i }: { i: (typeof insights)[number] }) {
         </div>
         <div className="flex flex-1 flex-col justify-between py-1 pr-1">
           <div>
-            <span className="text-[10px] font-bold uppercase tracking-widest text-primary">
-              {i.category}
-            </span>
+            <span className="text-[10px] font-bold uppercase tracking-widest text-primary">{i.category}</span>
             <h4 className="mt-1 line-clamp-2 text-[13px] font-semibold leading-snug tracking-tight text-foreground">
               {i.title}
             </h4>
-            <p className="mt-1 line-clamp-2 text-[11px] leading-relaxed text-muted-foreground">
-              {i.excerpt}
-            </p>
+            <p className="mt-1 line-clamp-2 text-[11px] leading-relaxed text-muted-foreground">{i.excerpt}</p>
           </div>
           <div className="mt-2 flex items-center justify-between text-[10px] text-muted-foreground">
             <span>
@@ -256,19 +205,12 @@ function InsightCard({ i }: { i: (typeof insights)[number] }) {
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1 group-hover:text-primary" />
           </div>
         </div>
-
       </article>
     </Link>
   );
 }
 
-function RevealSection({
-  className,
-  children,
-}: {
-  className?: string;
-  children: React.ReactNode;
-}) {
+function RevealSection({ className, children }: { className?: string; children: React.ReactNode }) {
   const ref = useReveal<HTMLElement>();
   return (
     <section ref={ref} className={`reveal ${className ?? ""}`}>
