@@ -44,7 +44,7 @@ function HomePage() {
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[oklch(0.08_0.02_20/0.98)] from-[8%] via-[oklch(0.08_0.02_20/0.55)] via-[38%] to-transparent to-[62%]" />
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[oklch(0.08_0.02_20/0.45)] via-transparent to-transparent" />
 
-        <div className="container-page relative z-10 grid min-h-[285px] items-center gap-4 py-6 md:min-h-[320px] md:grid-cols-[1fr_1.15fr] md:py-8">
+        <div className="container-page relative z-10 grid min-h-[240px] items-center gap-4 py-3 md:min-h-[260px] md:grid-cols-[1fr_1.15fr] md:py-4">
           {/* 좌측 카피 */}
           <div className="max-w-xl">
             <h1 className="font-display text-[1.85rem] font-bold leading-[1.18] tracking-tight text-white md:text-[2.25rem]">
@@ -52,11 +52,11 @@ function HomePage() {
               <br />더 빠르고 정확하게
             </h1>
 
-            <p className="mt-3.5 max-w-[360px] text-[13px] leading-relaxed text-white/70">
+            <p className="mt-2.5 max-w-[360px] text-[13px] leading-relaxed text-white/70">
               AI Safety Lab은 산업현장의 위험을 예측하고, 분석하며, 안전한 의사결정을 지원하는 AI 기반 솔루션을 개발합니다.
             </p>
 
-            <div className="mt-5">
+            <div className="mt-4">
               <Link
                 to="/projects"
                 className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-[13px] font-semibold text-primary-foreground shadow-lg shadow-primary/25 transition-all hover:bg-primary/90"
