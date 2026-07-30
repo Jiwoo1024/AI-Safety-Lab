@@ -249,8 +249,9 @@ function InsightCard({ i }: { i: (typeof insights)[number] }) {
           </div>
           <div className="mt-4 flex items-center justify-between text-xs text-muted-foreground">
             <span>
-              {i.date} · {i.readTime}
+              {i.date} <span className="px-1 opacity-40">|</span> {i.readTime}
             </span>
+
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1 group-hover:text-primary" />
           </div>
         </div>
