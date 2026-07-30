@@ -55,24 +55,24 @@ function HomePage() {
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[oklch(0.08_0.02_20/0.45)] via-transparent to-transparent" />
 
 
-        <div className="container-page relative z-10 grid min-h-[180px] items-center gap-5 py-4 md:min-h-[190px] md:grid-cols-[1fr_1.1fr] md:py-7">
+        <div className="container-page relative z-10 grid min-h-[150px] items-center gap-4 py-3 md:min-h-[160px] md:grid-cols-[1fr_1.1fr] md:py-5">
           {/* 좌측 카피 */}
           <div className="max-w-xl">
-            <h1 className="font-display text-3xl font-bold leading-[1.2] tracking-tight text-white md:text-[2.1rem]">
+            <h1 className="font-display text-2xl font-bold leading-[1.2] tracking-tight text-white md:text-[1.7rem]">
               AI로 산업안전 실무를
               <br />더 빠르고 정확하게
             </h1>
 
-            <p className="mt-4 text-[13px] leading-relaxed text-white/65 md:text-sm">
+            <p className="mt-3 text-xs leading-relaxed text-white/65 md:text-[13px]">
               AI Safety Lab은 산업현장의 위험을 예측하고, 분석하며,
               <br />
               안전한 의사결정을 지원하는 AI 기반 솔루션을 개발합니다.
             </p>
 
-            <div className="mt-6">
+            <div className="mt-4">
               <Link
                 to="/projects"
-                className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/25 transition-all hover:bg-primary/90"
+                className="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-[13px] font-semibold text-primary-foreground shadow-lg shadow-primary/25 transition-all hover:bg-primary/90"
               >
                 Explore Projects
                 <span aria-hidden>→</span>
@@ -86,12 +86,12 @@ function HomePage() {
             <StatCard
               number="04"
               label="Active Projects"
-              icon={<TrendingUp className="h-5 w-5" />}
+              icon={<TrendingUp className="h-4 w-4" />}
             />
             <StatCard
               number="05+"
               label="Insight Articles"
-              icon={<FileText className="h-5 w-5" />}
+              icon={<FileText className="h-4 w-4" />}
             />
           </div>
         </div>
@@ -101,7 +101,7 @@ function HomePage() {
       <main>
         {/* PROJECT STRIP — horizontal cards */}
         <section className="border-y border-border/60 bg-[oklch(0.09_0.008_20)]">
-          <div className="container-page py-3.5">
+          <div className="container-page py-3">
             <div className="grid grid-cols-1 items-stretch gap-4 md:grid-cols-2 lg:grid-cols-4">
               {projects.map((p, idx) => (
                 <ProjectCard key={p.slug} p={p} idx={idx} />
@@ -112,10 +112,10 @@ function HomePage() {
 
 
         {/* INSIGHTS PREVIEW */}
-        <div className="container-page py-4">
+        <div className="container-page py-3.5">
           <RevealSection>
             <div className="flex items-end justify-between gap-6">
-              <h2 className="font-display relative pb-2.5 text-xl font-semibold tracking-tight text-foreground md:text-2xl">
+              <h2 className="font-display relative pb-2 text-lg font-semibold tracking-tight text-foreground md:text-xl">
                 Safety Insights
                 <span className="absolute bottom-0 left-0 h-0.5 w-14 rounded-full bg-primary" />
               </h2>
@@ -127,7 +127,7 @@ function HomePage() {
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
-            <div className="mt-3 grid gap-3 md:grid-cols-3">
+            <div className="mt-2.5 grid gap-3 md:grid-cols-3">
               {insights.slice(0, 3).map((i) => (
                 <InsightCard key={i.slug} i={i} />
               ))}
@@ -142,23 +142,23 @@ function HomePage() {
 }
 
 const projectIcons: Record<string, React.ReactNode> = {
-  "ai-hazop-assistant": <Scale className="h-6 w-6" />,
-  "ai-photo-risk-assessment": <Camera className="h-6 w-6" />,
-  "safety-quiz": <HelpCircle className="h-6 w-6" />,
-  "safety-insight-library": <BookOpen className="h-6 w-6" />,
+  "ai-hazop-assistant": <Scale className="h-5 w-5" />,
+  "ai-photo-risk-assessment": <Camera className="h-5 w-5" />,
+  "safety-quiz": <HelpCircle className="h-5 w-5" />,
+  "safety-insight-library": <BookOpen className="h-5 w-5" />,
 };
 
 function ProjectCard({ p, idx }: { p: (typeof projects)[number]; idx: number }) {
   const card = (
-    <div className="group flex h-full items-center gap-3 rounded-xl border border-border/60 bg-[oklch(0.10_0.015_250)] p-3.5 transition-all hover:-translate-y-1 hover:border-primary/50 hover:bg-[oklch(0.11_0.015_250)]">
-      <div className="grid h-12 w-12 shrink-0 place-items-center rounded-lg border border-primary/50 text-primary transition-all group-hover:scale-110">
-        {projectIcons[p.slug] ?? <Sparkles className="h-6 w-6" />}
+    <div className="group flex h-full items-center gap-3 rounded-xl border border-border/60 bg-[oklch(0.10_0.015_250)] p-3 transition-all hover:-translate-y-1 hover:border-primary/50 hover:bg-[oklch(0.11_0.015_250)]">
+      <div className="grid h-10 w-10 shrink-0 place-items-center rounded-lg border border-primary/50 text-primary transition-all group-hover:scale-110">
+        {projectIcons[p.slug] ?? <Sparkles className="h-5 w-5" />}
       </div>
       <div className="min-w-0 flex-1">
-        <h3 className="font-display text-sm font-semibold leading-snug text-foreground transition-colors group-hover:text-primary">
+        <h3 className="font-display text-[13px] font-semibold leading-snug text-foreground transition-colors group-hover:text-primary">
           {p.title}
         </h3>
-        <p className="mt-1 line-clamp-2 text-xs leading-relaxed text-muted-foreground">
+        <p className="mt-0.5 line-clamp-2 text-[11px] leading-relaxed text-muted-foreground">
           {p.description}
         </p>
       </div>
@@ -206,15 +206,15 @@ function StatCard({
   icon: React.ReactNode;
 }) {
   return (
-    <div className="min-w-[138px] rounded-xl border border-white/15 bg-white/5 p-4 backdrop-blur-md lg:min-w-[150px]">
+    <div className="min-w-[124px] rounded-xl border border-white/15 bg-white/5 p-3 backdrop-blur-md lg:min-w-[134px]">
       <div className="flex items-start justify-between gap-4">
-        <div className="font-display text-3xl font-bold leading-none tracking-tight text-white">
+        <div className="font-display text-2xl font-bold leading-none tracking-tight text-white">
           {number}
         </div>
         <div className="text-primary">{icon}</div>
       </div>
-      <div className="mt-2.5 text-[13px] font-medium text-white/75">{label}</div>
-      <div className="mt-3 h-0.5 w-9 rounded-full bg-primary" />
+      <div className="mt-2 text-xs font-medium text-white/75">{label}</div>
+      <div className="mt-2 h-0.5 w-8 rounded-full bg-primary" />
     </div>
   );
 }
@@ -222,9 +222,9 @@ function StatCard({
 function InsightCard({ i }: { i: (typeof insights)[number] }) {
   return (
     <Link to="/insights" hash={i.slug} className="group block h-full">
-      <article className="flex h-full flex-col gap-3 rounded-xl border border-border/60 bg-[oklch(0.10_0.008_20)] p-2.5 transition-all hover:-translate-y-1 hover:border-primary/50 md:flex-row">
+      <article className="flex h-full flex-col gap-2.5 rounded-xl border border-border/60 bg-[oklch(0.10_0.008_20)] p-2 transition-all hover:-translate-y-1 hover:border-primary/50 md:flex-row">
 
-        <div className="relative aspect-[16/10] w-full shrink-0 overflow-hidden rounded-lg md:aspect-auto md:h-[74px] md:w-[100px] md:self-center">
+        <div className="relative aspect-[16/10] w-full shrink-0 overflow-hidden rounded-lg md:aspect-auto md:h-[64px] md:w-[88px] md:self-center">
           <img
             src={i.image}
             alt={i.title}
@@ -239,14 +239,14 @@ function InsightCard({ i }: { i: (typeof insights)[number] }) {
             <span className="text-[10px] font-bold uppercase tracking-widest text-primary">
               {i.category}
             </span>
-            <h4 className="mt-1.5 text-base font-semibold leading-snug tracking-tight text-foreground">
+            <h4 className="mt-1 line-clamp-2 text-[13px] font-semibold leading-snug tracking-tight text-foreground">
               {i.title}
             </h4>
-            <p className="mt-1.5 line-clamp-2 text-xs leading-relaxed text-muted-foreground">
+            <p className="mt-1 line-clamp-2 text-[11px] leading-relaxed text-muted-foreground">
               {i.excerpt}
             </p>
           </div>
-          <div className="mt-3 flex items-center justify-between text-[11px] text-muted-foreground">
+          <div className="mt-2 flex items-center justify-between text-[10px] text-muted-foreground">
             <span>
               {i.date} <span className="px-1.5 opacity-40">|</span> {i.readTime}
             </span>
