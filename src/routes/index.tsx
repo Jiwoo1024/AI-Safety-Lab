@@ -70,8 +70,8 @@ function HomePage() {
           </div>
 
           {/* 통계 카드 */}
-          <div className="flex items-center justify-start gap-3">
-            <StatCard number="04" label="Active Projects" icon={<TrendingUp className="h-4 w-4" />} />
+          <div className="flex items-center justify-center gap-3">
+            <StatCard number="04" label="Active Projects" icon={<TrendingUp className="h-4 w-4" />} size="lg" />
             <StatCard number="05+" label="Insight Articles" icon={<FileText className="h-4 w-4" />} />
           </div>
         </div>
@@ -160,14 +160,33 @@ function ProjectCard({ p, idx }: { p: (typeof projects)[number]; idx: number }) 
   );
 }
 
-function StatCard({ number, label, icon }: { number: string; label: string; icon: React.ReactNode }) {
+function StatCard({
+  number,
+  label,
+  icon,
+  size = "md",
+}: {
+  number: string;
+  label: string;
+  icon: React.ReactNode;
+  size?: "md" | "lg";
+}) {
+  const isLg = size === "lg";
   return (
-    <div className="min-w-[124px] rounded-xl border border-white/15 bg-white/5 p-3 backdrop-blur-md lg:min-w-[134px]">
+    <div
+      className={`rounded-xl border border-white/15 bg-white/5 backdrop-blur-md ${
+        isLg ? "min-w-[150px] p-4 lg:min-w-[164px]" : "min-w-[124px] p-3 lg:min-w-[134px]"
+      }`}
+    >
       <div className="flex items-start justify-between gap-4">
-        <div className="font-display text-2xl font-bold leading-none tracking-tight text-white">{number}</div>
+        <div
+          className={`font-display font-bold leading-none tracking-tight text-white ${isLg ? "text-4xl" : "text-2xl"}`}
+        >
+          {number}
+        </div>
         <div className="text-primary">{icon}</div>
       </div>
-      <div className="mt-2 text-xs font-medium text-white/75">{label}</div>
+      <div className={`mt-2 font-medium text-white/75 ${isLg ? "text-sm" : "text-xs"}`}>{label}</div>
       <div className="mt-2 h-0.5 w-8 rounded-full bg-primary" />
     </div>
   );
