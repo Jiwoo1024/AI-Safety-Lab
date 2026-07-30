@@ -104,7 +104,7 @@ export function SiteHeader() {
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-border bg-background">
+    <footer className="border-t border-border bg-[oklch(0.145_0_0)]">
       <div className="container-page flex flex-col items-center justify-between gap-3 py-5 md:flex-row">
         <div className="flex items-center gap-2">
           <span className="grid h-8 w-8 place-items-center rounded-lg bg-primary text-[10px] font-bold text-primary-foreground">
