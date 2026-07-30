@@ -55,7 +55,7 @@ function HomePage() {
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[oklch(0.08_0.02_20/0.45)] via-transparent to-transparent" />
 
 
-        <div className="container-page relative z-10 grid min-h-[230px] items-center gap-6 py-6 md:min-h-[250px] md:grid-cols-[1fr_1.1fr] md:py-7">
+        <div className="container-page relative z-10 grid min-h-[210px] items-center gap-6 py-5 md:min-h-[220px] md:grid-cols-[1fr_1.1fr] md:py-7">
           {/* 좌측 카피 */}
           <div className="max-w-xl">
             <h1 className="font-display text-3xl font-bold leading-[1.2] tracking-tight text-white md:text-[2.1rem]">
@@ -101,7 +101,7 @@ function HomePage() {
       <main>
         {/* PROJECT STRIP — horizontal cards */}
         <section className="border-y border-border/60 bg-[oklch(0.09_0.008_20)]">
-          <div className="container-page py-4">
+          <div className="container-page py-3.5">
             <div className="grid grid-cols-1 items-stretch gap-4 md:grid-cols-2 lg:grid-cols-4">
               {projects.map((p, idx) => (
                 <ProjectCard key={p.slug} p={p} idx={idx} />
@@ -112,7 +112,7 @@ function HomePage() {
 
 
         {/* INSIGHTS PREVIEW */}
-        <div className="container-page py-6">
+        <div className="container-page py-5">
           <RevealSection>
             <div className="flex items-end justify-between gap-6">
               <h2 className="font-display relative pb-2.5 text-xl font-semibold tracking-tight text-foreground md:text-2xl">
@@ -224,7 +224,7 @@ function InsightCard({ i }: { i: (typeof insights)[number] }) {
     <Link to="/insights" hash={i.slug} className="group block h-full">
       <article className="flex h-full flex-col gap-3 rounded-xl border border-border/60 bg-[oklch(0.10_0.008_20)] p-2.5 transition-all hover:-translate-y-1 hover:border-primary/50 md:flex-row">
 
-        <div className="relative aspect-[16/10] w-full shrink-0 overflow-hidden rounded-lg md:aspect-auto md:h-[96px] md:w-[124px] md:self-center">
+        <div className="relative aspect-[16/10] w-full shrink-0 overflow-hidden rounded-lg md:aspect-auto md:h-[84px] md:w-[112px] md:self-center">
           <img
             src={i.image}
             alt={i.title}
