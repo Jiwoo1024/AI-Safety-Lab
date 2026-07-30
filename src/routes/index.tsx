@@ -44,7 +44,7 @@ function HomePage() {
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[oklch(0.08_0.02_20/0.98)] from-[8%] via-[oklch(0.08_0.02_20/0.55)] via-[38%] to-transparent to-[62%]" />
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[oklch(0.08_0.02_20/0.45)] via-transparent to-transparent" />
 
-        <div className="container-page relative z-10 grid min-h-[150px] items-center gap-4 py-3 md:min-h-[160px] md:grid-cols-[1fr_1.1fr] md:py-5">
+        <div className="container-page relative z-10 grid min-h-[190px] items-center gap-4 py-3 md:min-h-[210px] md:grid-cols-[1fr_1.1fr] md:py-5">
           {/* 좌측 카피 */}
           <div className="max-w-xl">
             <h1 className="font-display text-2xl font-bold leading-[1.2] tracking-tight text-white md:text-[1.7rem]">
