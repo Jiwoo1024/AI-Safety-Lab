@@ -67,13 +67,16 @@ function HomePage() {
                 <span aria-hidden>→</span>
               </Link>
             </div>
+
+            {/* 통계 카드 */}
+            <div className="mt-5 flex items-center gap-3">
+              <StatCard number="04" label="Active Projects" icon={<TrendingUp className="h-4 w-4" />} size="lg" />
+              <StatCard number="05+" label="Insight Articles" icon={<FileText className="h-4 w-4" />} />
+            </div>
           </div>
 
-          {/* 통계 카드 */}
-          <div className="flex items-center justify-start gap-3">
-            <StatCard number="04" label="Active Projects" icon={<TrendingUp className="h-4 w-4" />} size="lg" />
-            <StatCard number="05+" label="Insight Articles" icon={<FileText className="h-4 w-4" />} />
-          </div>
+          {/* 우측 이미지 공간 */}
+          <div className="hidden md:block" />
         </div>
       </section>
 
