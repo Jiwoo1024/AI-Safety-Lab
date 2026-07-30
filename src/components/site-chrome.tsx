@@ -63,13 +63,15 @@ export function SiteHeader() {
         <div className="fixed inset-0 z-50 flex flex-col bg-background p-6 md:hidden">
           <div className="flex items-center justify-between">
             <Link to="/" onClick={() => setOpen(false)} className="flex items-center gap-2">
-              <span className="grid h-8 w-8 place-items-center rounded-lg bg-primary text-[10px] font-bold text-primary-foreground">
-                AI
-              </span>
-              <span className="text-[15px] font-semibold tracking-tight text-foreground">AI Safety Lab</span>
+              <img
+                src={logoAsset.url}
+                alt="AI Safety Lab"
+                className="h-8 w-auto"
+              />
             </Link>
             <button
               onClick={() => setOpen(false)}
+
               aria-label="Close menu"
               className="grid h-10 w-10 place-items-center rounded-md text-foreground transition-colors hover:bg-secondary"
             >
