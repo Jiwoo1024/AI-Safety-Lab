@@ -109,9 +109,78 @@ function AutomationToolsPage() {
             </a>
           ))}
         </div>
+
+        {/* PROJECTS — clickable cards to detail pages */}
+        <div className="mt-20">
+          <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+            <ArrowRight className="h-3.5 w-3.5 text-primary" />
+            Projects
+          </div>
+          <h2 className="mt-3 max-w-2xl text-3xl font-semibold tracking-tight text-foreground md:text-4xl">
+            AI 기반 산업안전 프로젝트
+          </h2>
+          <p className="mt-3 max-w-2xl text-muted-foreground">
+            사진 분석, HAZOP 보조, 안전 퀴즈, 인사이트 라이브러리까지 현장 안전 업무를 돕는 프로젝트들입니다. 카드를 클릭하면 상세 페이지로 이동합니다.
+          </p>
+        </div>
+
+        <div className="mt-10 grid gap-6 md:grid-cols-2">
+          {projects.map((p) => (
+            <Link
+              key={p.slug}
+              to="/projects/$slug"
+              params={{ slug: p.slug }}
+              className="group flex flex-col rounded-2xl border border-border bg-card p-7 transition-all hover:-translate-y-1 hover:border-primary hover:shadow-[0_10px_40px_-20px_var(--primary)]"
+            >
+              <div className="flex items-center justify-between">
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-primary/10 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-widest text-primary">
+                  {projectIcon(p.slug)}
+                  {p.type}
+                </span>
+                <ArrowRight className="h-4 w-4 text-muted-foreground transition-all group-hover:translate-x-0.5 group-hover:text-primary" />
+              </div>
+              <h3 className="mt-4 text-xl font-semibold tracking-tight text-foreground transition-colors group-hover:text-primary">
+                {p.title}
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                {p.description}
+              </p>
+              <div className="mt-5 flex flex-wrap gap-2">
+                {p.tags.slice(0, 3).map((t) => (
+                  <span
+                    key={t}
+                    className="rounded-full border border-border bg-secondary px-2.5 py-1 text-[11px] text-muted-foreground"
+                  >
+                    {t}
+                  </span>
+                ))}
+              </div>
+              <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-primary">
+                View Project
+                <ArrowRight className="h-3.5 w-3.5" />
+              </span>
+            </Link>
+          ))}
+        </div>
       </section>
       <SiteFooter />
     </div>
   );
+}
+
+function projectIcon(slug: string) {
+  const className = "h-3 w-3";
+  switch (slug) {
+    case "ai-hazop-assistant":
+      return <Scale className={className} />;
+    case "ai-photo-risk-assessment":
+      return <Camera className={className} />;
+    case "safety-quiz":
+      return <HelpCircle className={className} />;
+    case "safety-insight-library":
+      return <BookOpen className={className} />;
+    default:
+      return <Sparkles className={className} />;
+  }
 }
 
