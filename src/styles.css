@@ -46,7 +46,7 @@
   --card-foreground: oklch(1 0 0);
   --popover: oklch(0.12 0.02 250);
   --popover-foreground: oklch(1 0 0);
-  --primary: oklch(0.62 0.2 30);
+  --primary: oklch(0.64 0.15 25);
   --primary-foreground: oklch(1 0 0);
   --secondary: oklch(0.15 0.02 250);
   --secondary-foreground: oklch(1 0 0);
@@ -58,7 +58,7 @@
   --destructive-foreground: oklch(1 0 0);
   --border: oklch(0.22 0.03 250);
   --input: oklch(0.22 0.03 250);
-  --ring: oklch(0.62 0.2 30);
+  --ring: oklch(0.64 0.15 25);
   --navy: oklch(0.12 0.04 250);
   --slate-ink: oklch(0.55 0.04 200);
   --sky-soft: oklch(0.72 0.1 30);
@@ -78,7 +78,10 @@
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
     -webkit-font-smoothing: antialiased;
   }
-  h1, h2, h3, h4 {
+  h1,
+  h2,
+  h3,
+  h4 {
     font-family: var(--font-display);
     letter-spacing: -0.02em;
   }
@@ -121,14 +124,22 @@
 }
 
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(16px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @utility reveal {
   opacity: 0;
   transform: translateY(24px);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  transition:
+    opacity 0.8s ease-out,
+    transform 0.8s ease-out;
 }
 
 .reveal.is-visible {
@@ -137,8 +148,13 @@
 }
 
 @keyframes floaty {
-  0%, 100% { transform: translateY(0); }
-  50%      { transform: translateY(-8px); }
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
 }
 
 @utility float-slow {
