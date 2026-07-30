@@ -55,30 +55,31 @@ function HomePage() {
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[oklch(0.08_0.02_20/0.45)] via-transparent to-transparent" />
 
 
-        <div className="container-page relative z-10 grid min-h-[330px] items-center gap-10 py-10 md:min-h-[360px] md:grid-cols-[1fr_1.15fr] md:py-12">
+        <div className="container-page relative z-10 grid min-h-[180px] items-center gap-5 py-4 md:min-h-[190px] md:grid-cols-[1fr_1.1fr] md:py-7">
           {/* 좌측 카피 */}
           <div className="max-w-xl">
-            <h1 className="font-display text-4xl font-bold leading-[1.2] tracking-tight text-white md:text-5xl">
+            <h1 className="font-display text-3xl font-bold leading-[1.2] tracking-tight text-white md:text-[2.1rem]">
               AI로 산업안전 실무를
               <br />더 빠르고 정확하게
             </h1>
 
-            <p className="mt-5 text-sm leading-relaxed text-white/65 md:text-base">
+            <p className="mt-4 text-[13px] leading-relaxed text-white/65 md:text-sm">
               AI Safety Lab은 산업현장의 위험을 예측하고, 분석하며,
               <br />
               안전한 의사결정을 지원하는 AI 기반 솔루션을 개발합니다.
             </p>
 
-            <div className="mt-7">
+            <div className="mt-6">
               <Link
                 to="/projects"
-                className="inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/25 transition-all hover:bg-primary/90"
+                className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/25 transition-all hover:bg-primary/90"
               >
                 Explore Projects
                 <span aria-hidden>→</span>
               </Link>
             </div>
           </div>
+
 
           {/* 통계 카드 */}
           <div className="flex items-center justify-start gap-3">
@@ -100,7 +101,7 @@ function HomePage() {
       <main>
         {/* PROJECT STRIP — horizontal cards */}
         <section className="border-y border-border/60 bg-[oklch(0.09_0.008_20)]">
-          <div className="container-page py-6">
+          <div className="container-page py-3.5">
             <div className="grid grid-cols-1 items-stretch gap-4 md:grid-cols-2 lg:grid-cols-4">
               {projects.map((p, idx) => (
                 <ProjectCard key={p.slug} p={p} idx={idx} />
@@ -111,10 +112,10 @@ function HomePage() {
 
 
         {/* INSIGHTS PREVIEW */}
-        <div className="container-page py-12 md:py-14">
+        <div className="container-page py-4">
           <RevealSection>
             <div className="flex items-end justify-between gap-6">
-              <h2 className="font-display relative pb-3 text-2xl font-semibold tracking-tight text-foreground md:text-3xl">
+              <h2 className="font-display relative pb-2.5 text-xl font-semibold tracking-tight text-foreground md:text-2xl">
                 Safety Insights
                 <span className="absolute bottom-0 left-0 h-0.5 w-14 rounded-full bg-primary" />
               </h2>
@@ -126,7 +127,7 @@ function HomePage() {
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
-            <div className="mt-6 grid gap-4 md:grid-cols-3">
+            <div className="mt-3 grid gap-3 md:grid-cols-3">
               {insights.slice(0, 3).map((i) => (
                 <InsightCard key={i.slug} i={i} />
               ))}
@@ -149,7 +150,7 @@ const projectIcons: Record<string, React.ReactNode> = {
 
 function ProjectCard({ p, idx }: { p: (typeof projects)[number]; idx: number }) {
   const card = (
-    <div className="group flex h-full items-center gap-4 rounded-xl border border-border/60 bg-[oklch(0.10_0.015_250)] p-5 transition-all hover:-translate-y-1 hover:border-primary/50 hover:bg-[oklch(0.11_0.015_250)]">
+    <div className="group flex h-full items-center gap-3 rounded-xl border border-border/60 bg-[oklch(0.10_0.015_250)] p-3.5 transition-all hover:-translate-y-1 hover:border-primary/50 hover:bg-[oklch(0.11_0.015_250)]">
       <div className="grid h-12 w-12 shrink-0 place-items-center rounded-lg border border-primary/50 text-primary transition-all group-hover:scale-110">
         {projectIcons[p.slug] ?? <Sparkles className="h-6 w-6" />}
       </div>
@@ -205,15 +206,15 @@ function StatCard({
   icon: React.ReactNode;
 }) {
   return (
-    <div className="min-w-[150px] rounded-xl border border-white/15 bg-white/5 p-5 backdrop-blur-md lg:min-w-[170px]">
+    <div className="min-w-[138px] rounded-xl border border-white/15 bg-white/5 p-4 backdrop-blur-md lg:min-w-[150px]">
       <div className="flex items-start justify-between gap-4">
-        <div className="font-display text-4xl font-bold leading-none tracking-tight text-white">
+        <div className="font-display text-3xl font-bold leading-none tracking-tight text-white">
           {number}
         </div>
         <div className="text-primary">{icon}</div>
       </div>
-      <div className="mt-3 text-sm font-medium text-white/75">{label}</div>
-      <div className="mt-4 h-0.5 w-10 rounded-full bg-primary" />
+      <div className="mt-2.5 text-[13px] font-medium text-white/75">{label}</div>
+      <div className="mt-3 h-0.5 w-9 rounded-full bg-primary" />
     </div>
   );
 }
@@ -221,9 +222,9 @@ function StatCard({
 function InsightCard({ i }: { i: (typeof insights)[number] }) {
   return (
     <Link to="/insights" hash={i.slug} className="group block h-full">
-      <article className="flex h-full flex-col gap-3 rounded-xl border border-border/60 bg-[oklch(0.10_0.008_20)] p-3 transition-all hover:-translate-y-1 hover:border-primary/50 md:flex-row">
+      <article className="flex h-full flex-col gap-3 rounded-xl border border-border/60 bg-[oklch(0.10_0.008_20)] p-2.5 transition-all hover:-translate-y-1 hover:border-primary/50 md:flex-row">
 
-        <div className="relative aspect-[16/10] w-full shrink-0 overflow-hidden rounded-lg md:aspect-auto md:h-[130px] md:w-[160px] md:self-center">
+        <div className="relative aspect-[16/10] w-full shrink-0 overflow-hidden rounded-lg md:aspect-auto md:h-[74px] md:w-[100px] md:self-center">
           <img
             src={i.image}
             alt={i.title}
