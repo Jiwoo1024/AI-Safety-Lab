@@ -106,8 +106,8 @@ function HomePage() {
               </Link>
             </div>
             <div className="mt-2.5 grid gap-3 md:grid-cols-3">
-              {insights.slice(0, 3).map((i) => (
-                <InsightCard key={i.slug} i={i} />
+              {insights.slice(0, 3).map((i, idx) => (
+                <InsightCard key={i.slug} i={i} idx={idx} />
               ))}
             </div>
           </RevealSection>
