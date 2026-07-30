@@ -99,7 +99,7 @@ function HomePage() {
 
       <main>
         {/* PROJECT STRIP — horizontal cards */}
-        <section className="border-b border-border/50 bg-[oklch(0.09_0.008_20)]">
+        <section className="border-y border-border/60 bg-[oklch(0.09_0.008_20)]">
           <div className="container-page py-6">
             <div className="grid grid-cols-1 items-stretch gap-4 md:grid-cols-2 lg:grid-cols-4">
               {projects.map((p, idx) => (
