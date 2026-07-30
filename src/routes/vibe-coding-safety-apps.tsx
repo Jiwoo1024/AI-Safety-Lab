@@ -1,11 +1,15 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { requireUnlocked } from "@/lib/gate.functions";
+import { getUnlockStatus } from "@/lib/gate.functions";
+import { redirect } from "@tanstack/react-router";
 import { SiteHeader, SiteFooter } from "@/components/site-chrome";
 import { vibeApps } from "@/data/vibe-apps";
 import { ArrowUpRight, Code2 } from "lucide-react";
 
 export const Route = createFileRoute("/vibe-coding-safety-apps")({
-  beforeLoad: () => requireUnlocked(),
+  beforeLoad: async () => {
+    const { unlocked } = await getUnlockStatus();
+    if (!unlocked) throw redirect({ to: "/unlock" });
+  },
   head: () => ({
     meta: [
       { title: "Vibe Coding_Safety Apps — AI Safety Lab" },

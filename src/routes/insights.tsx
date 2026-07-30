@@ -1,10 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { requireUnlocked } from "@/lib/gate.functions";
+import { getUnlockStatus } from "@/lib/gate.functions";
+import { redirect } from "@tanstack/react-router";
 import { SiteHeader, SiteFooter } from "@/components/site-chrome";
 import { insights } from "@/data/insights";
 
 export const Route = createFileRoute("/insights")({
-  beforeLoad: () => requireUnlocked(),
+  beforeLoad: async () => {
+    const { unlocked } = await getUnlockStatus();
+    if (!unlocked) throw redirect({ to: "/unlock" });
+  },
   head: () => ({
     meta: [
       { title: "Safety Insights — AI Safety Lab" },
