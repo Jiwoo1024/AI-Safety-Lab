@@ -270,6 +270,7 @@ function WorkflowSection() {
   );
 }
 
+function InsightCard({ i, idx = 0 }: { i: (typeof insights)[number]; idx?: number }) {
   const ref = useReveal<HTMLDivElement>();
   return (
     <div ref={ref} className="reveal h-full" style={{ transitionDelay: `${idx * 90}ms` }}>
