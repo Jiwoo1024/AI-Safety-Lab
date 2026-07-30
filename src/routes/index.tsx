@@ -103,13 +103,14 @@ function HomePage() {
         {/* PROJECT STRIP — horizontal cards */}
         <section className="border-b border-border/50 bg-[oklch(0.09_0.008_20)]">
           <div className="container-page py-6">
-            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
+            <div className="grid grid-cols-1 items-stretch gap-4 md:grid-cols-2 lg:grid-cols-4">
               {projects.map((p, idx) => (
                 <ProjectCard key={p.slug} p={p} idx={idx} />
               ))}
             </div>
           </div>
         </section>
+
 
         {/* INSIGHTS PREVIEW */}
         <div className="container-page py-12 md:py-14">
