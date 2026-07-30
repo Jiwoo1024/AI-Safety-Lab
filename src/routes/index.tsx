@@ -1,7 +1,5 @@
 import * as React from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { getUnlockStatus } from "@/lib/gate.functions";
-import { redirect } from "@tanstack/react-router";
 import { SiteHeader, SiteFooter } from "@/components/site-chrome";
 import { projects } from "@/data/projects";
 import { insights } from "@/data/insights";
@@ -10,10 +8,6 @@ import { HeroAnimation } from "@/components/hero-animation";
 import { useReveal } from "@/hooks/use-reveal";
 
 export const Route = createFileRoute("/")({
-  beforeLoad: async () => {
-    const { unlocked } = await getUnlockStatus();
-    if (!unlocked) throw redirect({ to: "/unlock" });
-  },
   head: () => ({
     meta: [
       { title: "AI Safety Lab — AI 기반 산업안전 프로젝트 포트폴리오" },
