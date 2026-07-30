@@ -13,7 +13,7 @@ export function HeroAnimation() {
         alt="반도체 팹 클린룸 내부의 가스 배관과 인터록 밸브"
         width={1920}
         height={1088}
-        className="absolute inset-0 h-full w-full object-cover"
+        className="absolute inset-0 h-full w-full object-cover [filter:brightness(1.12)_contrast(1.12)_saturate(1.15)]"
       />
 
       {/* 배관 라인을 따라 흐르는 흰색 글로우 */}
