@@ -1,4 +1,4 @@
-import heroFab from "@/assets/hero.jpg";
+import heroFab from "@/assets/hero-semiconductor-fab.png";
 
 /**
  * 사실적 팹 클린룸 배경 이미지 + 절제된 CSS 모션 오버레이.
