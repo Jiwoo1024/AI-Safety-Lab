@@ -198,7 +198,78 @@ function StatCard({
   );
 }
 
-function InsightCard({ i, idx = 0 }: { i: (typeof insights)[number]; idx?: number }) {
+function WorkflowSection() {
+  const sectionRef = useReveal<HTMLElement>();
+  const steps = [
+    {
+      number: "01",
+      title: "위험 감지",
+      description: "현장 사진과 센서 데이터를 실시간으로 수집하여 잠재적 위험 요소를 포착합니다.",
+      icon: <Search className="h-5 w-5" />,
+    },
+    {
+      number: "02",
+      title: "AI 분석",
+      description: "수집된 데이터를 AI 모델로 분석하여 위험 등급과 사고 가능성을 산정합니다.",
+      icon: <Brain className="h-5 w-5" />,
+    },
+    {
+      number: "03",
+      title: "대응 검토",
+      description: "법령과 사고 사례를 기반으로 한 최적의 안전 대응 방안을 제시합니다.",
+      icon: <ShieldCheck className="h-5 w-5" />,
+    },
+    {
+      number: "04",
+      title: "현장 조치",
+      description: "결과를 현장에 전달하고 조치 완료 여부를 확인하며 사후 관리를 지원합니다.",
+      icon: <CheckCircle className="h-5 w-5" />,
+    },
+  ];
+
+  return (
+    <section ref={sectionRef} className="reveal container-page py-4">
+      <div className="mb-4 text-center">
+        <h2 className="font-display relative inline-block pb-2 text-lg font-semibold tracking-tight text-foreground md:text-xl">
+          Safety Workflow
+          <span className="absolute bottom-0 left-1/2 h-0.5 w-14 -translate-x-1/2 rounded-full bg-primary" />
+        </h2>
+        <p className="mx-auto mt-2 max-w-xl text-[13px] leading-relaxed text-muted-foreground">
+          AI가 현장 위험을 탐지부터 조치까지 연결하는 4단계 프로세스
+        </p>
+      </div>
+
+      <div className="relative grid grid-cols-1 gap-3 md:grid-cols-4">
+        {/* desktop connecting line */}
+        <div className="pointer-events-none absolute top-8 left-0 right-0 hidden h-px md:block bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
+        {steps.map((step, idx) => (
+          <div key={step.number} className="reveal relative pt-7" style={{ transitionDelay: `${idx * 100}ms` }}>
+            {/* step number badge */}
+            <div className="absolute left-1/2 top-0 z-10 -translate-x-1/2">
+              <div className="flex h-6 w-6 items-center justify-center rounded-full border border-primary/50 bg-[oklch(0.145_0_0)] text-[10px] font-bold text-primary shadow-[0_0_12px_-3px_oklch(0.55_0.23_29/0.5)]">
+                {step.number}
+              </div>
+            </div>
+
+            <div className="group relative flex h-full flex-col items-center gap-3 overflow-hidden rounded-2xl border border-white/[0.09] bg-[oklch(0.185_0_0)] p-3.5 text-center shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05),0_2px_10px_-6px_rgba(0,0,0,0.7)] transition-all duration-300 hover:-translate-y-1 hover:border-primary/45 hover:bg-[oklch(0.215_0_0)] hover:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.07),0_14px_32px_-16px_oklch(0.55_0.23_29/0.55)]">
+              <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/[0.06] to-transparent transition-transform duration-700 group-hover:translate-x-full" />
+              <div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl border border-primary/40 bg-primary/[0.07] text-primary transition-all duration-300 group-hover:scale-110 group-hover:border-primary/70 group-hover:shadow-[0_0_18px_-4px_oklch(0.55_0.23_29/0.7)]">
+                {step.icon}
+              </div>
+              <div>
+                <h3 className="font-display text-[13px] font-semibold text-foreground transition-colors group-hover:text-primary">
+                  {step.title}
+                </h3>
+                <p className="mt-1 text-[11px] leading-relaxed text-muted-foreground">{step.description}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
   const ref = useReveal<HTMLDivElement>();
   return (
     <div ref={ref} className="reveal h-full" style={{ transitionDelay: `${idx * 90}ms` }}>
