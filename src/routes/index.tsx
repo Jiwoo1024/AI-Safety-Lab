@@ -158,7 +158,7 @@ function ProjectCard({ p, idx }: { p: (typeof projects)[number]; idx: number }) 
         {projectIcons[p.slug] ?? <Sparkles className="h-6 w-6" />}
       </div>
       <div className="min-w-0 flex-1">
-        <h3 className="font-display truncate text-sm font-semibold text-foreground transition-colors group-hover:text-primary">
+        <h3 className="font-display text-sm font-semibold leading-snug text-foreground transition-colors group-hover:text-primary">
           {p.title}
         </h3>
         <p className="mt-1 line-clamp-2 text-xs leading-relaxed text-muted-foreground">
