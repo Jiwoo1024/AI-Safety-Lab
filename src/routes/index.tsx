@@ -205,15 +205,15 @@ function StatCard({
   icon: React.ReactNode;
 }) {
   return (
-    <div className="glass-card min-w-[150px] rounded-2xl p-5 lg:min-w-[170px]">
-      <div className="flex items-start justify-between">
+    <div className="min-w-[150px] rounded-xl border border-white/10 bg-[oklch(0.13_0.005_20/0.82)] p-5 backdrop-blur-sm lg:min-w-[170px]">
+      <div className="flex items-start justify-between gap-4">
         <div className="font-display text-4xl font-bold leading-none tracking-tight text-white">
           {number}
         </div>
         <div className="text-primary">{icon}</div>
       </div>
-      <div className="mt-3 text-sm font-medium text-white/80">{label}</div>
-      <div className="mt-3 h-0.5 w-10 rounded-full bg-primary" />
+      <div className="mt-3 text-sm font-medium text-white/75">{label}</div>
+      <div className="mt-4 h-0.5 w-10 rounded-full bg-primary" />
     </div>
   );
 }
