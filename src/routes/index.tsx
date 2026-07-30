@@ -206,15 +206,15 @@ function StatCard({
   icon: React.ReactNode;
 }) {
   return (
-    <div className="min-w-[150px] rounded-xl border border-white/15 bg-white/5 p-5 backdrop-blur-md lg:min-w-[170px]">
+    <div className="min-w-[138px] rounded-xl border border-white/15 bg-white/5 p-4 backdrop-blur-md lg:min-w-[150px]">
       <div className="flex items-start justify-between gap-4">
-        <div className="font-display text-4xl font-bold leading-none tracking-tight text-white">
+        <div className="font-display text-3xl font-bold leading-none tracking-tight text-white">
           {number}
         </div>
         <div className="text-primary">{icon}</div>
       </div>
-      <div className="mt-3 text-sm font-medium text-white/75">{label}</div>
-      <div className="mt-4 h-0.5 w-10 rounded-full bg-primary" />
+      <div className="mt-2.5 text-[13px] font-medium text-white/75">{label}</div>
+      <div className="mt-3 h-0.5 w-9 rounded-full bg-primary" />
     </div>
   );
 }
@@ -224,7 +224,7 @@ function InsightCard({ i }: { i: (typeof insights)[number] }) {
     <Link to="/insights" hash={i.slug} className="group block h-full">
       <article className="flex h-full flex-col gap-3 rounded-xl border border-border/60 bg-[oklch(0.10_0.008_20)] p-3 transition-all hover:-translate-y-1 hover:border-primary/50 md:flex-row">
 
-        <div className="relative aspect-[16/10] w-full shrink-0 overflow-hidden rounded-lg md:aspect-auto md:h-[130px] md:w-[160px] md:self-center">
+        <div className="relative aspect-[16/10] w-full shrink-0 overflow-hidden rounded-lg md:aspect-auto md:h-[112px] md:w-[140px] md:self-center">
           <img
             src={i.image}
             alt={i.title}
