@@ -151,12 +151,12 @@ const projectIcons: Record<string, React.ReactNode> = {
 
 function ProjectCard({ p, idx }: { p: (typeof projects)[number]; idx: number }) {
   const card = (
-    <div className="group flex items-center gap-4 rounded-xl border border-border/60 bg-[oklch(0.10_0.015_250)] p-5 transition-all hover:-translate-y-1 hover:border-primary/50 hover:bg-[oklch(0.11_0.015_250)]">
+    <div className="group flex h-full items-center gap-4 rounded-xl border border-border/60 bg-[oklch(0.10_0.015_250)] p-5 transition-all hover:-translate-y-1 hover:border-primary/50 hover:bg-[oklch(0.11_0.015_250)]">
       <div className="grid h-12 w-12 shrink-0 place-items-center rounded-lg border border-primary/50 text-primary transition-all group-hover:scale-110">
         {projectIcons[p.slug] ?? <Sparkles className="h-6 w-6" />}
       </div>
       <div className="min-w-0 flex-1">
-        <h3 className="font-display text-sm font-semibold text-foreground transition-colors group-hover:text-primary">
+        <h3 className="font-display truncate text-sm font-semibold text-foreground transition-colors group-hover:text-primary">
           {p.title}
         </h3>
         <p className="mt-1 line-clamp-2 text-xs leading-relaxed text-muted-foreground">
@@ -167,8 +167,9 @@ function ProjectCard({ p, idx }: { p: (typeof projects)[number]; idx: number }) 
     </div>
   );
 
-  const className = "block reveal is-visible";
+  const className = "block h-full reveal is-visible";
   const style = { transitionDelay: `${idx * 80}ms` };
+
 
   if (p.link) {
     return (
