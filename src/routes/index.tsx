@@ -69,9 +69,9 @@ function HomePage() {
 
           {/* 우측 이미지 공간 + 떠 있는 통계 카드 */}
           <div className="relative hidden h-full min-h-[inherit] md:block">
-            <div className="absolute bottom-[18%] right-[4%] flex items-end gap-3">
-              <StatCard number="04" label="Active Projects" icon={<TrendingUp className="h-4 w-4" />} size="lg" />
-              <StatCard number="05+" label="Insight Articles" icon={<FileText className="h-4 w-4" />} />
+            <div className="absolute bottom-[14%] left-0 flex items-end gap-2.5">
+              <StatCard number="04" label="Active Projects" icon={<TrendingUp className="h-3.5 w-3.5" />} size="lg" />
+              <StatCard number="05+" label="Insight Articles" icon={<FileText className="h-3.5 w-3.5" />} />
             </div>
           </div>
         </div>
@@ -174,20 +174,20 @@ function StatCard({
   const isLg = size === "lg";
   return (
     <div
-      className={`rounded-xl border border-white/[0.14] bg-[oklch(0.10_0.01_20/0.42)] shadow-[0_12px_40px_-12px_rgba(0,0,0,0.55)] backdrop-blur-xl ${
-        isLg ? "min-w-[156px] p-4 lg:min-w-[170px]" : "min-w-[132px] p-3.5 lg:min-w-[146px]"
+      className={`rounded-lg border border-white/10 bg-white/[0.06] shadow-[0_8px_28px_-14px_rgba(0,0,0,0.5)] backdrop-blur-md ${
+        isLg ? "min-w-[140px] p-3.5" : "min-w-[124px] p-3"
       }`}
     >
-      <div className="flex items-start justify-between gap-3">
+      <div className="flex items-start justify-between gap-2.5">
         <div
-          className={`font-display font-bold leading-none tracking-tight text-white ${isLg ? "text-[2.5rem]" : "text-[2.1rem]"}`}
+          className={`font-display font-bold leading-none tracking-tight text-white ${isLg ? "text-[2rem]" : "text-[1.75rem]"}`}
         >
           {number}
         </div>
         <div className="text-primary">{icon}</div>
       </div>
-      <div className={`mt-2.5 font-medium text-white/80 ${isLg ? "text-[13px]" : "text-xs"}`}>{label}</div>
-      <div className="mt-2.5 h-[3px] w-10 rounded-full bg-primary" />
+      <div className={`mt-2 font-medium text-white/75 ${isLg ? "text-xs" : "text-[11px]"}`}>{label}</div>
+      <div className="mt-2 h-[2px] w-8 rounded-full bg-primary" />
     </div>
   );
 }
