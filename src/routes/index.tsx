@@ -44,7 +44,7 @@ function HomePage() {
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[oklch(0.08_0.02_20/0.98)] from-[8%] via-[oklch(0.08_0.02_20/0.55)] via-[38%] to-transparent to-[62%]" />
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[oklch(0.08_0.02_20/0.45)] via-transparent to-transparent" />
 
-        <div className="container-page relative z-10 grid min-h-[230px] items-center gap-4 py-5 md:min-h-[260px] md:grid-cols-[1fr_1.1fr] md:py-7">
+        <div className="container-page relative z-10 grid min-h-[270px] items-center gap-4 py-6 md:min-h-[300px] md:grid-cols-[1fr_1.1fr] md:py-8">
           {/* 좌측 카피 */}
           <div className="max-w-xl">
             <h1 className="font-display text-2xl font-bold leading-[1.2] tracking-tight text-white md:text-[1.7rem]">
@@ -195,7 +195,7 @@ function StatCard({
 function InsightCard({ i }: { i: (typeof insights)[number] }) {
   return (
     <Link to="/insights" hash={i.slug} className="group block h-full">
-      <article className="flex h-full flex-col gap-2.5 rounded-xl border border-border/60 bg-[oklch(0.16_0.008_250)] p-2 transition-all hover:-translate-y-1 hover:border-primary/50 md:flex-row">
+      <article className="flex h-full flex-col gap-2.5 rounded-xl border border-border/60 bg-[oklch(0.16_0_0)] p-2 transition-all hover:-translate-y-1 hover:border-primary/50 md:flex-row">
         <div className="relative aspect-[16/10] w-full shrink-0 overflow-hidden rounded-lg md:aspect-auto md:h-[64px] md:w-[88px] md:self-center">
           <img
             src={i.image}
