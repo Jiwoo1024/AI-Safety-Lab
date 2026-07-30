@@ -67,8 +67,9 @@ function HomePage() {
               <br />더 빠르고 정확하게
             </h1>
 
-            <p className="mt-5 max-w-md text-sm leading-relaxed text-white/65 md:text-base">
+            <p className="mt-5 text-sm leading-relaxed text-white/65 md:text-base">
               AI Safety Lab은 산업현장의 위험을 예측하고, 분석하며,
+              <br />
               안전한 의사결정을 지원하는 AI 기반 솔루션을 개발합니다.
             </p>
 
@@ -84,7 +85,7 @@ function HomePage() {
           </div>
 
           {/* 통계 카드 */}
-          <div className="flex gap-4">
+          <div className="flex gap-4 lg:mr-[26%]">
             <StatCard
               number="04"
               label="Active Projects"
@@ -97,6 +98,7 @@ function HomePage() {
             />
           </div>
         </div>
+
       </section>
 
       <main>
