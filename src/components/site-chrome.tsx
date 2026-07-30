@@ -1,5 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
+import logoAsset from "@/assets/logo.png.asset.json";
+
 
 const nav = [
   { to: "/", label: "Home" },
@@ -17,14 +19,14 @@ export function SiteHeader() {
       <header className="sticky top-0 z-40 border-b border-border bg-background/95 backdrop-blur">
         <div className="container-page flex h-16 items-center justify-between">
           <Link to="/" className="flex items-center gap-2">
-            <span className="grid h-8 w-8 place-items-center rounded-lg bg-primary text-[10px] font-bold tracking-tight text-primary-foreground">
-              AI
-            </span>
-            <span className="text-[15px] font-semibold tracking-tight text-foreground">
-              AI Safety Lab
-            </span>
+            <img
+              src={logoAsset.url}
+              alt="AI Safety Lab"
+              className="h-8 w-auto"
+            />
           </Link>
           <nav className="hidden items-center gap-7 md:flex">
+
             {nav.map((n) => (
               <Link
                 key={n.to}
@@ -61,13 +63,15 @@ export function SiteHeader() {
         <div className="fixed inset-0 z-50 flex flex-col bg-background p-6 md:hidden">
           <div className="flex items-center justify-between">
             <Link to="/" onClick={() => setOpen(false)} className="flex items-center gap-2">
-              <span className="grid h-8 w-8 place-items-center rounded-lg bg-primary text-[10px] font-bold text-primary-foreground">
-                AI
-              </span>
-              <span className="text-[15px] font-semibold tracking-tight text-foreground">AI Safety Lab</span>
+              <img
+                src={logoAsset.url}
+                alt="AI Safety Lab"
+                className="h-8 w-auto"
+              />
             </Link>
             <button
               onClick={() => setOpen(false)}
+
               aria-label="Close menu"
               className="grid h-10 w-10 place-items-center rounded-md text-foreground transition-colors hover:bg-secondary"
             >
@@ -107,12 +111,14 @@ export function SiteFooter() {
     <footer className="border-t border-border bg-[oklch(0.145_0_0)]">
       <div className="container-page flex flex-col items-center justify-between gap-3 py-5 md:flex-row">
         <div className="flex items-center gap-2">
-          <span className="grid h-8 w-8 place-items-center rounded-lg bg-primary text-[10px] font-bold text-primary-foreground">
-            AI
-          </span>
-          <span className="text-[15px] font-semibold text-foreground">AI Safety Lab</span>
+          <img
+            src={logoAsset.url}
+            alt="AI Safety Lab"
+            className="h-8 w-auto"
+          />
         </div>
         <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs text-muted-foreground">
+
           <span>© 2024 AI Safety Lab. All rights reserved.</span>
           <span className="opacity-40">|</span>
           <Link to="/" className="transition-colors hover:text-foreground">Privacy Policy</Link>
