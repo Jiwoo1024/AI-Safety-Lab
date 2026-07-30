@@ -205,7 +205,7 @@ function StatCard({
   icon: React.ReactNode;
 }) {
   return (
-    <div className="min-w-[150px] rounded-xl border border-white/10 bg-[oklch(0.13_0.005_20/0.82)] p-5 backdrop-blur-sm lg:min-w-[170px]">
+    <div className="min-w-[150px] rounded-xl border border-white/15 bg-white/5 p-5 backdrop-blur-md lg:min-w-[170px]">
       <div className="flex items-start justify-between gap-4">
         <div className="font-display text-4xl font-bold leading-none tracking-tight text-white">
           {number}
