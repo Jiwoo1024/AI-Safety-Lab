@@ -112,13 +112,15 @@ export function SiteFooter() {
           </span>
           <span className="text-[15px] font-semibold text-foreground">AI Safety Lab</span>
         </div>
-        <div className="text-xs text-muted-foreground">
-          © {new Date().getFullYear()} AI Safety Lab. All rights reserved.
-        </div>
-        <div className="flex items-center gap-6 text-xs text-muted-foreground">
+        <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs text-muted-foreground">
+          <span>© 2024 AI Safety Lab. All rights reserved.</span>
+          <span className="opacity-40">|</span>
           <Link to="/" className="transition-colors hover:text-foreground">Privacy Policy</Link>
+          <span className="opacity-40">|</span>
           <Link to="/" className="transition-colors hover:text-foreground">Terms of Use</Link>
         </div>
+        <div className="hidden md:block md:w-[150px]" />
+
       </div>
     </footer>
   );
