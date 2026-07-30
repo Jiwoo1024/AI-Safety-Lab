@@ -54,12 +54,8 @@ function HomePage() {
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[oklch(0.08_0.02_20/0.98)] via-[oklch(0.08_0.02_20/0.78)] to-[oklch(0.08_0.02_20/0.15)]" />
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[oklch(0.08_0.02_20/0.7)] via-transparent to-transparent" />
 
-        {/* DRAM label */}
-        <div className="pointer-events-none absolute right-8 top-1/2 z-10 hidden -translate-y-1/2 text-sm font-medium tracking-[0.25em] text-white/45 md:right-14 lg:right-20 lg:block">
-          DRAM
-        </div>
 
-        <div className="container-page relative z-10 grid min-h-[330px] items-center gap-10 py-10 md:min-h-[360px] md:grid-cols-[1fr_auto] md:py-12">
+        <div className="container-page relative z-10 grid min-h-[330px] items-center gap-10 py-10 md:min-h-[360px] md:grid-cols-[1fr_1.15fr] md:py-12">
           {/* 좌측 카피 */}
           <div className="max-w-xl">
             <h1 className="font-display text-4xl font-bold leading-[1.2] tracking-tight text-white md:text-5xl">
@@ -67,8 +63,9 @@ function HomePage() {
               <br />더 빠르고 정확하게
             </h1>
 
-            <p className="mt-5 max-w-md text-sm leading-relaxed text-white/65 md:text-base">
+            <p className="mt-5 text-sm leading-relaxed text-white/65 md:text-base">
               AI Safety Lab은 산업현장의 위험을 예측하고, 분석하며,
+              <br />
               안전한 의사결정을 지원하는 AI 기반 솔루션을 개발합니다.
             </p>
 
@@ -84,7 +81,7 @@ function HomePage() {
           </div>
 
           {/* 통계 카드 */}
-          <div className="flex gap-4">
+          <div className="flex justify-start gap-4">
             <StatCard
               number="04"
               label="Active Projects"
@@ -97,6 +94,7 @@ function HomePage() {
             />
           </div>
         </div>
+
       </section>
 
       <main>
@@ -156,7 +154,7 @@ function ProjectCard({ p, idx }: { p: (typeof projects)[number]; idx: number }) 
         {projectIcons[p.slug] ?? <Sparkles className="h-6 w-6" />}
       </div>
       <div className="min-w-0 flex-1">
-        <h3 className="font-display truncate text-sm font-semibold text-foreground transition-colors group-hover:text-primary">
+        <h3 className="font-display text-sm font-semibold leading-snug text-foreground transition-colors group-hover:text-primary">
           {p.title}
         </h3>
         <p className="mt-1 line-clamp-2 text-xs leading-relaxed text-muted-foreground">
@@ -223,9 +221,9 @@ function StatCard({
 function InsightCard({ i }: { i: (typeof insights)[number] }) {
   return (
     <Link to="/insights" hash={i.slug} className="group block h-full">
-      <article className="flex h-full flex-col overflow-hidden rounded-xl border border-border/60 bg-[oklch(0.10_0.008_20)] transition-all hover:-translate-y-1 hover:border-primary/50 md:flex-row">
+      <article className="flex h-full flex-col gap-3 rounded-xl border border-border/60 bg-[oklch(0.10_0.008_20)] p-3 transition-all hover:-translate-y-1 hover:border-primary/50 md:flex-row">
 
-        <div className="relative aspect-[16/10] w-full shrink-0 overflow-hidden md:aspect-auto md:w-[45%]">
+        <div className="relative aspect-[16/10] w-full shrink-0 overflow-hidden rounded-lg md:aspect-auto md:h-[130px] md:w-[160px] md:self-center">
           <img
             src={i.image}
             alt={i.title}
@@ -235,26 +233,27 @@ function InsightCard({ i }: { i: (typeof insights)[number] }) {
             className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
           />
         </div>
-        <div className="flex flex-1 flex-col justify-between p-5">
+        <div className="flex flex-1 flex-col justify-between py-1 pr-1">
           <div>
             <span className="text-[10px] font-bold uppercase tracking-widest text-primary">
               {i.category}
             </span>
-            <h4 className="mt-2 text-base font-semibold leading-snug tracking-tight text-foreground">
+            <h4 className="mt-1.5 text-base font-semibold leading-snug tracking-tight text-foreground">
               {i.title}
             </h4>
-            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+            <p className="mt-1.5 line-clamp-2 text-xs leading-relaxed text-muted-foreground">
               {i.excerpt}
             </p>
           </div>
-          <div className="mt-4 flex items-center justify-between text-xs text-muted-foreground">
+          <div className="mt-3 flex items-center justify-between text-[11px] text-muted-foreground">
             <span>
-              {i.date} <span className="px-1 opacity-40">|</span> {i.readTime}
+              {i.date} <span className="px-1.5 opacity-40">|</span> {i.readTime}
             </span>
 
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1 group-hover:text-primary" />
           </div>
         </div>
+
       </article>
     </Link>
   );
