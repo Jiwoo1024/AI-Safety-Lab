@@ -3,7 +3,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteHeader, SiteFooter } from "@/components/site-chrome";
 import { projects } from "@/data/projects";
 import { insights } from "@/data/insights";
-import { Scale, Camera, HelpCircle, BookOpen, ArrowRight, Sparkles, TrendingUp, FileText, Brain, ShieldCheck, CheckCircle, Search } from "lucide-react";
+import { Scale, Camera, HelpCircle, BookOpen, ArrowRight, Sparkles, TrendingUp, FileText, Brain, ShieldCheck, CheckCircle, Search, X } from "lucide-react";
 import { HeroAnimation } from "@/components/hero-animation";
 import { useReveal } from "@/hooks/use-reveal";
 
@@ -198,75 +198,301 @@ function StatCard({
   );
 }
 
+const workflowSteps = [
+  {
+    number: "01",
+    title: "위험 감지",
+    description: "현장 사진과 센서 데이터를 실시간으로 수집하여 잠재적 위험 요소를 포착합니다.",
+    icon: <Search className="h-5 w-5" />,
+  },
+  {
+    number: "02",
+    title: "AI 분석",
+    description: "수집된 데이터를 AI 모델로 분석하여 위험 등급과 사고 가능성을 산정합니다.",
+    icon: <Brain className="h-5 w-5" />,
+  },
+  {
+    number: "03",
+    title: "대응 검토",
+    description: "법령과 사고 사례를 기반으로 한 최적의 안전 대응 방안을 제시합니다.",
+    icon: <ShieldCheck className="h-5 w-5" />,
+  },
+  {
+    number: "04",
+    title: "현장 조치",
+    description: "결과를 현장에 전달하고 조치 완료 여부를 확인하며 사후 관리를 지원합니다.",
+    icon: <CheckCircle className="h-5 w-5" />,
+  },
+];
+
 function WorkflowSection() {
+  const [activeStep, setActiveStep] = React.useState<string | null>(null);
   const sectionRef = useReveal<HTMLElement>();
-  const steps = [
-    {
-      number: "01",
-      title: "위험 감지",
-      description: "현장 사진과 센서 데이터를 실시간으로 수집하여 잠재적 위험 요소를 포착합니다.",
-      icon: <Search className="h-5 w-5" />,
-    },
-    {
-      number: "02",
-      title: "AI 분석",
-      description: "수집된 데이터를 AI 모델로 분석하여 위험 등급과 사고 가능성을 산정합니다.",
-      icon: <Brain className="h-5 w-5" />,
-    },
-    {
-      number: "03",
-      title: "대응 검토",
-      description: "법령과 사고 사례를 기반으로 한 최적의 안전 대응 방안을 제시합니다.",
-      icon: <ShieldCheck className="h-5 w-5" />,
-    },
-    {
-      number: "04",
-      title: "현장 조치",
-      description: "결과를 현장에 전달하고 조치 완료 여부를 확인하며 사후 관리를 지원합니다.",
-      icon: <CheckCircle className="h-5 w-5" />,
-    },
-  ];
+
+  React.useEffect(() => {
+    if (activeStep) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [activeStep]);
 
   return (
-    <section ref={sectionRef} className="reveal container-page py-4">
-      <div className="mb-4 text-center">
-        <h2 className="font-display relative inline-block pb-2 text-lg font-semibold tracking-tight text-foreground md:text-xl">
-          Safety Workflow
-          <span className="absolute bottom-0 left-1/2 h-0.5 w-14 -translate-x-1/2 rounded-full bg-primary" />
-        </h2>
-        <p className="mx-auto mt-2 max-w-xl text-[13px] leading-relaxed text-muted-foreground">
-          AI가 현장 위험을 탐지부터 조치까지 연결하는 4단계 프로세스
-        </p>
-      </div>
+    <>
+      <section ref={sectionRef} className="reveal container-page py-4">
+        <div className="mb-4 text-center">
+          <h2 className="font-display relative inline-block pb-2 text-lg font-semibold tracking-tight text-foreground md:text-xl">
+            Safety Workflow
+            <span className="absolute bottom-0 left-1/2 h-0.5 w-14 -translate-x-1/2 rounded-full bg-primary" />
+          </h2>
+          <p className="mx-auto mt-2 max-w-xl text-[13px] leading-relaxed text-muted-foreground">
+            AI가 현장 위험을 탐지부터 조치까지 연결하는 4단계 프로세스
+          </p>
+        </div>
 
-      <div className="relative grid grid-cols-1 gap-3 md:grid-cols-4">
-        {/* desktop connecting line */}
-        <div className="pointer-events-none absolute top-8 left-0 right-0 hidden h-px md:block bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
-        {steps.map((step, idx) => (
-          <div key={step.number} className="reveal relative pt-7" style={{ transitionDelay: `${idx * 100}ms` }}>
-            {/* step number badge */}
-            <div className="absolute left-1/2 top-0 z-10 -translate-x-1/2">
-              <div className="flex h-6 w-6 items-center justify-center rounded-full border border-primary/50 bg-[oklch(0.145_0_0)] text-[10px] font-bold text-primary shadow-[0_0_12px_-3px_oklch(0.55_0.23_29/0.5)]">
-                {step.number}
+        <div className="relative grid grid-cols-1 gap-3 md:grid-cols-4">
+          {/* desktop connecting line */}
+          <div className="pointer-events-none absolute top-8 left-0 right-0 hidden h-px md:block bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
+          {workflowSteps.map((step, idx) => (
+            <div key={step.number} className="reveal relative pt-7" style={{ transitionDelay: `${idx * 100}ms` }}>
+              {/* step number badge */}
+              <div className="absolute left-1/2 top-0 z-10 -translate-x-1/2">
+                <div className="flex h-6 w-6 items-center justify-center rounded-full border border-primary/50 bg-[oklch(0.145_0_0)] text-[10px] font-bold text-primary shadow-[0_0_12px_-3px_oklch(0.55_0.23_29/0.5)]">
+                  {step.number}
+                </div>
+              </div>
+
+              <div
+                role="button"
+                tabIndex={0}
+                onClick={() => setActiveStep(step.number)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    setActiveStep(step.number);
+                  }
+                }}
+                className="group relative flex h-full cursor-pointer flex-col items-center gap-3 overflow-hidden rounded-2xl border border-white/[0.09] bg-[oklch(0.185_0_0)] p-3.5 text-center shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05),0_2px_10px_-6px_rgba(0,0,0,0.7)] transition-all duration-300 hover:-translate-y-1 hover:border-primary/45 hover:bg-[oklch(0.215_0_0)] hover:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.07),0_14px_32px_-16px_oklch(0.55_0.23_29/0.55)]"
+              >
+                <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/[0.06] to-transparent transition-transform duration-700 group-hover:translate-x-full" />
+                <div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl border border-primary/40 bg-primary/[0.07] text-primary transition-all duration-300 group-hover:scale-110 group-hover:border-primary/70 group-hover:shadow-[0_0_18px_-4px_oklch(0.55_0.23_29/0.7)]">
+                  {step.icon}
+                </div>
+                <div>
+                  <h3 className="font-display text-[13px] font-semibold text-foreground transition-colors group-hover:text-primary">
+                    {step.title}
+                  </h3>
+                  <p className="mt-1 text-[11px] leading-relaxed text-muted-foreground">{step.description}</p>
+                </div>
               </div>
             </div>
+          ))}
+        </div>
+      </section>
+      {activeStep && (
+        <WorkflowModal
+          step={workflowSteps.find((s) => s.number === activeStep)!}
+          onClose={() => setActiveStep(null)}
+        />
+      )}
+    </>
+  );
+}
 
-            <div className="group relative flex h-full flex-col items-center gap-3 overflow-hidden rounded-2xl border border-white/[0.09] bg-[oklch(0.185_0_0)] p-3.5 text-center shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05),0_2px_10px_-6px_rgba(0,0,0,0.7)] transition-all duration-300 hover:-translate-y-1 hover:border-primary/45 hover:bg-[oklch(0.215_0_0)] hover:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.07),0_14px_32px_-16px_oklch(0.55_0.23_29/0.55)]">
-              <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/[0.06] to-transparent transition-transform duration-700 group-hover:translate-x-full" />
-              <div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl border border-primary/40 bg-primary/[0.07] text-primary transition-all duration-300 group-hover:scale-110 group-hover:border-primary/70 group-hover:shadow-[0_0_18px_-4px_oklch(0.55_0.23_29/0.7)]">
-                {step.icon}
-              </div>
-              <div>
-                <h3 className="font-display text-[13px] font-semibold text-foreground transition-colors group-hover:text-primary">
-                  {step.title}
-                </h3>
-                <p className="mt-1 text-[11px] leading-relaxed text-muted-foreground">{step.description}</p>
-              </div>
+function WorkflowModal({ step, onClose }: { step: (typeof workflowSteps)[number]; onClose: () => void }) {
+  React.useEffect(() => {
+    const handle = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+    window.addEventListener("keydown", handle);
+    return () => window.removeEventListener("keydown", handle);
+  }, [onClose]);
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+      <div className="absolute inset-0 bg-black/70 backdrop-blur-sm transition-opacity" onClick={onClose} />
+      <div className="relative z-10 w-full max-w-2xl overflow-hidden rounded-2xl border border-white/[0.09] bg-[oklch(0.145_0_0)] shadow-[0_0_60px_-20px_rgba(0,0,0,0.8)]">
+        <div className="flex items-center justify-between border-b border-white/[0.09] px-6 py-4">
+          <div className="flex items-center gap-3">
+            <div className="grid h-8 w-8 place-items-center rounded-lg border border-primary/40 bg-primary/[0.07] text-primary">
+              {step.icon}
+            </div>
+            <div>
+              <span className="text-[10px] font-bold text-primary">STEP {step.number}</span>
+              <h3 className="font-display text-base font-semibold text-foreground">{step.title}</h3>
             </div>
           </div>
-        ))}
+          <button
+            onClick={onClose}
+            className="grid h-8 w-8 place-items-center rounded-lg text-muted-foreground transition-colors hover:bg-white/[0.06] hover:text-foreground"
+            aria-label="Close"
+          >
+            <X className="h-4 w-4" />
+          </button>
+        </div>
+        <div className="max-h-[70vh] overflow-y-auto p-6">
+          {step.number === "01" && <DetectionDemo />}
+          {step.number === "02" && <AnalysisDemo />}
+          {step.number === "03" && <ComplianceDemo />}
+          {step.number === "04" && <ActionDemo />}
+        </div>
       </div>
-    </section>
+    </div>
+  );
+}
+
+function DetectionDemo() {
+  return (
+    <div className="space-y-4">
+      <div className="rounded-xl border border-dashed border-white/[0.15] bg-[oklch(0.10_0_0)] p-6 text-center">
+        <Camera className="mx-auto h-8 w-8 text-primary/70" />
+        <p className="mt-2 text-sm font-medium text-foreground">현장 사진 업로드</p>
+        <p className="text-xs text-muted-foreground">드래그하거나 클릭하여 사진을 추가하세요</p>
+      </div>
+      <div className="rounded-xl border border-white/[0.09] bg-[oklch(0.185_0_0)] p-4">
+        <div className="flex items-center justify-between">
+          <span className="text-xs font-medium text-muted-foreground">탐지 위치</span>
+          <span className="text-xs text-foreground">반도체 팹 2층 가스 배관실</span>
+        </div>
+        <div className="mt-3 flex flex-wrap gap-2">
+          {["가스 누출", "배관", "밸브"].map((tag) => (
+            <span key={tag} className="rounded-full border border-primary/30 bg-primary/[0.07] px-2 py-1 text-[10px] font-medium text-primary">
+              {tag}
+            </span>
+          ))}
+        </div>
+        <div className="mt-4">
+          <div className="flex items-center justify-between text-xs">
+            <span className="text-muted-foreground">탐지 신뢰도</span>
+            <span className="font-semibold text-primary">94%</span>
+          </div>
+          <div className="mt-1.5 h-2 w-full overflow-hidden rounded-full bg-white/[0.06]">
+            <div className="h-full w-[94%] rounded-full bg-primary" />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function AnalysisDemo() {
+  return (
+    <div className="space-y-4">
+      <div className="grid grid-cols-3 gap-3">
+        <div className="rounded-xl border border-white/[0.09] bg-[oklch(0.185_0_0)] p-3 text-center">
+          <div className="text-[10px] text-muted-foreground">위험 등급</div>
+          <div className="mt-1 font-display text-lg font-bold text-primary">High</div>
+        </div>
+        <div className="rounded-xl border border-white/[0.09] bg-[oklch(0.185_0_0)] p-3 text-center">
+          <div className="text-[10px] text-muted-foreground">사고 가능성</div>
+          <div className="mt-1 font-display text-lg font-bold text-foreground">82%</div>
+        </div>
+        <div className="rounded-xl border border-white/[0.09] bg-[oklch(0.185_0_0)] p-3 text-center">
+          <div className="text-[10px] text-muted-foreground">권고 시간</div>
+          <div className="mt-1 font-display text-lg font-bold text-foreground">즉시</div>
+        </div>
+      </div>
+      <div className="rounded-xl border border-white/[0.09] bg-[oklch(0.185_0_0)] p-4">
+        <h4 className="text-sm font-semibold text-foreground">예상 원인</h4>
+        <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+          가스 밸브 패킹 마모로 인한 누출. 주변 환기량 부족으로 가스 농도 상승 가능.
+        </p>
+        <h4 className="mt-4 text-sm font-semibold text-foreground">권장 조치</h4>
+        <ul className="mt-1 space-y-1 text-xs text-muted-foreground">
+          <li className="flex items-start gap-2">
+            <span className="text-primary">•</span>밸브 잠금 및 인터록 장치 작동
+          </li>
+          <li className="flex items-start gap-2">
+            <span className="text-primary">•</span>현장 인력 대피 및 통풍 시스템 가동
+          </li>
+          <li className="flex items-start gap-2">
+            <span className="text-primary">•</span>유지보수 팀 긴급 출동 요청
+          </li>
+        </ul>
+      </div>
+    </div>
+  );
+}
+
+function ComplianceDemo() {
+  return (
+    <div className="space-y-4">
+      <div className="rounded-xl border border-white/[0.09] bg-[oklch(0.185_0_0)] p-4">
+        <div className="flex items-center gap-2">
+          <BookOpen className="h-4 w-4 text-primary" />
+          <h4 className="text-sm font-semibold text-foreground">관련 법령 조항</h4>
+        </div>
+        <div className="mt-3 space-y-2">
+          <div className="rounded-lg bg-[oklch(0.10_0_0)] p-3">
+            <div className="text-xs font-semibold text-foreground">산업안전보건기준에 관한 규칙</div>
+            <div className="text-[10px] text-muted-foreground">제 423조 (가스 누출 감지 및 경보 장치)</div>
+          </div>
+          <div className="rounded-lg bg-[oklch(0.10_0_0)] p-3">
+            <div className="text-xs font-semibold text-foreground">화재예방, 소방시설 설치·유지 및 안전관리에 관한 법률</div>
+            <div className="text-[10px] text-muted-foreground">제 10조 (위험물시설의 안전관리)</div>
+          </div>
+        </div>
+      </div>
+      <div className="rounded-xl border border-white/[0.09] bg-[oklch(0.185_0_0)] p-4">
+        <h4 className="text-sm font-semibold text-foreground">유사 사고 사례</h4>
+        <div className="mt-3 space-y-2">
+          {[
+            { title: "2022년 A사 가스 누출 사고", desc: "밸브 패킹 교체 지연으로 누출 발생, 2시간 후 인터록 작동" },
+            { title: "2021년 B사 반도체 팹 환기실패", desc: "환기 시스템 정지로 가스 농도 상승, 경보 후 대피" },
+          ].map((c) => (
+            <div key={c.title} className="rounded-lg bg-[oklch(0.10_0_0)] p-3">
+              <div className="text-xs font-semibold text-foreground">{c.title}</div>
+              <div className="text-[10px] text-muted-foreground">{c.desc}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ActionDemo() {
+  const [checked, setChecked] = React.useState([true, true, false, false]);
+  const toggle = (i: number) => {
+    const next = [...checked];
+    next[i] = !next[i];
+    setChecked(next);
+  };
+
+  return (
+    <div className="space-y-4">
+      <div className="rounded-xl border border-white/[0.09] bg-[oklch(0.185_0_0)] p-4">
+        <h4 className="text-sm font-semibold text-foreground">현장 조치 체크리스트</h4>
+        <div className="mt-3 space-y-2">
+          {["밸브 잠금 및 인터록 작동 확인", "작업자 대피 및 구역 통제", "통풍 시스템 가동 및 가스 농도 측정", "유지보수 완료 후 복구 확인"].map((item, i) => (
+            <button
+              key={item}
+              onClick={() => toggle(i)}
+              className="flex w-full items-center gap-3 rounded-lg bg-[oklch(0.10_0_0)] p-3 text-left transition-colors hover:bg-[oklch(0.12_0_0)]"
+            >
+              <div
+                className={`grid h-4 w-4 place-items-center rounded border ${checked[i] ? "border-primary bg-primary text-primary-foreground" : "border-white/20 bg-transparent"}`}
+              >
+                {checked[i] && <CheckCircle className="h-3 w-3" />}
+              </div>
+              <span className={`text-xs ${checked[i] ? "text-foreground line-through opacity-60" : "text-foreground"}`}>{item}</span>
+            </button>
+          ))}
+        </div>
+      </div>
+      <div className="flex items-center justify-between rounded-xl border border-white/[0.09] bg-[oklch(0.185_0_0)] p-4">
+        <div>
+          <div className="text-xs font-semibold text-foreground">조치 진행률</div>
+          <div className="text-[10px] text-muted-foreground">
+            {checked.filter(Boolean).length} / {checked.length} 항목 완료
+          </div>
+        </div>
+        <div className="text-lg font-bold text-primary">{Math.round((checked.filter(Boolean).length / checked.length) * 100)}%</div>
+      </div>
+    </div>
   );
 }
 
@@ -278,32 +504,32 @@ function InsightCard({ i, idx = 0 }: { i: (typeof insights)[number]; idx?: numbe
         <article className="relative flex h-full flex-col gap-2.5 overflow-hidden rounded-2xl border border-white/[0.09] bg-[oklch(0.185_0_0)] p-2 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05),0_2px_10px_-6px_rgba(0,0,0,0.7)] transition-all duration-300 hover:-translate-y-1 hover:border-primary/45 hover:bg-[oklch(0.215_0_0)] hover:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.07),0_14px_32px_-16px_oklch(0.55_0.23_29/0.55)] md:flex-row">
           <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/[0.06] to-transparent transition-transform duration-700 group-hover:translate-x-full" />
 
-        <div className="relative aspect-[16/10] w-full shrink-0 overflow-hidden rounded-lg md:aspect-auto md:h-[64px] md:w-[88px] md:self-center">
-          <img
-            src={i.image}
-            alt={i.title}
-            loading="lazy"
-            width={400}
-            height={240}
-            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-          />
-        </div>
-        <div className="flex flex-1 flex-col justify-between py-1 pr-1">
-          <div>
-            <span className="text-[10px] font-bold uppercase tracking-widest text-primary">{i.category}</span>
-            <h4 className="mt-1 line-clamp-2 text-[13px] font-semibold leading-snug tracking-tight text-foreground">
-              {i.title}
-            </h4>
-            <p className="mt-1 line-clamp-2 text-[11px] leading-relaxed text-muted-foreground">{i.excerpt}</p>
+          <div className="relative aspect-[16/10] w-full shrink-0 overflow-hidden rounded-lg md:aspect-auto md:h-[64px] md:w-[88px] md:self-center">
+            <img
+              src={i.image}
+              alt={i.title}
+              loading="lazy"
+              width={400}
+              height={240}
+              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+            />
           </div>
-          <div className="mt-2 flex items-center justify-between text-[10px] text-muted-foreground">
-            <span>
-              {i.date} <span className="px-1.5 opacity-40">|</span> {i.readTime}
-            </span>
+          <div className="flex flex-1 flex-col justify-between py-1 pr-1">
+            <div>
+              <span className="text-[10px] font-bold uppercase tracking-widest text-primary">{i.category}</span>
+              <h4 className="mt-1 line-clamp-2 text-[13px] font-semibold leading-snug tracking-tight text-foreground">
+                {i.title}
+              </h4>
+              <p className="mt-1 line-clamp-2 text-[11px] leading-relaxed text-muted-foreground">{i.excerpt}</p>
+            </div>
+            <div className="mt-2 flex items-center justify-between text-[10px] text-muted-foreground">
+              <span>
+                {i.date} <span className="px-1.5 opacity-40">|</span> {i.readTime}
+              </span>
 
-            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1 group-hover:text-primary" />
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1 group-hover:text-primary" />
+            </div>
           </div>
-        </div>
         </article>
       </Link>
     </div>
