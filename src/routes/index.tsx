@@ -51,8 +51,8 @@ function HomePage() {
         <HeroAnimation />
 
         {/* 좌→우 다크 그라데이션 */}
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[oklch(0.08_0.02_20/0.98)] via-[oklch(0.08_0.02_20/0.78)] to-[oklch(0.08_0.02_20/0.15)]" />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[oklch(0.08_0.02_20/0.7)] via-transparent to-transparent" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[oklch(0.08_0.02_20/0.98)] from-[8%] via-[oklch(0.08_0.02_20/0.55)] via-[38%] to-transparent to-[62%]" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[oklch(0.08_0.02_20/0.45)] via-transparent to-transparent" />
 
 
         <div className="container-page relative z-10 grid min-h-[330px] items-center gap-10 py-10 md:min-h-[360px] md:grid-cols-[1fr_1.15fr] md:py-12">
@@ -81,7 +81,7 @@ function HomePage() {
           </div>
 
           {/* 통계 카드 */}
-          <div className="flex justify-start gap-4">
+          <div className="flex items-center justify-start gap-3">
             <StatCard
               number="04"
               label="Active Projects"
@@ -99,7 +99,7 @@ function HomePage() {
 
       <main>
         {/* PROJECT STRIP — horizontal cards */}
-        <section className="border-b border-border/50 bg-[oklch(0.09_0.008_20)]">
+        <section className="border-y border-border/60 bg-[oklch(0.09_0.008_20)]">
           <div className="container-page py-6">
             <div className="grid grid-cols-1 items-stretch gap-4 md:grid-cols-2 lg:grid-cols-4">
               {projects.map((p, idx) => (
@@ -205,15 +205,15 @@ function StatCard({
   icon: React.ReactNode;
 }) {
   return (
-    <div className="glass-card min-w-[150px] rounded-2xl p-5 lg:min-w-[170px]">
-      <div className="flex items-start justify-between">
+    <div className="min-w-[150px] rounded-xl border border-white/10 bg-[oklch(0.13_0.005_20/0.82)] p-5 backdrop-blur-sm lg:min-w-[170px]">
+      <div className="flex items-start justify-between gap-4">
         <div className="font-display text-4xl font-bold leading-none tracking-tight text-white">
           {number}
         </div>
         <div className="text-primary">{icon}</div>
       </div>
-      <div className="mt-3 text-sm font-medium text-white/80">{label}</div>
-      <div className="mt-3 h-0.5 w-10 rounded-full bg-primary" />
+      <div className="mt-3 text-sm font-medium text-white/75">{label}</div>
+      <div className="mt-4 h-0.5 w-10 rounded-full bg-primary" />
     </div>
   );
 }
