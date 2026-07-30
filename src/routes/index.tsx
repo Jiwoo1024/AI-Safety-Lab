@@ -59,7 +59,7 @@ function HomePage() {
           DRAM
         </div>
 
-        <div className="container-page relative z-10 grid min-h-[420px] items-center gap-10 py-14 md:min-h-[480px] md:grid-cols-[1fr_auto] md:py-16">
+        <div className="container-page relative z-10 grid min-h-[330px] items-center gap-10 py-10 md:min-h-[360px] md:grid-cols-[1fr_auto] md:py-12">
           {/* 좌측 카피 */}
           <div className="max-w-xl">
             <h1 className="font-display text-4xl font-bold leading-[1.2] tracking-tight text-white md:text-5xl">
@@ -103,13 +103,14 @@ function HomePage() {
         {/* PROJECT STRIP — horizontal cards */}
         <section className="border-b border-border/50 bg-[oklch(0.09_0.008_20)]">
           <div className="container-page py-6">
-            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
+            <div className="grid grid-cols-1 items-stretch gap-4 md:grid-cols-2 lg:grid-cols-4">
               {projects.map((p, idx) => (
                 <ProjectCard key={p.slug} p={p} idx={idx} />
               ))}
             </div>
           </div>
         </section>
+
 
         {/* INSIGHTS PREVIEW */}
         <div className="container-page py-12 md:py-14">
@@ -150,12 +151,12 @@ const projectIcons: Record<string, React.ReactNode> = {
 
 function ProjectCard({ p, idx }: { p: (typeof projects)[number]; idx: number }) {
   const card = (
-    <div className="group flex items-center gap-4 rounded-xl border border-border/60 bg-[oklch(0.10_0.015_250)] p-5 transition-all hover:-translate-y-1 hover:border-primary/50 hover:bg-[oklch(0.11_0.015_250)]">
+    <div className="group flex h-full items-center gap-4 rounded-xl border border-border/60 bg-[oklch(0.10_0.015_250)] p-5 transition-all hover:-translate-y-1 hover:border-primary/50 hover:bg-[oklch(0.11_0.015_250)]">
       <div className="grid h-12 w-12 shrink-0 place-items-center rounded-lg border border-primary/50 text-primary transition-all group-hover:scale-110">
         {projectIcons[p.slug] ?? <Sparkles className="h-6 w-6" />}
       </div>
       <div className="min-w-0 flex-1">
-        <h3 className="font-display text-sm font-semibold text-foreground transition-colors group-hover:text-primary">
+        <h3 className="font-display truncate text-sm font-semibold text-foreground transition-colors group-hover:text-primary">
           {p.title}
         </h3>
         <p className="mt-1 line-clamp-2 text-xs leading-relaxed text-muted-foreground">
@@ -166,8 +167,9 @@ function ProjectCard({ p, idx }: { p: (typeof projects)[number]; idx: number }) 
     </div>
   );
 
-  const className = "block reveal is-visible";
+  const className = "block h-full reveal is-visible";
   const style = { transitionDelay: `${idx * 80}ms` };
+
 
   if (p.link) {
     return (
@@ -247,8 +249,9 @@ function InsightCard({ i }: { i: (typeof insights)[number] }) {
           </div>
           <div className="mt-4 flex items-center justify-between text-xs text-muted-foreground">
             <span>
-              {i.date} · {i.readTime}
+              {i.date} <span className="px-1 opacity-40">|</span> {i.readTime}
             </span>
+
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1 group-hover:text-primary" />
           </div>
         </div>
