@@ -1,8 +1,7 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { SiteHeader, SiteFooter } from "@/components/site-chrome";
 import { customGPTs } from "@/data/gpts";
-import { projects } from "@/data/projects";
-import { ArrowUpRight, Sparkles, Scale, Camera, HelpCircle, BookOpen, ArrowRight } from "lucide-react";
+import { ArrowUpRight, Sparkles } from "lucide-react";
 
 
 export const Route = createFileRoute("/projects/")({
