@@ -195,14 +195,24 @@ function StripCard({
   title,
   description,
   badge,
+  highlight = false,
 }: {
   icon: React.ReactNode;
   title: string;
   description: string;
   badge?: string;
+  highlight?: boolean;
 }) {
   return (
-    <div className="group relative flex h-full items-center gap-3 overflow-hidden rounded-2xl border border-white/[0.09] bg-[oklch(0.185_0_0)] p-3.5 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05),0_2px_10px_-6px_rgba(0,0,0,0.7)] transition-all duration-300 hover:-translate-y-1 hover:border-primary/45 hover:bg-[oklch(0.215_0_0)] hover:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.07),0_14px_32px_-16px_oklch(0.55_0.23_29/0.55)]">
+    <div
+      className={
+        "group relative flex h-full items-center gap-3 overflow-hidden rounded-2xl border p-3.5 transition-all duration-300 hover:-translate-y-1 hover:border-primary/45 hover:bg-[oklch(0.215_0_0)] hover:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.07),0_14px_32px_-16px_oklch(0.55_0.23_29/0.55)] " +
+        (highlight
+          ? "border-primary/30 bg-primary/[0.03] shadow-[0_0_20px_-10px_var(--primary)]"
+          : "border-white/[0.09] bg-[oklch(0.185_0_0)] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05),0_2px_10px_-6px_rgba(0,0,0,0.7)]")
+      }
+    >
+
       {/* hover sheen */}
       <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/[0.06] to-transparent transition-transform duration-700 group-hover:translate-x-full" />
       <div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl border border-primary/40 bg-primary/[0.07] text-primary transition-all duration-300 group-hover:scale-110 group-hover:border-primary/70 group-hover:shadow-[0_0_18px_-4px_oklch(0.55_0.23_29/0.7)]">
