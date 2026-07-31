@@ -132,11 +132,6 @@ function HomePage() {
   );
 }
 
-const aiToolsIcons: Record<string, React.ReactNode> = {
-  "safety-law-advisor": <Scale className="h-5 w-5" />,
-  "rca-assistant": <Brain className="h-5 w-5" />,
-};
-
 const vibeItems = [
   {
     slug: "photo-risk-assessment",
@@ -144,44 +139,41 @@ const vibeItems = [
     description: "현장 사진을 업로드하면 위험요인을 식별하고 위험성 등급과 개선조치를 제안하는 Vibe Coding 프로토타입.",
     icon: <Camera className="h-5 w-5" />,
     href: "https://hazard-sight-ai.lovable.app/",
-    external: true,
+    highlight: true,
   },
   {
     slug: "ai-hazop-assistant",
     title: "AI HAZOP Assistant",
-    description: "HAZOP 분석을 시가 지정하여 위험요소 식별과 권고를 더 빠르게.",
+    description: "HAZOP 분석을 지원하여 위험요소 식별과 권고사항 도출을 더 빠르게.",
     icon: <Scale className="h-5 w-5" />,
   },
   {
-    slug: "safety-quiz",
-    title: "Safety Quiz",
-    description: "재미있게 배우는 산업안전 퀴즈로 이해도와 안전의식을 높이세요.",
+    slug: "incident-rca-assistant",
+    title: "Incident RCA Assistant",
+    description: "사고 근본원인을 5 Why·Fishbone으로 구조화하고 재발방지대책까지 도출합니다.",
+    icon: <Brain className="h-5 w-5" />,
+  },
+  {
+    slug: "safety-learning-assistant",
+    title: "Safety Learning Assistant",
+    description: "산업안전 학습과 퀴즈로 현장 실무자의 이해도와 안전의식을 높여줍니다.",
     icon: <HelpCircle className="h-5 w-5" />,
   },
 ];
 
-function ToolCard({ gpt, idx }: { gpt: (typeof customGPTs)[number]; idx: number }) {
-  const ref = useReveal<HTMLDivElement>();
-  return (
-    <div ref={ref} className="reveal h-full" style={{ transitionDelay: `${idx * 90}ms` }}>
-      <a href={gpt.url} target="_blank" rel="noopener noreferrer" className="block h-full">
-        <StripCard icon={aiToolsIcons[gpt.id] ?? <Sparkles className="h-5 w-5" />} title={gpt.title} description={gpt.description} />
-      </a>
-    </div>
-  );
-}
-
 function VibeCard({ item, idx }: { item: (typeof vibeItems)[number]; idx: number }) {
   const ref = useReveal<HTMLDivElement>();
-  const isComingSoon = !item.href;
+  const isComingSoon = !("href" in item) || !item.href;
   const card = (
     <StripCard
       icon={item.icon}
       title={item.title}
       description={item.description}
       badge={isComingSoon ? "Coming soon" : undefined}
+      highlight={"highlight" in item ? item.highlight : false}
     />
   );
+
 
   return (
     <div ref={ref} className="reveal h-full" style={{ transitionDelay: `${idx * 90}ms` }}>
