@@ -4,7 +4,7 @@ import { SiteHeader, SiteFooter } from "@/components/site-chrome";
 
 
 import { insights } from "@/data/insights";
-import { Scale, Camera, HelpCircle, BookOpen, ArrowRight, Sparkles, TrendingUp, FileText, Brain, ShieldCheck, CheckCircle, Search, X } from "lucide-react";
+import { Scale, Camera, HelpCircle, BookOpen, ArrowRight, TrendingUp, FileText, Brain, ShieldCheck, CheckCircle, Search, X } from "lucide-react";
 import { HeroAnimation } from "@/components/hero-animation";
 import { useReveal } from "@/hooks/use-reveal";
 
