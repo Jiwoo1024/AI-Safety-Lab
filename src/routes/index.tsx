@@ -86,12 +86,12 @@ function HomePage() {
         <section className="border-y border-border/60 bg-[oklch(0.145_0_0)]">
           <div className="container-page py-3">
             <RevealSection>
-            <div className="mb-2.5">
-              <h2 className="relative inline-block pb-2 text-[10px] font-semibold uppercase tracking-widest text-white">
-                Key Projects
-                <span className="absolute bottom-0 left-0 h-0.5 w-10 rounded-full bg-primary" />
-              </h2>
-            </div>
+          <div className="mb-2.5">
+            <h2 className="font-display relative inline-block pb-2 text-sm font-semibold tracking-tight text-white md:text-base">
+              Key Projects
+              <span className="absolute bottom-0 left-0 h-0.5 w-10 rounded-full bg-primary" />
+            </h2>
+          </div>
               <div className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-4 md:gap-4">
                 {vibeItems.map((item, idx) => (
                   <VibeCard key={item.slug} item={item} idx={idx} />
@@ -106,7 +106,7 @@ function HomePage() {
         <div className="container-page py-3.5">
           <RevealSection>
             <div className="flex items-end justify-between gap-6">
-              <h2 className="font-display relative pb-2 text-lg font-semibold tracking-tight text-foreground md:text-xl">
+              <h2 className="font-display relative pb-2 text-sm font-semibold tracking-tight text-foreground md:text-base">
                 Safety Insights
                 <span className="absolute bottom-0 left-0 h-0.5 w-14 rounded-full bg-primary" />
               </h2>
@@ -208,7 +208,7 @@ function StripCard({
       className={
         "group relative flex h-full items-center gap-3 overflow-hidden rounded-2xl border p-3.5 transition-all duration-300 hover:-translate-y-1 hover:border-primary/45 hover:bg-[oklch(0.215_0_0)] hover:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.07),0_14px_32px_-16px_oklch(0.55_0.23_29/0.55)] " +
         (highlight
-          ? "border-primary/30 bg-primary/[0.03] shadow-[0_0_20px_-10px_var(--primary)]"
+          ? "border-primary/30 bg-primary/[0.03] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05),0_2px_10px_-6px_rgba(0,0,0,0.7)]"
           : "border-white/[0.09] bg-[oklch(0.185_0_0)] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05),0_2px_10px_-6px_rgba(0,0,0,0.7)]")
       }
     >
