@@ -202,7 +202,7 @@ function VibeCard({ item, idx }: { item: (typeof vibeItems)[number]; idx: number
           {card}
         </div>
       ) : (
-        <a href={item.href} target={_blank" rel="noopener noreferrer" className="block h-full">
+        <a href={item.href} target="_blank" rel="noopener noreferrer" className="block h-full">
           {card}
         </a>
       )}
