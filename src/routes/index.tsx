@@ -106,7 +106,7 @@ function HomePage() {
         <div className="container-page py-3.5">
           <RevealSection>
             <div className="flex items-end justify-between gap-6">
-              <h2 className="font-display relative pb-2 text-lg font-semibold tracking-tight text-foreground md:text-xl">
+              <h2 className="font-display relative pb-2 text-sm font-semibold tracking-tight text-foreground md:text-base">
                 Safety Insights
                 <span className="absolute bottom-0 left-0 h-0.5 w-14 rounded-full bg-primary" />
               </h2>
