@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { Link, useRouter } from "@tanstack/react-router";
 import { useState } from "react";
 import logoAsset from "@/assets/logo.png.asset.json";
 
@@ -13,6 +13,8 @@ const nav = [
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const { state } = useRouter();
+  const pathname = state.location.pathname;
 
   return (
     <>
@@ -26,21 +28,24 @@ export function SiteHeader() {
             />
           </Link>
           <nav className="hidden items-center gap-7 md:flex">
-
-            {nav.map((n) => (
-              <Link
-                key={n.to}
-                to={n.to}
-                activeOptions={{ exact: n.to === "/" }}
-                className="relative py-5 text-sm text-foreground/70 transition-colors hover:text-foreground"
-                activeProps={{
-                  className:
-                    "text-foreground font-medium after:absolute after:bottom-3 after:left-0 after:h-0.5 after:w-full after:rounded-full after:bg-primary",
-                }}
-              >
-                {n.label}
-              </Link>
-            ))}
+            {nav.map((n) => {
+              const isActive = n.to === pathname;
+              return (
+                <Link
+                  key={n.to}
+                  to={n.to}
+                  aria-current={isActive ? "page" : undefined}
+                  className={
+                    "relative py-5 text-sm transition-colors hover:text-foreground " +
+                    (isActive
+                      ? "text-foreground font-medium after:absolute after:bottom-3 after:left-0 after:h-0.5 after:w-full after:rounded-full after:bg-primary after:content-['']"
+                      : "text-foreground/70")
+                  }
+                >
+                  {n.label}
+                </Link>
+              );
+            })}
           </nav>
           <div className="hidden md:block md:w-24" />
 
