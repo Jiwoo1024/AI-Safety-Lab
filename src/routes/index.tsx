@@ -82,14 +82,35 @@ function HomePage() {
         {/* SAFETY WORKFLOW — hidden for now */}
         {/* <WorkflowSection /> */}
 
-        {/* PROJECT STRIP — horizontal cards */}
+        {/* AI TOOLS STRIP */}
         <section className="border-y border-border/60 bg-[oklch(0.145_0_0)]">
           <div className="container-page py-3">
-            <div className="grid grid-cols-1 items-stretch gap-4 md:grid-cols-2 lg:grid-cols-4">
-              {projects.map((p, idx) => (
-                <ProjectCard key={p.slug} p={p} idx={idx} />
-              ))}
-            </div>
+            <RevealSection>
+              <div className="mb-2.5">
+                <span className="text-[10px] font-semibold uppercase tracking-widest text-primary">AI Tools</span>
+              </div>
+              <div className="grid grid-cols-1 gap-3 md:grid-cols-[repeat(auto-fit,minmax(240px,1fr))] md:gap-4">
+                {customGPTs.map((gpt, idx) => (
+                  <ToolCard key={gpt.id} gpt={gpt} idx={idx} />
+                ))}
+              </div>
+            </RevealSection>
+          </div>
+        </section>
+
+        {/* VIBE CODING STRIP */}
+        <section className="border-b border-border/60 bg-[oklch(0.145_0_0)]">
+          <div className="container-page py-3">
+            <RevealSection>
+              <div className="mb-2.5">
+                <span className="text-[10px] font-semibold uppercase tracking-widest text-primary">Vibe Coding</span>
+              </div>
+              <div className="grid grid-cols-1 gap-3 md:grid-cols-3 md:gap-4">
+                {vibeItems.map((item, idx) => (
+                  <VibeCard key={item.slug} item={item} idx={idx} />
+                ))}
+              </div>
+            </RevealSection>
           </div>
         </section>
 
