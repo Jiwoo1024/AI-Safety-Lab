@@ -144,12 +144,107 @@ function HomePage() {
   );
 }
 
-const projectIcons: Record<string, React.ReactNode> = {
-  "ai-hazop-assistant": <Scale className="h-5 w-5" />,
-  "ai-photo-risk-assessment": <Camera className="h-5 w-5" />,
-  "safety-quiz": <HelpCircle className="h-5 w-5" />,
-  "safety-insight-library": <BookOpen className="h-5 w-5" />,
+const aiToolsIcons: Record<string, React.ReactNode> = {
+  "safety-law-advisor": <Scale className="h-5 w-5" />,
+  "rca-assistant": <Brain className="h-5 w-5" />,
 };
+
+const vibeItems = [
+  {
+    slug: "photo-risk-assessment",
+    title: "Photo Risk Assessment",
+    description: "현장 사진을 업로드하면 위험요인을 식별하고 위험성 등급과 개선조치를 제안하는 Vibe Coding 프로토타입.",
+    icon: <Camera className="h-5 w-5" />,
+    href: "https://hazard-sight-ai.lovable.app/",
+    external: true,
+  },
+  {
+    slug: "ai-hazop-assistant",
+    title: "AI HAZOP Assistant",
+    description: "HAZOP 분석을 시가 지정하여 위험요소 식별과 권고를 더 빠르게.",
+    icon: <Scale className="h-5 w-5" />,
+  },
+  {
+    slug: "safety-quiz",
+    title: "Safety Quiz",
+    description: "재미있게 배우는 산업안전 퀴즈로 이해도와 안전의식을 높이세요.",
+    icon: <HelpCircle className="h-5 w-5" />,
+  },
+];
+
+function ToolCard({ gpt, idx }: { gpt: (typeof customGPTs)[number]; idx: number }) {
+  const ref = useReveal<HTMLDivElement>();
+  return (
+    <div ref={ref} className="reveal h-full" style={{ transitionDelay: `${idx * 90}ms` }}>
+      <a href={gpt.url} target="_blank" rel="noopener noreferrer" className="block h-full">
+        <StripCard icon={aiToolsIcons[gpt.id] ?? <Sparkles className="h-5 w-5" />} title={gpt.title} description={gpt.description} />
+      </a>
+    </div>
+  );
+}
+
+function VibeCard({ item, idx }: { item: (typeof vibeItems)[number]; idx: number }) {
+  const ref = useReveal<HTMLDivElement>();
+  const isComingSoon = !item.href;
+  const card = (
+    <StripCard
+      icon={item.icon}
+      title={item.title}
+      description={item.description}
+      badge={isComingSoon ? "Coming soon" : undefined}
+    />
+  );
+
+  return (
+    <div ref={ref} className="reveal h-full" style={{ transitionDelay: `${idx * 90}ms` }}>
+      {isComingSoon ? (
+        <div className="block h-full cursor-default" aria-disabled="true">
+          {card}
+        </div>
+      ) : (
+        <a href={item.href} target={_blank" rel="noopener noreferrer" className="block h-full">
+          {card}
+        </a>
+      )}
+    </div>
+  );
+}
+
+function StripCard({
+  icon,
+  title,
+  description,
+  badge,
+}: {
+  icon: React.ReactNode;
+  title: string;
+  description: string;
+  badge?: string;
+}) {
+  return (
+    <div className="group relative flex h-full items-center gap-3 overflow-hidden rounded-2xl border border-white/[0.09] bg-[oklch(0.185_0_0)] p-3.5 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05),0_2px_10px_-6px_rgba(0,0,0,0.7)] transition-all duration-300 hover:-translate-y-1 hover:border-primary/45 hover:bg-[oklch(0.215_0_0)] hover:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.07),0_14px_32px_-16px_oklch(0.55_0.23_29/0.55)]">
+      {/* hover sheen */}
+      <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/[0.06] to-transparent transition-transform duration-700 group-hover:translate-x-full" />
+      <div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl border border-primary/40 bg-primary/[0.07] text-primary transition-all duration-300 group-hover:scale-110 group-hover:border-primary/70 group-hover:shadow-[0_0_18px_-4px_oklch(0.55_0.23_29/0.7)]">
+        {icon}
+      </div>
+      <div className="min-w-0 flex-1">
+        <div className="flex items-center gap-2">
+          <h3 className="font-display text-[13px] font-semibold leading-snug text-foreground transition-colors group-hover:text-primary">
+            {title}
+          </h3>
+          {badge && (
+            <span className="rounded-full border border-border bg-secondary px-2 py-0.5 text-[10px] font-medium text-muted-foreground">
+              {badge}
+            </span>
+          )}
+        </div>
+        <p className="mt-0.5 line-clamp-2 text-[11px] leading-relaxed text-muted-foreground">{description}</p>
+      </div>
+      <ArrowRight className="h-4 w-4 shrink-0 text-muted-foreground transition-all duration-300 group-hover:translate-x-1 group-hover:text-primary" />
+    </div>
+  );
+}
 
 function ProjectCard({ p, idx }: { p: (typeof projects)[number]; idx: number }) {
   const ref = useReveal<HTMLDivElement>();
@@ -187,6 +282,7 @@ function ProjectCard({ p, idx }: { p: (typeof projects)[number]; idx: number }) 
     </div>
   );
 }
+
 
 function StatCard({
   number,
