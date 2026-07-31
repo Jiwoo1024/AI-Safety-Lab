@@ -35,7 +35,7 @@ export function SiteHeader() {
                 className="relative py-5 text-sm text-foreground/70 transition-colors hover:text-foreground"
                 activeProps={{
                   className:
-                    "text-foreground font-medium after:absolute after:bottom-3 after:left-0 after:h-0.5 after:w-full after:rounded-full after:bg-primary",
+                    "text-foreground font-medium relative after:absolute after:bottom-3 after:left-0 after:h-0.5 after:w-full after:rounded-full after:bg-primary after:content-['']",
                 }}
               >
                 {n.label}
