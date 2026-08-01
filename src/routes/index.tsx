@@ -33,9 +33,18 @@ export const Route = createFileRoute("/")({
 });
 
 function HomePage() {
+  const [open, setOpen] = React.useState(false);
+  const [selectedSlug, setSelectedSlug] = React.useState<string | null>(null);
+  const openDetail = React.useCallback((slug: string) => {
+    setSelectedSlug(slug);
+    setOpen(true);
+  }, []);
+  const selectedProject = selectedSlug ? getProject(selectedSlug) : undefined;
+
   return (
     <div className="min-h-screen bg-background">
       <SiteHeader />
+
 
       {/* HERO — full-width bleed */}
       <section className="relative isolate overflow-hidden">
