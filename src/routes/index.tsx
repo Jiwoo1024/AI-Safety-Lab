@@ -4,6 +4,9 @@ import { SiteHeader, SiteFooter } from "@/components/site-chrome";
 
 
 import { insights } from "@/data/insights";
+import { getProject } from "@/data/projects";
+import { ProjectDetailContent } from "@/components/project-detail-content";
+import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Scale, Camera, HelpCircle, BookOpen, ArrowRight, TrendingUp, FileText, Brain, ShieldCheck, CheckCircle, Search, X } from "lucide-react";
 import { HeroAnimation } from "@/components/hero-animation";
 import { useReveal } from "@/hooks/use-reveal";
@@ -33,9 +36,18 @@ export const Route = createFileRoute("/")({
 });
 
 function HomePage() {
+  const [open, setOpen] = React.useState(false);
+  const [selectedSlug, setSelectedSlug] = React.useState<string | null>(null);
+  const openDetail = React.useCallback((slug: string) => {
+    setSelectedSlug(slug);
+    setOpen(true);
+  }, []);
+  const selectedProject = selectedSlug ? getProject(selectedSlug) : undefined;
+
   return (
     <div className="min-h-screen bg-background">
       <SiteHeader />
+
 
       {/* HERO — full-width bleed */}
       <section className="relative isolate overflow-hidden">
@@ -94,7 +106,7 @@ function HomePage() {
           </div>
               <div className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-4 md:gap-4">
                 {vibeItems.map((item, idx) => (
-                  <VibeCard key={item.slug} item={item} idx={idx} />
+                  <VibeCard key={item.slug} item={item} idx={idx} onDetail={openDetail} />
                 ))}
               </div>
             </RevealSection>
@@ -128,13 +140,40 @@ function HomePage() {
       </main>
 
       <SiteFooter />
+
+      <Dialog open={open} onOpenChange={setOpen}>
+        <DialogContent className="max-h-[85vh] max-w-3xl overflow-y-auto border-white/10 bg-[oklch(0.165_0.02_265)] text-foreground">
+          {selectedProject ? (
+            <>
+              <DialogTitle className="sr-only">{selectedProject.title}</DialogTitle>
+              <DialogDescription className="sr-only">{selectedProject.description}</DialogDescription>
+              <div className="-mt-1 mb-2">
+                <Link
+                  to="/projects/$slug"
+                  params={{ slug: selectedProject.slug }}
+                  className="text-[11px] font-medium text-muted-foreground underline underline-offset-4 transition-colors hover:text-primary"
+                >
+                  전체 화면으로 보기 →
+                </Link>
+              </div>
+              <ProjectDetailContent project={selectedProject} />
+            </>
+          ) : (
+            <>
+              <DialogTitle>상세 정보</DialogTitle>
+              <DialogDescription>준비 중인 프로젝트입니다.</DialogDescription>
+            </>
+          )}
+        </DialogContent>
+      </Dialog>
+
     </div>
   );
 }
 
 const vibeItems = [
   {
-    slug: "photo-risk-assessment",
+    slug: "ai-photo-risk-assessment",
     title: "Photo Risk Assessment",
     description: "현장 사진을 업로드하면 위험요인을 식별하고 위험성 등급과 개선조치를 제안하는 Vibe Coding 프로토타입.",
     icon: <Camera className="h-5 w-5" />,
@@ -161,9 +200,18 @@ const vibeItems = [
   },
 ];
 
-function VibeCard({ item, idx }: { item: (typeof vibeItems)[number]; idx: number }) {
+function VibeCard({
+  item,
+  idx,
+  onDetail,
+}: {
+  item: (typeof vibeItems)[number];
+  idx: number;
+  onDetail: (slug: string) => void;
+}) {
   const ref = useReveal<HTMLDivElement>();
-  const isComingSoon = !("href" in item) || !item.href;
+  const href = "href" in item ? item.href : undefined;
+  const isComingSoon = !href;
   const card = (
     <StripCard
       icon={item.icon}
@@ -171,18 +219,34 @@ function VibeCard({ item, idx }: { item: (typeof vibeItems)[number]; idx: number
       description={item.description}
       badge={isComingSoon ? "Coming soon" : undefined}
       highlight={"highlight" in item ? item.highlight : false}
+      hasApp={!isComingSoon}
+      onDetail={(e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        onDetail(item.slug);
+      }}
     />
   );
-
 
   return (
     <div ref={ref} className="reveal h-full" style={{ transitionDelay: `${idx * 90}ms` }}>
       {isComingSoon ? (
-        <div className="block h-full cursor-default" aria-disabled="true">
+        <div
+          role="button"
+          tabIndex={0}
+          onClick={() => onDetail(item.slug)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" || e.key === " ") {
+              e.preventDefault();
+              onDetail(item.slug);
+            }
+          }}
+          className="block h-full cursor-pointer text-left"
+        >
           {card}
         </div>
       ) : (
-        <a href={item.href} target="_blank" rel="noopener noreferrer" className="block h-full">
+        <a href={href} target="_blank" rel="noopener noreferrer" className="block h-full">
           {card}
         </a>
       )}
@@ -190,18 +254,23 @@ function VibeCard({ item, idx }: { item: (typeof vibeItems)[number]; idx: number
   );
 }
 
+
 function StripCard({
   icon,
   title,
   description,
   badge,
   highlight = false,
+  hasApp = false,
+  onDetail,
 }: {
   icon: React.ReactNode;
   title: string;
   description: string;
   badge?: string;
   highlight?: boolean;
+  hasApp?: boolean;
+  onDetail?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }) {
   return (
     <div
@@ -230,6 +299,20 @@ function StripCard({
           )}
         </div>
         <p className="mt-0.5 line-clamp-2 text-[11px] leading-relaxed text-muted-foreground">{description}</p>
+        <div className="mt-2 flex flex-wrap items-center gap-2">
+          {hasApp && (
+            <span className="inline-flex items-center gap-1 rounded-full bg-primary/15 px-2.5 py-1 text-[10px] font-semibold text-primary">
+              바로 사용하기 →
+            </span>
+          )}
+          <button
+            type="button"
+            onClick={onDetail}
+            className="inline-flex items-center rounded-full border border-white/15 bg-white/[0.04] px-2.5 py-1 text-[10px] font-medium text-muted-foreground transition-colors hover:border-primary/50 hover:text-primary"
+          >
+            상세보기
+          </button>
+        </div>
       </div>
       <ArrowRight className="h-4 w-4 shrink-0 text-muted-foreground transition-all duration-300 group-hover:translate-x-1 group-hover:text-primary" />
     </div>
