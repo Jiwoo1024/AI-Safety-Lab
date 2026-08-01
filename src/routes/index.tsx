@@ -170,9 +170,18 @@ const vibeItems = [
   },
 ];
 
-function VibeCard({ item, idx }: { item: (typeof vibeItems)[number]; idx: number }) {
+function VibeCard({
+  item,
+  idx,
+  onDetail,
+}: {
+  item: (typeof vibeItems)[number];
+  idx: number;
+  onDetail: (slug: string) => void;
+}) {
   const ref = useReveal<HTMLDivElement>();
-  const isComingSoon = !("href" in item) || !item.href;
+  const href = "href" in item ? item.href : undefined;
+  const isComingSoon = !href;
   const card = (
     <StripCard
       icon={item.icon}
@@ -180,24 +189,41 @@ function VibeCard({ item, idx }: { item: (typeof vibeItems)[number]; idx: number
       description={item.description}
       badge={isComingSoon ? "Coming soon" : undefined}
       highlight={"highlight" in item ? item.highlight : false}
+      hasApp={!isComingSoon}
+      onDetail={(e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        onDetail(item.slug);
+      }}
     />
   );
-
 
   return (
     <div ref={ref} className="reveal h-full" style={{ transitionDelay: `${idx * 90}ms` }}>
       {isComingSoon ? (
-        <div className="block h-full cursor-default" aria-disabled="true">
+        <div
+          role="button"
+          tabIndex={0}
+          onClick={() => onDetail(item.slug)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" || e.key === " ") {
+              e.preventDefault();
+              onDetail(item.slug);
+            }
+          }}
+          className="block h-full cursor-pointer text-left"
+        >
           {card}
         </div>
       ) : (
-        <a href={item.href} target="_blank" rel="noopener noreferrer" className="block h-full">
+        <a href={href} target="_blank" rel="noopener noreferrer" className="block h-full">
           {card}
         </a>
       )}
     </div>
   );
 }
+
 
 function StripCard({
   icon,
