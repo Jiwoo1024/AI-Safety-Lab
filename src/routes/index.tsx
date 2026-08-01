@@ -173,7 +173,7 @@ function HomePage() {
 
 const vibeItems = [
   {
-    slug: "photo-risk-assessment",
+    slug: "ai-photo-risk-assessment",
     title: "Photo Risk Assessment",
     description: "현장 사진을 업로드하면 위험요인을 식별하고 위험성 등급과 개선조치를 제안하는 Vibe Coding 프로토타입.",
     icon: <Camera className="h-5 w-5" />,
