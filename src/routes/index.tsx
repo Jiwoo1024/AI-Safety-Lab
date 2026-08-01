@@ -140,6 +140,33 @@ function HomePage() {
       </main>
 
       <SiteFooter />
+
+      <Dialog open={open} onOpenChange={setOpen}>
+        <DialogContent className="max-h-[85vh] max-w-3xl overflow-y-auto border-white/10 bg-[oklch(0.165_0.02_265)] text-foreground">
+          {selectedProject ? (
+            <>
+              <DialogTitle className="sr-only">{selectedProject.title}</DialogTitle>
+              <DialogDescription className="sr-only">{selectedProject.description}</DialogDescription>
+              <div className="-mt-1 mb-2">
+                <Link
+                  to="/projects/$slug"
+                  params={{ slug: selectedProject.slug }}
+                  className="text-[11px] font-medium text-muted-foreground underline underline-offset-4 transition-colors hover:text-primary"
+                >
+                  전체 화면으로 보기 →
+                </Link>
+              </div>
+              <ProjectDetailContent project={selectedProject} />
+            </>
+          ) : (
+            <>
+              <DialogTitle>상세 정보</DialogTitle>
+              <DialogDescription>준비 중인 프로젝트입니다.</DialogDescription>
+            </>
+          )}
+        </DialogContent>
+      </Dialog>
+
     </div>
   );
 }
