@@ -106,7 +106,7 @@ function HomePage() {
           </div>
               <div className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-4 md:gap-4">
                 {vibeItems.map((item, idx) => (
-                  <VibeCard key={item.slug} item={item} idx={idx} />
+                  <VibeCard key={item.slug} item={item} idx={idx} onDetail={openDetail} />
                 ))}
               </div>
             </RevealSection>
