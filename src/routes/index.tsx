@@ -231,12 +231,16 @@ function StripCard({
   description,
   badge,
   highlight = false,
+  hasApp = false,
+  onDetail,
 }: {
   icon: React.ReactNode;
   title: string;
   description: string;
   badge?: string;
   highlight?: boolean;
+  hasApp?: boolean;
+  onDetail?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }) {
   return (
     <div
