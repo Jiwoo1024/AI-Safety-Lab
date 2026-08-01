@@ -269,6 +269,20 @@ function StripCard({
           )}
         </div>
         <p className="mt-0.5 line-clamp-2 text-[11px] leading-relaxed text-muted-foreground">{description}</p>
+        <div className="mt-2 flex flex-wrap items-center gap-2">
+          {hasApp && (
+            <span className="inline-flex items-center gap-1 rounded-full bg-primary/15 px-2.5 py-1 text-[10px] font-semibold text-primary">
+              바로 사용하기 →
+            </span>
+          )}
+          <button
+            type="button"
+            onClick={onDetail}
+            className="inline-flex items-center rounded-full border border-white/15 bg-white/[0.04] px-2.5 py-1 text-[10px] font-medium text-muted-foreground transition-colors hover:border-primary/50 hover:text-primary"
+          >
+            상세보기
+          </button>
+        </div>
       </div>
       <ArrowRight className="h-4 w-4 shrink-0 text-muted-foreground transition-all duration-300 group-hover:translate-x-1 group-hover:text-primary" />
     </div>
