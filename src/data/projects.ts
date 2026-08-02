@@ -21,6 +21,7 @@ export const projects: Project[] = [
       "공정 노드와 편차(Deviation)를 입력하면 LLM이 원인(Cause), 결과(Consequence), 기존 안전조치(Safeguards), 추가 개선조치(Recommendations)를 구조화된 형태로 제안합니다. 산업안전보건법, KOSHA Guide, PSM 요구사항과 매칭하여 실무에 바로 활용할 수 있는 HAZOP 워크시트를 생성합니다.",
     features: ["Deviation 분석", "법령 자동 매칭", "Worksheet 자동 생성", "PSM 연계"],
     tags: ["HAZOP", "LLM", "PSM"],
+    link: "https://ai-hazop-assistant.lovable.app/",
     highlights: [
       { label: "분석 항목", value: "5개 축" },
       { label: "적용 표준", value: "KOSHA · PSM" },
@@ -37,7 +38,7 @@ export const projects: Project[] = [
       "현장에서 촬영한 사진을 업로드하면 Vision 모델이 위험요인을 식별하고, 위험성 매트릭스(빈도 × 강도)로 등급을 산정합니다. 관련 산업안전보건법 조항 및 KOSHA Guide를 연결하여 개선조치를 문서화합니다.",
     features: ["Vision 기반 위험요인 식별", "위험성 매트릭스", "법령 매핑", "개선조치 제안", "보고서 생성"],
     tags: ["Vision", "Risk Assessment", "현장", "AI Photo Analysis"],
-    link: "https://hazard-sight-ai.lovable.app/",
+    link: "https://ai-photo-risk-assessment.lovable.app",
     highlights: [
       { label: "입력", value: "현장 사진" },
       { label: "평가 방식", value: "5×5 매트릭스" },

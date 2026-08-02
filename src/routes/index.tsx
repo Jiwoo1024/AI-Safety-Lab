@@ -177,7 +177,7 @@ const vibeItems = [
     title: "Photo Risk Assessment",
     description: "현장 사진을 업로드하면 위험요인을 식별하고 위험성 등급과 개선조치를 제안하는 Vibe Coding 프로토타입.",
     icon: <Camera className="h-5 w-5" />,
-    href: "https://hazard-sight-ai.lovable.app/",
+    href: "https://ai-photo-risk-assessment.lovable.app",
     highlight: true,
   },
   {
@@ -185,18 +185,21 @@ const vibeItems = [
     title: "AI HAZOP Assistant",
     description: "HAZOP 분석을 지원하여 위험요소 식별과 권고사항 도출을 더 빠르게.",
     icon: <Scale className="h-5 w-5" />,
+    href: "https://ai-hazop-assistant.lovable.app/",
   },
   {
     slug: "incident-rca-assistant",
     title: "Incident RCA Assistant",
     description: "사고 근본원인을 5 Why·Fishbone으로 구조화하고 재발방지대책까지 도출합니다.",
     icon: <Brain className="h-5 w-5" />,
+    href: "https://ai-incident-rca-assistant.lovable.app",
   },
   {
     slug: "safety-learning-assistant",
     title: "Safety Learning Assistant",
     description: "산업안전 학습과 퀴즈로 현장 실무자의 이해도와 안전의식을 높여줍니다.",
     icon: <HelpCircle className="h-5 w-5" />,
+    href: "https://ai-safety-learning-assistant.lovable.app",
   },
 ];
 
