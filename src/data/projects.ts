@@ -84,6 +84,7 @@ export const projects: Project[] = [
       "사고 개요와 경위를 입력하면 5 Why, Fishbone(4M) 기법으로 근본원인을 단계적으로 구조화합니다. 직접원인·간접원인·근본원인을 구분하고, 관련 법령과 유사 사고사례를 참조한 재발방지대책을 제안합니다.",
     features: ["5 Why 분석", "Fishbone(4M)", "재발방지대책 도출", "유사 사고사례 참조"],
     tags: ["RCA", "사고조사", "4M"],
+    link: "https://ai-incident-rca-assistant.lovable.app",
     highlights: [
       { label: "분석 기법", value: "5 Why · 4M" },
       { label: "출력", value: "조사보고서" },
@@ -92,12 +93,13 @@ export const projects: Project[] = [
   {
     slug: "safety-learning-assistant",
     type: "Interactive Learning",
-    title: "Safety Learning Assistant",
+    title: "AI Safety Learning Assistant",
     description: "산업안전 학습과 퀴즈로 현장 실무자의 이해도와 안전의식을 높여줍니다.",
     longDescription:
       "산업안전보건법, KOSHA Guide, PSM, 사고사례를 기반으로 한 학습 도우미입니다. 주제별 요약과 퀴즈, 오답 해설을 제공하여 현장 실무자의 학습을 지원합니다.",
     features: ["주제별 학습", "퀴즈 출제", "오답 해설", "진도 추적"],
     tags: ["교육", "Quiz", "KOSHA"],
+    link: "https://ai-safety-learning-assistant.lovable.app",
     highlights: [
       { label: "카테고리", value: "6개 영역" },
       { label: "출제 방식", value: "적응형" },
