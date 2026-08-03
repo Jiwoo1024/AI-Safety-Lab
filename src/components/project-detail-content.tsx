@@ -1,6 +1,18 @@
 import type { Project } from "@/data/projects";
+import { Upload, ScanSearch, Scale, FileText, ChevronRight } from "lucide-react";
+import sampleResult from "@/assets/photo-risk-sample.jpg";
+
+const photoRiskSteps = [
+  { icon: Upload, label: "사진 업로드" },
+  { icon: ScanSearch, label: "AI 위험요인 탐지" },
+  { icon: Scale, label: "위험도·법령 매칭" },
+  { icon: FileText, label: "개선조치·리포트" },
+];
+
+const SAMPLE_URL = "https://ai-photo-risk-assessment.lovable.app";
 
 export function ProjectDetailContent({ project }: { project: Project }) {
+  const isPhotoRisk = project.slug === "ai-photo-risk-assessment";
   return (
     <div>
       <header className="max-w-3xl">
