@@ -78,8 +78,6 @@ export function ProjectDetailContent({ project }: { project: Project }) {
       <p className="mt-3 text-sm leading-relaxed text-foreground/90">{project.longDescription}</p>
 
 
-
-
       <h3 className="mt-8 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
         Key Features
       </h3>
