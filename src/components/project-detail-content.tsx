@@ -1,6 +1,18 @@
 import type { Project } from "@/data/projects";
+import { Upload, ScanSearch, Scale, FileText, ChevronRight } from "lucide-react";
+import sampleResult from "@/assets/photo-risk-sample.jpg";
+
+const photoRiskSteps = [
+  { icon: Upload, label: "사진 업로드" },
+  { icon: ScanSearch, label: "AI 위험요인 탐지" },
+  { icon: Scale, label: "위험도·법령 매칭" },
+  { icon: FileText, label: "개선조치·리포트" },
+];
+
+const SAMPLE_URL = "https://ai-photo-risk-assessment.lovable.app";
 
 export function ProjectDetailContent({ project }: { project: Project }) {
+  const isPhotoRisk = project.slug === "ai-photo-risk-assessment";
   return (
     <div>
       <header className="max-w-3xl">
@@ -43,6 +55,33 @@ export function ProjectDetailContent({ project }: { project: Project }) {
       </h3>
       <p className="mt-3 text-sm leading-relaxed text-foreground/90">{project.longDescription}</p>
 
+      {isPhotoRisk && (
+        <>
+          <h3 className="mt-8 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+            Process
+          </h3>
+          <ol className="mt-3 flex flex-wrap items-stretch gap-2">
+            {photoRiskSteps.map((step, i) => (
+              <li key={step.label} className="flex items-center gap-2">
+                <div className="flex min-w-[7.5rem] flex-col items-center gap-2 rounded-xl border border-border bg-card px-3 py-3 text-center">
+                  <span className="grid h-8 w-8 place-items-center rounded-full bg-primary/10 text-primary">
+                    <step.icon className="h-4 w-4" />
+                  </span>
+                  <span className="text-[11px] font-medium text-foreground/90">
+                    {i + 1}. {step.label}
+                  </span>
+                </div>
+                {i < photoRiskSteps.length - 1 && (
+                  <ChevronRight className="h-4 w-4 shrink-0 text-muted-foreground" />
+                )}
+              </li>
+            ))}
+          </ol>
+        </>
+      )}
+
+
+
       <h3 className="mt-8 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
         Key Features
       </h3>
@@ -59,6 +98,32 @@ export function ProjectDetailContent({ project }: { project: Project }) {
           </li>
         ))}
       </ul>
+
+      {isPhotoRisk && (
+        <div className="mt-8">
+          <p className="text-xs font-medium text-muted-foreground">실제 결과 화면 보기</p>
+          <a
+            href={SAMPLE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group mt-2 block max-w-md overflow-hidden rounded-xl border border-border bg-card transition-all hover:border-primary"
+          >
+            <img
+              src={sampleResult}
+              alt="AI Photo Risk Assessment 결과 화면 예시 - 위험도 카드와 현장 사진"
+              loading="lazy"
+              width={1024}
+              height={640}
+              className="w-full transition-transform duration-300 group-hover:scale-[1.02]"
+            />
+          </a>
+          <p className="mt-2 text-[11px] text-muted-foreground">
+            클릭하면 로그인 없이 샘플 결과 화면을 볼 수 있습니다.
+          </p>
+        </div>
+      )}
+
+
 
       {project.link && (
         <a
