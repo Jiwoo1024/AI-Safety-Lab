@@ -25,61 +25,57 @@ export function ProjectDetailContent({ project }: { project: Project }) {
         <p className="mt-3 text-sm leading-relaxed text-muted-foreground md:text-base">
           {project.description}
         </p>
-        <div className="mt-3 flex flex-wrap gap-2">
-          {project.tags.map((t) => (
-            <span
-              key={t}
-              className="rounded-full border border-border bg-card px-3 py-1 text-xs text-muted-foreground"
-            >
-              #{t}
-            </span>
-          ))}
-        </div>
+        {!isPhotoRisk && (
+          <div className="mt-3 flex flex-wrap gap-2">
+            {project.tags.map((t) => (
+              <span
+                key={t}
+                className="rounded-full border border-border bg-card px-3 py-1 text-xs text-muted-foreground"
+              >
+                #{t}
+              </span>
+            ))}
+          </div>
+        )}
       </header>
 
-      {project.highlights && (
-        <div className="mt-6 grid grid-cols-2 gap-3 md:grid-cols-4">
-          {project.highlights.map((h) => (
-            <div key={h.label} className="rounded-2xl border border-border bg-card p-4">
-              <div className="text-[10px] uppercase tracking-widest text-muted-foreground">
-                {h.label}
+      {isPhotoRisk ? (
+        <ol className="mt-6 flex flex-wrap items-stretch gap-2">
+          {photoRiskSteps.map((step, i) => (
+            <li key={step.label} className="flex items-center gap-2">
+              <div className="flex min-w-[7.5rem] flex-col items-center gap-2 rounded-2xl border border-border bg-card px-3 py-4 text-center">
+                <span className="grid h-8 w-8 place-items-center rounded-full bg-primary/10 text-primary">
+                  <step.icon className="h-4 w-4" />
+                </span>
+                <span className="text-[11px] font-medium text-foreground/90">
+                  {i + 1}. {step.label}
+                </span>
               </div>
-              <div className="mt-1.5 text-base font-semibold text-foreground">{h.value}</div>
-            </div>
+              {i < photoRiskSteps.length - 1 && (
+                <ChevronRight className="h-4 w-4 shrink-0 text-muted-foreground" />
+              )}
+            </li>
           ))}
-        </div>
+        </ol>
+      ) : (
+        project.highlights && (
+          <div className="mt-6 grid grid-cols-2 gap-3 md:grid-cols-4">
+            {project.highlights.map((h) => (
+              <div key={h.label} className="rounded-2xl border border-border bg-card p-4">
+                <div className="text-[10px] uppercase tracking-widest text-muted-foreground">
+                  {h.label}
+                </div>
+                <div className="mt-1.5 text-base font-semibold text-foreground">{h.value}</div>
+              </div>
+            ))}
+          </div>
+        )
       )}
 
       <h3 className="mt-8 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
         Overview
       </h3>
       <p className="mt-3 text-sm leading-relaxed text-foreground/90">{project.longDescription}</p>
-
-      {isPhotoRisk && (
-        <>
-          <h3 className="mt-8 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-            Process
-          </h3>
-          <ol className="mt-3 flex flex-wrap items-stretch gap-2">
-            {photoRiskSteps.map((step, i) => (
-              <li key={step.label} className="flex items-center gap-2">
-                <div className="flex min-w-[7.5rem] flex-col items-center gap-2 rounded-xl border border-border bg-card px-3 py-3 text-center">
-                  <span className="grid h-8 w-8 place-items-center rounded-full bg-primary/10 text-primary">
-                    <step.icon className="h-4 w-4" />
-                  </span>
-                  <span className="text-[11px] font-medium text-foreground/90">
-                    {i + 1}. {step.label}
-                  </span>
-                </div>
-                {i < photoRiskSteps.length - 1 && (
-                  <ChevronRight className="h-4 w-4 shrink-0 text-muted-foreground" />
-                )}
-              </li>
-            ))}
-          </ol>
-        </>
-      )}
-
 
 
       <h3 className="mt-8 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
