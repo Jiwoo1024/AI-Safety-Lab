@@ -74,7 +74,9 @@ function InsightsPage() {
               <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">
                 {i.excerpt}
               </p>
-              <span className="mt-5 text-sm font-medium text-primary">Read →</span>
+              <span className="mt-5 inline-flex w-fit items-center rounded-full border border-border bg-secondary px-2.5 py-1 text-[11px] font-medium text-muted-foreground">
+                Coming soon
+              </span>
             </article>
           ))}
         </div>

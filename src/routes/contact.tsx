@@ -47,7 +47,12 @@ function ContactPage() {
                 <span className="text-xs uppercase tracking-widest text-muted-foreground">
                   Email
                 </span>
-                <span className="text-foreground">hello@aisafetylab.example</span>
+                <a
+                  href="mailto:song708901@gmail.com"
+                  className="text-foreground transition-colors hover:text-primary"
+                >
+                  song708901@gmail.com
+                </a>
               </li>
               <li className="flex items-center gap-3 text-foreground/80">
                 <span className="text-xs uppercase tracking-widest text-muted-foreground">

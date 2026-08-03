@@ -18,7 +18,7 @@ export const vibeApps: VibeApp[] = [
     description:
       "현장 사진을 업로드하면 위험요인을 식별하고 위험성 등급과 개선조치를 제안하는 Vibe Coding 프로토타입.",
     features: ["Vision 분석", "위험성 매트릭스", "개선조치 제안"],
-    url: "https://hazard-sight-ai.lovable.app/", // Photo Risk Assessment 배포 URL
+    url: "https://ai-photo-risk-assessment.lovable.app", // Photo Risk Assessment 배포 URL
   },
   {
     id: "accident-cases",

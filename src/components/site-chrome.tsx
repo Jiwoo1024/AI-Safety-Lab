@@ -8,6 +8,7 @@ const nav = [
   { to: "/projects", label: "AI Tools" },
   { to: "/vibe-coding-safety-apps", label: "Vibe Coding Apps" },
   { to: "/insights", label: "Safety Insights" },
+  { to: "/about", label: "About" },
   { to: "/contact", label: "Contact" },
 ] as const;
 
@@ -124,11 +125,11 @@ export function SiteFooter() {
         </div>
         <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs text-muted-foreground">
 
-          <span>© 2024 AI Safety Lab. All rights reserved.</span>
+          <span>© {new Date().getFullYear()} AI Safety Lab. All rights reserved.</span>
           <span className="opacity-40">|</span>
-          <Link to="/" className="transition-colors hover:text-foreground">Privacy Policy</Link>
+          <Link to="/privacy" className="transition-colors hover:text-foreground">Privacy Policy</Link>
           <span className="opacity-40">|</span>
-          <Link to="/" className="transition-colors hover:text-foreground">Terms of Use</Link>
+          <Link to="/terms" className="transition-colors hover:text-foreground">Terms of Use</Link>
         </div>
         <div className="hidden md:block md:w-[150px]" />
 
