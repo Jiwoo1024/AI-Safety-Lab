@@ -99,6 +99,32 @@ export function ProjectDetailContent({ project }: { project: Project }) {
         ))}
       </ul>
 
+      {isPhotoRisk && (
+        <div className="mt-8">
+          <p className="text-xs font-medium text-muted-foreground">실제 결과 화면 보기</p>
+          <a
+            href={SAMPLE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group mt-2 block max-w-md overflow-hidden rounded-xl border border-border bg-card transition-all hover:border-primary"
+          >
+            <img
+              src={sampleResult}
+              alt="AI Photo Risk Assessment 결과 화면 예시 - 위험도 카드와 현장 사진"
+              loading="lazy"
+              width={1024}
+              height={640}
+              className="w-full transition-transform duration-300 group-hover:scale-[1.02]"
+            />
+          </a>
+          <p className="mt-2 text-[11px] text-muted-foreground">
+            클릭하면 로그인 없이 샘플 결과 화면을 볼 수 있습니다.
+          </p>
+        </div>
+      )}
+
+
+
       {project.link && (
         <a
           href={project.link}
