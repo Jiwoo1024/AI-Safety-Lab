@@ -685,7 +685,9 @@ function InsightCard({ i, idx = 0 }: { i: (typeof insights)[number]; idx?: numbe
                 {i.date} <span className="px-1.5 opacity-40">|</span> {i.readTime}
               </span>
 
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1 group-hover:text-primary" />
+              <span className="rounded-full border border-white/[0.12] bg-white/[0.04] px-2 py-0.5 text-[9px] font-medium text-muted-foreground">
+                Coming soon
+              </span>
             </div>
           </div>
         </article>
