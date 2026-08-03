@@ -55,6 +55,33 @@ export function ProjectDetailContent({ project }: { project: Project }) {
       </h3>
       <p className="mt-3 text-sm leading-relaxed text-foreground/90">{project.longDescription}</p>
 
+      {isPhotoRisk && (
+        <>
+          <h3 className="mt-8 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+            Process
+          </h3>
+          <ol className="mt-3 flex flex-wrap items-stretch gap-2">
+            {photoRiskSteps.map((step, i) => (
+              <li key={step.label} className="flex items-center gap-2">
+                <div className="flex min-w-[7.5rem] flex-col items-center gap-2 rounded-xl border border-border bg-card px-3 py-3 text-center">
+                  <span className="grid h-8 w-8 place-items-center rounded-full bg-primary/10 text-primary">
+                    <step.icon className="h-4 w-4" />
+                  </span>
+                  <span className="text-[11px] font-medium text-foreground/90">
+                    {i + 1}. {step.label}
+                  </span>
+                </div>
+                {i < photoRiskSteps.length - 1 && (
+                  <ChevronRight className="h-4 w-4 shrink-0 text-muted-foreground" />
+                )}
+              </li>
+            ))}
+          </ol>
+        </>
+      )}
+
+
+
       <h3 className="mt-8 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
         Key Features
       </h3>
