@@ -60,7 +60,7 @@ function HomePage() {
         <div className="container-page relative z-10 grid min-h-[240px] items-center gap-4 py-3 md:min-h-[260px] md:grid-cols-[1fr_1.15fr] md:py-4">
           {/* 좌측 카피 */}
           <div className="hero-copy group max-w-xl rounded-2xl border border-white/10 bg-white/[0.03] p-5 backdrop-blur-sm transition-all duration-500 hover:-translate-y-1 hover:border-primary/40 hover:bg-white/[0.06] hover:shadow-[0_18px_50px_-24px_var(--primary)]">
-            <span className="hero-line pointer-events-none absolute left-0 top-0 h-full w-full overflow-hidden rounded-2xl" aria-hidden />
+            
             <h1 className="hero-in font-display text-[1.85rem] font-bold leading-[1.18] tracking-tight text-white md:text-[2.25rem]" style={{ animationDelay: "0.05s" }}>
               AI로 산업안전 실무를
               <br />
