@@ -72,7 +72,7 @@ export function SiteHeader() {
               <img
                 src={logoAsset.url}
                 alt="AI Safety Lab"
-                className="h-10 w-auto"
+                className="h-10 w-auto mix-blend-screen"
               />
             </Link>
             <button
