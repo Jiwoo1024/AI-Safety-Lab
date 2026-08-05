@@ -59,26 +59,46 @@ function HomePage() {
 
         <div className="container-page relative z-10 grid min-h-[240px] items-center gap-4 py-3 md:min-h-[260px] md:grid-cols-[1fr_1.15fr] md:py-4">
           {/* 좌측 카피 */}
-          <div className="max-w-xl">
-            <h1 className="font-display text-[1.85rem] font-bold leading-[1.18] tracking-tight text-white md:text-[2.25rem]">
+          <div className="hero-copy group max-w-xl rounded-2xl border border-white/10 bg-white/[0.03] p-5 backdrop-blur-sm transition-all duration-500 hover:-translate-y-1 hover:border-primary/40 hover:bg-white/[0.06] hover:shadow-[0_18px_50px_-24px_var(--primary)]">
+            
+            <h1 className="hero-in font-display text-[1.85rem] font-bold leading-[1.18] tracking-tight text-white md:text-[2.25rem]" style={{ animationDelay: "0.05s" }}>
               AI로 산업안전 실무를
-              <br />더 빠르고 정확하게
+              <br />
+              <span className="relative inline-block">
+                더 빠르고 정확하게
+                <span className="hero-underline absolute -bottom-1 left-0 h-0.5 w-full origin-left rounded-full bg-primary" />
+              </span>
             </h1>
 
-            <p className="mt-2.5 max-w-[360px] text-[13px] leading-relaxed text-white/70">
+            <p className="hero-in mt-2.5 max-w-[360px] text-[13px] leading-relaxed text-white/70" style={{ animationDelay: "0.22s" }}>
               AI Safety Lab은 산업현장의 위험을 예측하고, 분석하며, 안전한 의사결정을 지원하는 AI 기반 솔루션을 개발합니다.
             </p>
 
-            <div className="mt-4">
+            <div className="hero-in mt-4" style={{ animationDelay: "0.38s" }}>
               <Link
                 to="/projects"
-                className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-[13px] font-semibold text-primary-foreground shadow-lg shadow-primary/25 transition-all hover:bg-primary/90"
+                className="group/btn relative inline-flex items-center gap-2 overflow-hidden rounded-lg bg-primary px-5 py-2.5 text-[13px] font-semibold text-primary-foreground shadow-lg shadow-primary/25 transition-all hover:bg-primary/90 hover:shadow-primary/40"
               >
+                <span className="btn-shine pointer-events-none absolute inset-0" aria-hidden />
                 Explore Projects
-                <span aria-hidden>→</span>
+                <span aria-hidden className="transition-transform duration-300 group-hover/btn:translate-x-1">→</span>
               </Link>
             </div>
           </div>
+
+          <style>{`
+            @keyframes heroIn { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+            @keyframes heroUnderline { 0% { transform: scaleX(0); } 55% { transform: scaleX(1); } 100% { transform: scaleX(1); } }
+            @keyframes btnShine { 0% { transform: translateX(-120%); } 60%, 100% { transform: translateX(220%); } }
+            .hero-copy { position: relative; animation: heroIn 0.7s cubic-bezier(0.2,0.7,0.2,1) both; }
+            .hero-in { animation: heroIn 0.7s cubic-bezier(0.2,0.7,0.2,1) both; }
+            .hero-underline { animation: heroUnderline 1.4s cubic-bezier(0.2,0.7,0.2,1) 0.5s both; }
+            .btn-shine { background: linear-gradient(100deg, transparent, oklch(1 0 0 / 0.35), transparent); width: 40%; animation: btnShine 3.2s ease-in-out infinite; }
+            @media (prefers-reduced-motion: reduce) {
+              .hero-copy, .hero-in, .hero-underline, .btn-shine { animation: none !important; opacity: 1 !important; transform: none !important; }
+            }
+          `}</style>
+
 
           {/* 우측 이미지 공간 + 떠 있는 통계 카드 */}
           <div className="relative hidden h-full min-h-[inherit] md:block">
