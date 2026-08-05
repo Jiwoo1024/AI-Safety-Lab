@@ -40,28 +40,29 @@
 
 :root {
   --radius: 0.75rem;
-  --background: oklch(0.08 0.02 250);
+  --background: oklch(0.115 0 0);
   --foreground: oklch(1 0 0);
-  --card: oklch(0.12 0.02 250);
+  --card: oklch(0.205 0 0);
   --card-foreground: oklch(1 0 0);
-  --popover: oklch(0.12 0.02 250);
+  --popover: oklch(0.18 0 0);
   --popover-foreground: oklch(1 0 0);
   --primary: oklch(0.55 0.23 29);
   --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(0.15 0.02 250);
+  --secondary: oklch(0.2 0 0);
   --secondary-foreground: oklch(1 0 0);
-  --muted: oklch(0.15 0.02 250);
+  --muted: oklch(0.2 0 0);
   --muted-foreground: oklch(0.7 0 0);
-  --accent: oklch(0.18 0.04 250);
+  --accent: oklch(0.24 0 0);
   --accent-foreground: oklch(1 0 0);
   --destructive: oklch(0.62 0.22 30);
   --destructive-foreground: oklch(1 0 0);
-  --border: oklch(0.22 0.03 250);
-  --input: oklch(0.22 0.03 250);
+  --border: oklch(0.26 0 0);
+  --input: oklch(0.26 0 0);
   --ring: oklch(0.55 0.23 29);
-  --navy: oklch(0.12 0.04 250);
-  --slate-ink: oklch(0.55 0.04 200);
+  --navy: oklch(0.145 0 0);
+  --slate-ink: oklch(0.55 0 0);
   --sky-soft: oklch(0.72 0.1 30);
+
 }
 
 @layer base {
@@ -100,9 +101,9 @@
 
 @utility gradient-dark {
   background:
-    radial-gradient(1200px 600px at 10% -10%, oklch(0.55 0.23 29 / 0.15), transparent 60%),
-    radial-gradient(900px 500px at 110% 10%, oklch(0.55 0.08 250 / 0.12), transparent 60%),
-    linear-gradient(135deg, oklch(0.08 0.02 250) 0%, oklch(0.09 0.02 250) 55%, oklch(0.12 0.03 250) 100%);
+    radial-gradient(1200px 600px at 10% -10%, oklch(0.55 0.23 29 / 0.12), transparent 60%),
+    radial-gradient(900px 500px at 110% 10%, oklch(0.5 0 0 / 0.1), transparent 60%),
+    linear-gradient(135deg, oklch(0.115 0 0) 0%, oklch(0.13 0 0) 55%, oklch(0.16 0 0) 100%);
 }
 
 @utility glow-soft {
@@ -114,10 +115,11 @@
 }
 
 @utility glass-card {
-  background: color-mix(in oklab, oklch(0.14 0.02 250) 85%, transparent);
-  border: 1px solid color-mix(in oklab, oklch(0.98 0.01 180) 12%, transparent);
+  background: color-mix(in oklab, oklch(0.205 0 0) 88%, transparent);
+  border: 1px solid color-mix(in oklab, oklch(1 0 0) 12%, transparent);
   backdrop-filter: blur(16px);
 }
+
 
 @utility text-balance {
   text-wrap: balance;
