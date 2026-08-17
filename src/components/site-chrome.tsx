@@ -5,12 +5,13 @@ import logoAsset from "@/assets/logo.png.asset.json";
 
 const nav = [
   { to: "/", label: "Home" },
-  { to: "/projects", label: "AI Tools" },
-  { to: "/vibe-coding-safety-apps", label: "Vibe Coding Apps" },
+  { to: "/projects", label: "GPT Tools" },
+  { to: "/vibe-coding-safety-apps", label: "Safety Web Apps" },
   { to: "/insights", label: "Safety Insights" },
   { to: "/about", label: "About" },
   { to: "/contact", label: "Contact" },
 ] as const;
+
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
