@@ -57,24 +57,24 @@ function HomePage() {
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[oklch(0.08_0.02_20/0.98)] from-[8%] via-[oklch(0.08_0.02_20/0.55)] via-[38%] to-transparent to-[62%]" />
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[oklch(0.08_0.02_20/0.45)] via-transparent to-transparent" />
 
-        <div className="container-page relative z-10 grid min-h-[240px] items-center gap-4 py-3 md:min-h-[260px] md:grid-cols-[1fr_1.15fr] md:py-4">
+        <div className="container-page relative z-10 grid min-h-[380px] items-center gap-8 py-12 md:min-h-[440px] md:grid-cols-[1fr_1.15fr] md:py-16">
           {/* 좌측 카피 */}
           <div className="max-w-xl">
             
-            <h1 className="font-display text-[1.85rem] font-bold leading-[1.18] tracking-tight text-white md:text-[2.25rem]">
+            <h1 className="font-display text-[2.1rem] font-bold leading-[1.14] tracking-[-0.03em] text-white md:text-[3rem]">
               AI로 산업안전 실무를
               <br />
               더 빠르고 정확하게
             </h1>
 
-            <p className="mt-2.5 max-w-[360px] text-[13px] leading-relaxed text-white/70">
+            <p className="mt-4 max-w-[420px] text-[15px] leading-relaxed text-white/70">
               AI Safety Lab은 산업현장의 위험을 예측하고, 분석하며, 안전한 의사결정을 지원하는 AI 기반 솔루션을 개발합니다.
             </p>
 
-            <div className="mt-4">
+            <div className="mt-7">
               <Link
                 to="/projects"
-                className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-[13px] font-semibold text-primary-foreground shadow-lg shadow-primary/25 transition-all hover:bg-primary/90"
+                className="inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/25 transition-all hover:bg-primary/90"
               >
                 Explore Projects
                 <span aria-hidden>→</span>
@@ -85,8 +85,8 @@ function HomePage() {
 
 
           {/* 우측 이미지 공간 + 떠 있는 통계 카드 */}
-          <div className="relative hidden h-full min-h-[inherit] md:block">
-            <div className="absolute bottom-[14%] left-0 flex items-end gap-2.5">
+          <div className="relative h-full min-h-[inherit] md:block">
+            <div className="flex flex-wrap items-end gap-3 md:absolute md:bottom-[14%] md:left-0 md:flex-nowrap">
               <StatCard number="04" label="Active Projects" icon={<TrendingUp className="h-3.5 w-3.5" />} size="lg" />
               <StatCard number="05+" label="Insight Articles" icon={<FileText className="h-3.5 w-3.5" />} />
             </div>
@@ -100,15 +100,15 @@ function HomePage() {
 
         {/* KEY PROJECTS STRIP */}
         <section className="border-y border-border/60 bg-[oklch(0.145_0_0)]">
-          <div className="container-page py-3">
+          <div className="container-page py-10 md:py-14">
             <RevealSection>
-          <div className="mb-2.5">
-            <h2 className="font-display relative inline-block pb-2 text-sm font-semibold tracking-tight text-white md:text-base">
+          <div className="mb-6">
+            <h2 className="font-display relative inline-block pb-2.5 text-xl font-bold tracking-tight text-white md:text-2xl">
               Key Projects
               <span className="absolute bottom-0 left-0 h-0.5 w-10 rounded-full bg-primary" />
             </h2>
           </div>
-              <div className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-4 md:gap-4">
+              <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
                 {vibeItems.map((item, idx) => (
                   <VibeCard key={item.slug} item={item} idx={idx} onDetail={openDetail} />
                 ))}
@@ -119,10 +119,10 @@ function HomePage() {
 
 
         {/* INSIGHTS PREVIEW */}
-        <div className="container-page py-3.5">
+        <div className="container-page py-12 md:py-16">
           <RevealSection>
             <div className="flex items-end justify-between gap-6">
-              <h2 className="font-display relative pb-2 text-sm font-semibold tracking-tight text-foreground md:text-base">
+              <h2 className="font-display relative pb-2.5 text-xl font-bold tracking-tight text-foreground md:text-2xl">
                 Safety Insights
                 <span className="absolute bottom-0 left-0 h-0.5 w-14 rounded-full bg-primary" />
               </h2>
@@ -134,7 +134,7 @@ function HomePage() {
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
-            <div className="mt-2.5 grid gap-3 md:grid-cols-3">
+            <div className="mt-6 grid gap-5 md:grid-cols-3">
               {insights.slice(0, 3).map((i, idx) => (
                 <InsightCard key={i.slug} i={i} idx={idx} />
               ))}
@@ -282,7 +282,7 @@ function StripCard({
   return (
     <div
       className={
-        "group relative flex h-full items-center gap-3 overflow-hidden rounded-2xl border p-3.5 transition-all duration-300 hover:-translate-y-1 hover:border-primary/45 hover:bg-[oklch(0.215_0_0)] hover:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.07),0_14px_32px_-16px_oklch(0.55_0.23_29/0.55)] " +
+        "group relative flex h-full items-center gap-4 overflow-hidden rounded-2xl border p-5 transition-all duration-300 hover:-translate-y-1 hover:border-primary/45 hover:bg-[oklch(0.215_0_0)] hover:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.07),0_14px_32px_-16px_oklch(0.55_0.23_29/0.55)] " +
         (highlight
           ? "border-white/[0.12] bg-[oklch(0.205_0_0)] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05),0_2px_10px_-6px_rgba(0,0,0,0.7)]"
           : "border-white/[0.09] bg-[oklch(0.185_0_0)] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05),0_2px_10px_-6px_rgba(0,0,0,0.7)]")
@@ -296,7 +296,7 @@ function StripCard({
       </div>
       <div className="min-w-0 flex-1">
         <div className="flex items-center gap-2">
-          <h3 className="font-display text-[13px] font-semibold leading-snug text-foreground transition-colors group-hover:text-primary">
+          <h3 className="font-display text-[15px] font-semibold leading-snug text-foreground transition-colors group-hover:text-primary">
             {title}
           </h3>
           {badge && (
@@ -305,7 +305,7 @@ function StripCard({
             </span>
           )}
         </div>
-        <p className="mt-0.5 line-clamp-2 text-[11px] leading-relaxed text-muted-foreground">{description}</p>
+        <p className="mt-1.5 line-clamp-2 text-xs leading-relaxed text-muted-foreground">{description}</p>
         <div className="mt-2 flex flex-wrap items-center gap-2">
           {hasApp && (
             <span className="inline-flex items-center gap-1 rounded-full bg-primary/15 px-2.5 py-1 text-[10px] font-semibold text-primary">
@@ -662,8 +662,8 @@ function InsightCard({ i, idx = 0 }: { i: (typeof insights)[number]; idx?: numbe
   const ref = useReveal<HTMLDivElement>();
   return (
     <div ref={ref} className="reveal h-full" style={{ transitionDelay: `${idx * 90}ms` }}>
-      <Link to="/insights" hash={i.slug} className="group block h-full">
-        <article className="relative flex h-full flex-col gap-2.5 overflow-hidden rounded-2xl border border-white/[0.09] bg-[oklch(0.185_0_0)] p-2 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05),0_2px_10px_-6px_rgba(0,0,0,0.7)] transition-all duration-300 hover:-translate-y-1 hover:border-primary/45 hover:bg-[oklch(0.215_0_0)] hover:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.07),0_14px_32px_-16px_oklch(0.55_0.23_29/0.55)] md:flex-row">
+      <Link to="/insights/$slug" params={{ slug: i.slug }} className="group block h-full">
+        <article className="relative flex h-full flex-col gap-4 overflow-hidden rounded-2xl border border-white/[0.09] bg-[oklch(0.185_0_0)] p-4 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05),0_2px_10px_-6px_rgba(0,0,0,0.7)] transition-all duration-300 hover:-translate-y-1 hover:border-primary/45 hover:bg-[oklch(0.215_0_0)] hover:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.07),0_14px_32px_-16px_oklch(0.55_0.23_29/0.55)] md:flex-row">
           <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/[0.06] to-transparent transition-transform duration-700 group-hover:translate-x-full" />
 
           <div className="relative aspect-[16/10] w-full shrink-0 overflow-hidden rounded-lg md:aspect-auto md:h-[64px] md:w-[88px] md:self-center">
@@ -678,19 +678,19 @@ function InsightCard({ i, idx = 0 }: { i: (typeof insights)[number]; idx?: numbe
           </div>
           <div className="flex flex-1 flex-col justify-between py-1 pr-1">
             <div>
-              <span className="text-[10px] font-bold uppercase tracking-widest text-primary">{i.category}</span>
-              <h4 className="mt-1 line-clamp-2 text-[13px] font-semibold leading-snug tracking-tight text-foreground">
+              <span className="text-[10px] font-bold uppercase tracking-[0.16em] text-muted-foreground">{i.category}</span>
+              <h4 className="font-display mt-1.5 line-clamp-2 text-[15px] font-semibold leading-snug tracking-tight text-foreground">
                 {i.title}
               </h4>
-              <p className="mt-1 line-clamp-2 text-[11px] leading-relaxed text-muted-foreground">{i.excerpt}</p>
+              <p className="mt-2 line-clamp-2 text-xs leading-relaxed text-muted-foreground">{i.excerpt}</p>
             </div>
             <div className="mt-2 flex items-center justify-between text-[10px] text-muted-foreground">
               <span>
                 {i.date} <span className="px-1.5 opacity-40">|</span> {i.readTime}
               </span>
 
-              <span className="rounded-full border border-white/[0.12] bg-white/[0.04] px-2 py-0.5 text-[9px] font-medium text-muted-foreground">
-                Coming soon
+              <span className="inline-flex items-center gap-1 text-[10px] font-semibold text-primary opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                읽기 →
               </span>
             </div>
           </div>
