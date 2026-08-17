@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { SiteHeader, SiteFooter } from "@/components/site-chrome";
 import { insights } from "@/data/insights";
 
-export const Route = createFileRoute("/insights")({
+export const Route = createFileRoute("/insights/")({
   head: () => ({
     meta: [
       { title: "Safety Insights — AI Safety Lab" },
