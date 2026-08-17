@@ -136,17 +136,24 @@
   }
 }
 
+@utility transition-spring {
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
 @utility reveal {
   opacity: 0;
-  transform: translateY(18px);
+  transform: translateY(20px);
+  filter: blur(6px);
   transition:
-    opacity 0.35s ease-out,
-    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .reveal.is-visible {
   opacity: 1;
   transform: translateY(0);
+  filter: blur(0);
 }
 
 @keyframes floaty {
@@ -161,4 +168,47 @@
 
 @utility float-slow {
   animation: floaty 6s ease-in-out infinite;
+}
+
+@keyframes orbFloat {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(24px, -28px) scale(1.08);
+  }
+}
+
+@utility orb-float {
+  animation: orbFloat 11s ease-in-out infinite;
+}
+
+@keyframes orbFloatSlow {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(-26px, 24px) scale(1.05);
+  }
+}
+
+@utility orb-float-slow {
+  animation: orbFloatSlow 15s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    transition:
+      opacity 0.3s ease-out,
+      filter 0.3s ease-out;
+    transform: none;
+    filter: none;
+  }
+  .float-slow,
+  .orb-float,
+  .orb-float-slow {
+    animation: none !important;
+  }
 }
