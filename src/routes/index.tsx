@@ -291,7 +291,7 @@ function StripCard({
 
       {/* hover sheen */}
       <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/[0.06] to-transparent transition-transform duration-700 group-hover:translate-x-full" />
-      <div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl border border-primary/40 bg-primary/[0.07] text-primary transition-all duration-300 group-hover:scale-110 group-hover:border-primary/70 group-hover:shadow-[0_0_18px_-4px_oklch(0.55_0.23_29/0.7)]">
+      <div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl border border-white/10 bg-white/[0.05] text-foreground/75 transition-all duration-300 group-hover:border-primary/60 group-hover:bg-primary/[0.08] group-hover:text-primary">
         {icon}
       </div>
       <div className="min-w-0 flex-1">
@@ -308,14 +308,21 @@ function StripCard({
         <p className="mt-1.5 line-clamp-2 text-xs leading-relaxed text-muted-foreground">{description}</p>
         <div className="mt-2 flex flex-wrap items-center gap-2">
           {hasApp && (
-            <span className="inline-flex items-center gap-1 rounded-full bg-primary/15 px-2.5 py-1 text-[10px] font-semibold text-primary">
+            <span
+              className={
+                "inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[11px] font-semibold transition-colors " +
+                (highlight
+                  ? "bg-primary text-primary-foreground"
+                  : "border border-white/15 bg-white/[0.04] text-foreground/80 group-hover:border-primary/50 group-hover:text-primary")
+              }
+            >
               바로 사용하기 →
             </span>
           )}
           <button
             type="button"
             onClick={onDetail}
-            className="inline-flex items-center rounded-full border border-white/15 bg-white/[0.04] px-2.5 py-1 text-[10px] font-medium text-muted-foreground transition-colors hover:border-primary/50 hover:text-primary"
+            className="inline-flex items-center rounded-full px-2 py-1 text-[11px] font-medium text-muted-foreground underline-offset-4 transition-colors hover:text-foreground hover:underline"
           >
             상세보기
           </button>
