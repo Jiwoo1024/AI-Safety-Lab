@@ -1,28 +1,57 @@
 import { Link, useRouter } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import logoAsset from "@/assets/logo.png.asset.json";
 
-
 const nav = [
-  { to: "/", label: "Home" },
-  { to: "/projects", label: "GPT Tools" },
-  { to: "/vibe-coding-safety-apps", label: "Safety Web Apps" },
-  { to: "/insights", label: "Safety Insights" },
-  { to: "/about", label: "About" },
-  { to: "/contact", label: "Contact" },
+  { hash: "home", label: "Home" },
+  { hash: "gpt-tools", label: "GPT Tools" },
+  { hash: "safety-web-apps", label: "Safety Web Apps" },
+  { hash: "safety-insights", label: "Safety Insights" },
+  { hash: "about", label: "About" },
+  { hash: "contact", label: "Contact" },
 ] as const;
 
+const SECTION_IDS = nav.map((n) => n.hash);
+
+function useActiveSection(enabled: boolean) {
+  const [active, setActive] = useState<string>("home");
+
+  useEffect(() => {
+    if (!enabled) return;
+    const elements = SECTION_IDS.map((id) => document.getElementById(id)).filter(
+      (el): el is HTMLElement => Boolean(el)
+    );
+    if (elements.length === 0) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActive(entry.target.id);
+          }
+        });
+      },
+      { rootMargin: "-45% 0px -50% 0px", threshold: 0 }
+    );
+    elements.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, [enabled]);
+
+  return active;
+}
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
   const { state } = useRouter();
   const pathname = state.location.pathname;
+  const isHome = pathname === "/";
+  const activeSection = useActiveSection(isHome);
 
   return (
     <>
       <header className="sticky top-0 z-40 border-b border-border bg-background/95 backdrop-blur">
         <div className="container-page flex h-16 items-center justify-between">
-          <Link to="/" className="flex items-center gap-2">
+          <Link to="/" hash="home" className="flex items-center gap-2">
             <img
               src={logoAsset.url}
               alt="AI Safety Lab"
@@ -31,11 +60,12 @@ export function SiteHeader() {
           </Link>
           <nav className="hidden items-center gap-7 md:flex">
             {nav.map((n) => {
-              const isActive = n.to === pathname;
+              const isActive = isHome && n.hash === activeSection;
               return (
                 <Link
-                  key={n.to}
-                  to={n.to}
+                  key={n.hash}
+                  to="/"
+                  hash={n.hash}
                   aria-current={isActive ? "page" : undefined}
                   className={
                     "relative py-5 text-sm transition-colors hover:text-foreground " +
@@ -50,7 +80,6 @@ export function SiteHeader() {
             })}
           </nav>
           <div className="hidden md:block md:w-24" />
-
 
           <button
             onClick={() => setOpen(true)}
@@ -69,7 +98,7 @@ export function SiteHeader() {
       {open && (
         <div className="fixed inset-0 z-50 flex flex-col bg-background p-6 md:hidden">
           <div className="flex items-center justify-between">
-            <Link to="/" onClick={() => setOpen(false)} className="flex items-center gap-2">
+            <Link to="/" hash="home" onClick={() => setOpen(false)} className="flex items-center gap-2">
               <img
                 src={logoAsset.url}
                 alt="AI Safety Lab"
@@ -78,7 +107,6 @@ export function SiteHeader() {
             </Link>
             <button
               onClick={() => setOpen(false)}
-
               aria-label="Close menu"
               className="grid h-10 w-10 place-items-center rounded-md text-foreground transition-colors hover:bg-secondary"
             >
@@ -91,8 +119,9 @@ export function SiteHeader() {
           <nav className="mt-12 flex flex-col gap-6">
             {nav.map((n) => (
               <Link
-                key={n.to}
-                to={n.to}
+                key={n.hash}
+                to="/"
+                hash={n.hash}
                 onClick={() => setOpen(false)}
                 className="text-2xl font-semibold text-foreground/90 transition-colors hover:text-foreground"
               >
@@ -100,7 +129,8 @@ export function SiteHeader() {
               </Link>
             ))}
             <Link
-              to="/contact"
+              to="/"
+              hash="contact"
               onClick={() => setOpen(false)}
               className="mt-4 inline-flex w-fit items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground"
             >
@@ -125,7 +155,6 @@ export function SiteFooter() {
           />
         </div>
         <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs text-muted-foreground">
-
           <span>© {new Date().getFullYear()} AI Safety Lab. All rights reserved.</span>
           <span className="opacity-40">|</span>
           <Link to="/privacy" className="transition-colors hover:text-foreground">Privacy Policy</Link>
@@ -133,7 +162,6 @@ export function SiteFooter() {
           <Link to="/terms" className="transition-colors hover:text-foreground">Terms of Use</Link>
         </div>
         <div className="hidden md:block md:w-[150px]" />
-
       </div>
     </footer>
   );
