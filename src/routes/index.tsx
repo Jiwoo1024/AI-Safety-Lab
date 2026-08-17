@@ -57,7 +57,7 @@ function HomePage() {
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[oklch(0.08_0.02_20/0.98)] from-[8%] via-[oklch(0.08_0.02_20/0.55)] via-[38%] to-transparent to-[62%]" />
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[oklch(0.08_0.02_20/0.45)] via-transparent to-transparent" />
 
-        <div className="container-page relative z-10 grid min-h-[380px] items-center gap-8 py-12 md:min-h-[440px] md:grid-cols-[1fr_1.15fr] md:py-16">
+        <div className="container-page relative z-10 grid min-h-[280px] items-center gap-8 py-12 md:min-h-[440px] md:grid-cols-[1fr_1.15fr] md:py-16">
           {/* 좌측 카피 */}
           <div className="max-w-xl">
             
@@ -85,7 +85,7 @@ function HomePage() {
 
 
           {/* 우측 이미지 공간 + 떠 있는 통계 카드 */}
-          <div className="relative h-full min-h-[inherit] md:block">
+          <div className="relative h-full md:min-h-[inherit]">
             <div className="flex flex-wrap items-end gap-3 md:absolute md:bottom-[14%] md:left-0 md:flex-nowrap">
               <StatCard number="04" label="Active Projects" icon={<TrendingUp className="h-3.5 w-3.5" />} size="lg" />
               <StatCard number="05+" label="Insight Articles" icon={<FileText className="h-3.5 w-3.5" />} />
