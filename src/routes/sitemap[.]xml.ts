@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
 import { projects } from "@/data/projects";
+import { publishedInsights } from "@/data/insights";
 
 const BASE_URL = "https://ai-safety-craft.lovable.app";
 
@@ -23,6 +24,11 @@ export const Route = createFileRoute("/sitemap.xml")({
           { path: "/contact", changefreq: "monthly", priority: "0.5" },
           ...projects.map((p) => ({
             path: `/projects/${p.slug}`,
+            changefreq: "monthly" as const,
+            priority: "0.7",
+          })),
+          ...publishedInsights.map((i) => ({
+            path: `/insights/${i.slug}`,
             changefreq: "monthly" as const,
             priority: "0.7",
           })),
