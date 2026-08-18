@@ -40,7 +40,8 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: "AI Safety Lab — AI 기반 산업안전 프로젝트 포트폴리오" },
       {
         property: "og:description",
-        content: "HAZOP, 위험성평가, 법령 검토, 안전교육을 지원하는 AI 산업안전 도구와 인사이트 모음",
+        content:
+          "HAZOP, 위험성평가, 법령 검토, 안전교육을 지원하는 AI 산업안전 도구와 인사이트 모음",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "https://ai-safety-craft.lovable.app/" },
@@ -89,12 +90,12 @@ function HomePage() {
           <div className="max-w-xl">
             <h1 className="font-display text-[2.1rem] font-bold leading-[1.14] tracking-[-0.03em] text-white md:text-[3rem]">
               AI로 산업안전 실무를
-              <br />
-              더 빠르고 정확하게
+              <br />더 빠르고 정확하게
             </h1>
 
             <p className="mt-4 max-w-[420px] text-[15px] leading-relaxed text-white/70">
-              AI Safety Lab은 산업현장의 위험을 예측하고, 분석하며, 안전한 의사결정을 지원하는 AI 기반 솔루션을 개발합니다.
+              AI Safety Lab은 산업현장의 위험을 예측하고, 분석하며, 안전한 의사결정을 지원하는 AI
+              기반 솔루션을 개발합니다.
             </p>
 
             <div className="mt-7">
@@ -102,12 +103,14 @@ function HomePage() {
                 href="#key-projects"
                 onClick={(e) => {
                   e.preventDefault();
-                  document.getElementById("key-projects")?.scrollIntoView({ behavior: "smooth", block: "start" });
+                  document
+                    .getElementById("key-projects")
+                    ?.scrollIntoView({ behavior: "smooth", block: "start" });
                 }}
-                className="inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/25 transition-all hover:bg-primary/90"
+                className="group inline-flex items-center gap-2.5 rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-spring duration-500 hover:scale-[1.02] hover:shadow-[0_0_30px_-6px_oklch(0.55_0.23_29/0.6)] active:scale-[0.98]"
               >
                 Explore Projects
-                <span aria-hidden>→</span>
+                <ArrowRight className="h-4 w-4 transition-spring duration-500 group-hover:translate-x-0.5" />
               </a>
             </div>
           </div>
@@ -115,8 +118,25 @@ function HomePage() {
           {/* 우측 이미지 공간 + 떠 있는 통계 카드 */}
           <div className="relative h-full md:min-h-[inherit]">
             <div className="flex flex-wrap items-end gap-3 md:absolute md:bottom-[14%] md:left-0 md:flex-nowrap">
-              <StatCard number="04" label="Active Projects" icon={<TrendingUp className="h-3.5 w-3.5" />} size="lg" />
-              <StatCard number="05+" label="Insight Articles" icon={<FileText className="h-3.5 w-3.5" />} />
+              <div className="fade-up" style={{ animationDelay: "150ms" }}>
+                <div className="float-slow">
+                  <StatCard
+                    number="04"
+                    label="Active Projects"
+                    icon={<TrendingUp className="h-3.5 w-3.5" />}
+                    size="lg"
+                  />
+                </div>
+              </div>
+              <div className="fade-up" style={{ animationDelay: "300ms" }}>
+                <div className="float-slow" style={{ animationDelay: "1.5s" }}>
+                  <StatCard
+                    number="05+"
+                    label="Insight Articles"
+                    icon={<FileText className="h-3.5 w-3.5" />}
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -124,8 +144,12 @@ function HomePage() {
 
       <main className="bg-[oklch(0.145_0_0)]">
         {/* KEY PROJECTS STRIP */}
-        <section id="key-projects" className="scroll-mt-16 border-y border-border/60 bg-[oklch(0.145_0_0)]">
-          <div className="container-page py-10 md:py-14">
+        <section
+          id="key-projects"
+          className="relative scroll-mt-16 overflow-hidden border-y border-border/60 bg-[oklch(0.145_0_0)]"
+        >
+          <AmbientOrbs />
+          <div className="container-page relative py-10 md:py-14">
             <RevealSection>
               <div className="mb-6">
                 <h2 className="font-display relative inline-block pb-2.5 text-xl font-bold tracking-tight text-white md:text-2xl">
@@ -143,8 +167,12 @@ function HomePage() {
         </section>
 
         {/* GPT TOOLS */}
-        <section id="gpt-tools" className="scroll-mt-16 border-b border-border/60">
-          <div className="container-page py-12 md:py-16">
+        <section
+          id="gpt-tools"
+          className="relative scroll-mt-16 overflow-hidden border-b border-border/60"
+        >
+          <AmbientOrbs className="opacity-70" />
+          <div className="container-page relative py-12 md:py-16">
             <RevealSection>
               <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
                 <Sparkles className="h-3.5 w-3.5 text-primary" />
@@ -155,7 +183,8 @@ function HomePage() {
                 <span className="absolute bottom-0 left-0 h-0.5 w-14 rounded-full bg-primary" />
               </h2>
               <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted-foreground">
-                법령 해석부터 사고 원인 분석까지, ChatGPT 위에서 바로 실행되는 산업안전 실무 특화 커스텀 GPT입니다.
+                법령 해석부터 사고 원인 분석까지, ChatGPT 위에서 바로 실행되는 산업안전 실무 특화
+                커스텀 GPT입니다.
               </p>
 
               <div className="mt-6 grid gap-5 md:grid-cols-2">
@@ -178,8 +207,12 @@ function HomePage() {
         </section>
 
         {/* SAFETY WEB APPS */}
-        <section id="safety-web-apps" className="scroll-mt-16 border-b border-border/60 bg-[oklch(0.145_0_0)]">
-          <div className="container-page py-12 md:py-16">
+        <section
+          id="safety-web-apps"
+          className="relative scroll-mt-16 overflow-hidden border-b border-border/60 bg-[oklch(0.145_0_0)]"
+        >
+          <AmbientOrbs />
+          <div className="container-page relative py-12 md:py-16">
             <RevealSection>
               <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
                 <Code2 className="h-3.5 w-3.5 text-primary" />
@@ -190,7 +223,8 @@ function HomePage() {
                 <span className="absolute bottom-0 left-0 h-0.5 w-14 rounded-full bg-primary" />
               </h2>
               <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted-foreground">
-                Vibe Coding으로 빠르게 만들고 현장 피드백으로 발전시키는 Safety App 프로토타입 모음입니다.
+                Vibe Coding으로 빠르게 만들고 현장 피드백으로 발전시키는 Safety App 프로토타입
+                모음입니다.
               </p>
 
               <div className="mt-6 grid gap-5 md:grid-cols-2">
@@ -214,31 +248,37 @@ function HomePage() {
         </section>
 
         {/* INSIGHTS PREVIEW */}
-        <div id="safety-insights" className="scroll-mt-16 container-page py-12 md:py-16">
-          <RevealSection>
-            <div className="flex items-end justify-between gap-6">
-              <h2 className="font-display relative pb-2.5 text-xl font-bold tracking-tight text-foreground md:text-2xl">
-                Safety Insights
-                <span className="absolute bottom-0 left-0 h-0.5 w-14 rounded-full bg-primary" />
-              </h2>
-              <Link
-                to="/insights"
-                className="hidden items-center gap-1 text-sm font-medium text-muted-foreground transition-colors hover:text-primary md:inline-flex"
-              >
-                View All Insights
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-            </div>
-            <div className="mt-6 grid gap-5 md:grid-cols-3">
-              {insights.slice(0, 3).map((i, idx) => (
-                <InsightCard key={i.slug} i={i} idx={idx} />
-              ))}
-            </div>
-          </RevealSection>
+        <div id="safety-insights" className="relative scroll-mt-16 overflow-hidden">
+          <AmbientOrbs className="opacity-70" />
+          <div className="container-page relative py-12 md:py-16">
+            <RevealSection>
+              <div className="flex items-end justify-between gap-6">
+                <h2 className="font-display relative pb-2.5 text-xl font-bold tracking-tight text-foreground md:text-2xl">
+                  Safety Insights
+                  <span className="absolute bottom-0 left-0 h-0.5 w-14 rounded-full bg-primary" />
+                </h2>
+                <Link
+                  to="/insights"
+                  className="hidden items-center gap-1 text-sm font-medium text-muted-foreground transition-colors hover:text-primary md:inline-flex"
+                >
+                  View All Insights
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+              </div>
+              <div className="mt-6 grid gap-5 md:grid-cols-3">
+                {insights.slice(0, 3).map((i, idx) => (
+                  <InsightCard key={i.slug} i={i} idx={idx} />
+                ))}
+              </div>
+            </RevealSection>
+          </div>
         </div>
 
         {/* ABOUT */}
-        <section id="about" className="scroll-mt-16 border-y border-border/60 bg-[oklch(0.145_0_0)]">
+        <section
+          id="about"
+          className="scroll-mt-16 border-y border-border/60 bg-[oklch(0.145_0_0)]"
+        >
           <div className="container-page py-12 md:py-16">
             <RevealSection>
               <h2 className="font-display relative inline-block pb-2.5 text-xl font-bold tracking-tight text-foreground md:text-2xl">
@@ -246,10 +286,10 @@ function HomePage() {
                 <span className="absolute bottom-0 left-0 h-0.5 w-10 rounded-full bg-primary" />
               </h2>
               <p className="mt-5 max-w-2xl text-[15px] leading-relaxed text-foreground/90">
-                산업안전공학을 전공하고 위험성평가, 공정안전, 화학안전 및 현장 안전관리 경험을 기반으로
-                AI를 산업안전 업무에 적용하는 프로젝트를 개발하고 있습니다. 안전관리자의 판단을 대체하는
-                것이 아니라, 반복적이고 시간이 오래 걸리는 업무를 지원하여 더 중요한 판단에 집중할 수
-                있게 만드는 것이 목표입니다.
+                산업안전공학을 전공하고 위험성평가, 공정안전, 화학안전 및 현장 안전관리 경험을
+                기반으로 AI를 산업안전 업무에 적용하는 프로젝트를 개발하고 있습니다. 안전관리자의
+                판단을 대체하는 것이 아니라, 반복적이고 시간이 오래 걸리는 업무를 지원하여 더 중요한
+                판단에 집중할 수 있게 만드는 것이 목표입니다.
               </p>
 
               <div className="mt-8 grid gap-4 sm:grid-cols-2">
@@ -279,7 +319,8 @@ function HomePage() {
                   <span className="absolute bottom-0 left-0 h-0.5 w-10 rounded-full bg-primary" />
                 </h2>
                 <p className="mt-5 max-w-md text-sm leading-relaxed text-muted-foreground">
-                  프로젝트 협업, 리서치 파트너십, 실무 적용 문의 모두 환영합니다. 편하게 메시지를 남겨주세요.
+                  프로젝트 협업, 리서치 파트너십, 실무 적용 문의 모두 환영합니다. 편하게 메시지를
+                  남겨주세요.
                 </p>
                 <ul className="mt-8 space-y-3 text-sm">
                   <li className="flex items-center gap-3 text-foreground/80">
@@ -351,7 +392,9 @@ function HomePage() {
           {selectedProject ? (
             <>
               <DialogTitle className="sr-only">{selectedProject.title}</DialogTitle>
-              <DialogDescription className="sr-only">{selectedProject.description}</DialogDescription>
+              <DialogDescription className="sr-only">
+                {selectedProject.description}
+              </DialogDescription>
               <div className="-mt-1 mb-2">
                 <Link
                   to="/projects/$slug"
@@ -432,7 +475,9 @@ function ToolCard({
           </span>
         )}
       </div>
-      <h3 className="font-display mt-4 text-[15px] font-semibold tracking-tight text-foreground">{title}</h3>
+      <h3 className="font-display mt-4 text-[15px] font-semibold tracking-tight text-foreground">
+        {title}
+      </h3>
       <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{description}</p>
       <div className="mt-4 flex flex-wrap gap-2">
         {tags.map((t) => (
@@ -449,21 +494,26 @@ function ToolCard({
           isReady ? "text-primary" : "text-muted-foreground"
         }`}
       >
-        {isReady ? ctaLabel : comingSoonLabel ?? "준비 중"}
+        {isReady ? ctaLabel : (comingSoonLabel ?? "준비 중")}
         {isReady && <ArrowUpRight className="h-3.5 w-3.5" />}
       </span>
     </>
   );
 
   const baseClass =
-    "group relative flex h-full flex-col overflow-hidden rounded-2xl border border-white/[0.09] bg-[oklch(0.185_0_0)] p-5 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05),0_2px_10px_-6px_rgba(0,0,0,0.7)] transition-all duration-300";
+    "group relative flex h-full flex-col overflow-hidden rounded-2xl border border-white/[0.09] bg-[oklch(0.185_0_0)] p-5 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05),0_2px_10px_-6px_rgba(0,0,0,0.7)] transition-spring transition-all duration-500";
   const activeClass =
-    " hover:-translate-y-1 hover:border-primary/45 hover:bg-[oklch(0.215_0_0)] hover:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.07),0_14px_32px_-16px_oklch(0.55_0.23_29/0.55)]";
+    " hover:-translate-y-1.5 hover:border-primary/45 hover:bg-[oklch(0.215_0_0)] hover:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.07),0_14px_32px_-16px_oklch(0.55_0.23_29/0.55)]";
 
   return (
     <div ref={ref} className="reveal h-full" style={{ transitionDelay: `${idx * 90}ms` }}>
       {isReady ? (
-        <a href={href} target="_blank" rel="noopener noreferrer" className={baseClass + activeClass}>
+        <a
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={baseClass + activeClass}
+        >
           {inner}
         </a>
       ) : (
@@ -479,7 +529,8 @@ const vibeItems = [
   {
     slug: "ai-photo-risk-assessment",
     title: "Photo Risk Assessment",
-    description: "현장 사진을 업로드하면 위험요인을 식별하고 위험성 등급과 개선조치를 제안하는 Vibe Coding 프로토타입.",
+    description:
+      "현장 사진을 업로드하면 위험요인을 식별하고 위험성 등급과 개선조치를 제안하는 Vibe Coding 프로토타입.",
     icon: <Camera className="h-5 w-5" />,
     href: "https://ai-photo-risk-assessment.lovable.app",
     highlight: true,
@@ -581,7 +632,7 @@ function StripCard({
   return (
     <div
       className={
-        "group relative flex h-full items-center gap-4 overflow-hidden rounded-2xl border p-5 transition-all duration-300 hover:-translate-y-1 hover:border-primary/45 hover:bg-[oklch(0.215_0_0)] hover:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.07),0_14px_32px_-16px_oklch(0.55_0.23_29/0.55)] " +
+        "group relative flex h-full items-center gap-4 overflow-hidden rounded-2xl border p-5 transition-spring transition-all duration-500 hover:-translate-y-1.5 hover:border-primary/45 hover:bg-[oklch(0.215_0_0)] hover:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.07),0_14px_32px_-16px_oklch(0.55_0.23_29/0.55)] " +
         (highlight
           ? "border-white/[0.12] bg-[oklch(0.205_0_0)] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05),0_2px_10px_-6px_rgba(0,0,0,0.7)]"
           : "border-white/[0.09] bg-[oklch(0.185_0_0)] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05),0_2px_10px_-6px_rgba(0,0,0,0.7)]")
@@ -603,7 +654,9 @@ function StripCard({
             </span>
           )}
         </div>
-        <p className="mt-1.5 line-clamp-2 text-xs leading-relaxed text-muted-foreground">{description}</p>
+        <p className="mt-1.5 line-clamp-2 text-xs leading-relaxed text-muted-foreground">
+          {description}
+        </p>
         <div className="mt-2 flex flex-wrap items-center gap-2">
           {hasApp && (
             <span
@@ -657,7 +710,9 @@ function StatCard({
         </div>
         <div className="text-primary">{icon}</div>
       </div>
-      <div className={`mt-2 font-medium text-white/75 ${isLg ? "text-xs" : "text-[11px]"}`}>{label}</div>
+      <div className={`mt-2 font-medium text-white/75 ${isLg ? "text-xs" : "text-[11px]"}`}>
+        {label}
+      </div>
       <div className="mt-2 h-[2px] w-8 rounded-full bg-primary" />
     </div>
   );
@@ -722,7 +777,11 @@ function WorkflowSection() {
           {/* desktop connecting line */}
           <div className="pointer-events-none absolute top-8 left-0 right-0 hidden h-px md:block bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
           {workflowSteps.map((step, idx) => (
-            <div key={step.number} className="reveal relative pt-7" style={{ transitionDelay: `${idx * 100}ms` }}>
+            <div
+              key={step.number}
+              className="reveal relative pt-7"
+              style={{ transitionDelay: `${idx * 100}ms` }}
+            >
               {/* step number badge */}
               <div className="absolute left-1/2 top-0 z-10 -translate-x-1/2">
                 <div className="flex h-6 w-6 items-center justify-center rounded-full border border-primary/50 bg-[oklch(0.145_0_0)] text-[10px] font-bold text-primary shadow-[0_0_12px_-3px_oklch(0.55_0.23_29/0.5)]">
@@ -750,7 +809,9 @@ function WorkflowSection() {
                   <h3 className="font-display text-[13px] font-semibold text-foreground transition-colors group-hover:text-primary">
                     {step.title}
                   </h3>
-                  <p className="mt-1 text-[11px] leading-relaxed text-muted-foreground">{step.description}</p>
+                  <p className="mt-1 text-[11px] leading-relaxed text-muted-foreground">
+                    {step.description}
+                  </p>
                 </div>
               </div>
             </div>
@@ -767,7 +828,13 @@ function WorkflowSection() {
   );
 }
 
-function WorkflowModal({ step, onClose }: { step: (typeof workflowSteps)[number]; onClose: () => void }) {
+function WorkflowModal({
+  step,
+  onClose,
+}: {
+  step: (typeof workflowSteps)[number];
+  onClose: () => void;
+}) {
   React.useEffect(() => {
     const handle = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
@@ -778,7 +845,10 @@ function WorkflowModal({ step, onClose }: { step: (typeof workflowSteps)[number]
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-      <div className="absolute inset-0 bg-black/70 backdrop-blur-sm transition-opacity" onClick={onClose} />
+      <div
+        className="absolute inset-0 bg-black/70 backdrop-blur-sm transition-opacity"
+        onClick={onClose}
+      />
       <div className="relative z-10 w-full max-w-2xl overflow-hidden rounded-2xl border border-white/[0.09] bg-[oklch(0.145_0_0)] shadow-[0_0_60px_-20px_rgba(0,0,0,0.8)]">
         <div className="flex items-center justify-between border-b border-white/[0.09] px-6 py-4">
           <div className="flex items-center gap-3">
@@ -824,7 +894,10 @@ function DetectionDemo() {
         </div>
         <div className="mt-3 flex flex-wrap gap-2">
           {["가스 누출", "배관", "밸브"].map((tag) => (
-            <span key={tag} className="rounded-full border border-primary/30 bg-primary/[0.07] px-2 py-1 text-[10px] font-medium text-primary">
+            <span
+              key={tag}
+              className="rounded-full border border-primary/30 bg-primary/[0.07] px-2 py-1 text-[10px] font-medium text-primary"
+            >
               {tag}
             </span>
           ))}
@@ -892,11 +965,17 @@ function ComplianceDemo() {
         </div>
         <div className="mt-3 space-y-2">
           <div className="rounded-lg bg-[oklch(0.10_0_0)] p-3">
-            <div className="text-xs font-semibold text-foreground">산업안전보건기준에 관한 규칙</div>
-            <div className="text-[10px] text-muted-foreground">제 423조 (가스 누출 감지 및 경보 장치)</div>
+            <div className="text-xs font-semibold text-foreground">
+              산업안전보건기준에 관한 규칙
+            </div>
+            <div className="text-[10px] text-muted-foreground">
+              제 423조 (가스 누출 감지 및 경보 장치)
+            </div>
           </div>
           <div className="rounded-lg bg-[oklch(0.10_0_0)] p-3">
-            <div className="text-xs font-semibold text-foreground">화재예방, 소방시설 설치·유지 및 안전관리에 관한 법률</div>
+            <div className="text-xs font-semibold text-foreground">
+              화재예방, 소방시설 설치·유지 및 안전관리에 관한 법률
+            </div>
             <div className="text-[10px] text-muted-foreground">제 10조 (위험물시설의 안전관리)</div>
           </div>
         </div>
@@ -905,8 +984,14 @@ function ComplianceDemo() {
         <h4 className="text-sm font-semibold text-foreground">유사 사고 사례</h4>
         <div className="mt-3 space-y-2">
           {[
-            { title: "2022년 A사 가스 누출 사고", desc: "밸브 패킹 교체 지연으로 누출 발생, 2시간 후 인터록 작동" },
-            { title: "2021년 B사 반도체 팹 환기실패", desc: "환기 시스템 정지로 가스 농도 상승, 경보 후 대피" },
+            {
+              title: "2022년 A사 가스 누출 사고",
+              desc: "밸브 패킹 교체 지연으로 누출 발생, 2시간 후 인터록 작동",
+            },
+            {
+              title: "2021년 B사 반도체 팹 환기실패",
+              desc: "환기 시스템 정지로 가스 농도 상승, 경보 후 대피",
+            },
           ].map((c) => (
             <div key={c.title} className="rounded-lg bg-[oklch(0.10_0_0)] p-3">
               <div className="text-xs font-semibold text-foreground">{c.title}</div>
@@ -932,7 +1017,12 @@ function ActionDemo() {
       <div className="rounded-xl border border-white/[0.09] bg-[oklch(0.185_0_0)] p-4">
         <h4 className="text-sm font-semibold text-foreground">현장 조치 체크리스트</h4>
         <div className="mt-3 space-y-2">
-          {["밸브 잠금 및 인터록 작동 확인", "작업자 대피 및 구역 통제", "통풍 시스템 가동 및 가스 농도 측정", "유지보수 완료 후 복구 확인"].map((item, i) => (
+          {[
+            "밸브 잠금 및 인터록 작동 확인",
+            "작업자 대피 및 구역 통제",
+            "통풍 시스템 가동 및 가스 농도 측정",
+            "유지보수 완료 후 복구 확인",
+          ].map((item, i) => (
             <button
               key={item}
               onClick={() => toggle(i)}
@@ -943,7 +1033,11 @@ function ActionDemo() {
               >
                 {checked[i] && <CheckCircle className="h-3 w-3" />}
               </div>
-              <span className={`text-xs ${checked[i] ? "text-foreground line-through opacity-60" : "text-foreground"}`}>{item}</span>
+              <span
+                className={`text-xs ${checked[i] ? "text-foreground line-through opacity-60" : "text-foreground"}`}
+              >
+                {item}
+              </span>
             </button>
           ))}
         </div>
@@ -955,7 +1049,9 @@ function ActionDemo() {
             {checked.filter(Boolean).length} / {checked.length} 항목 완료
           </div>
         </div>
-        <div className="text-lg font-bold text-primary">{Math.round((checked.filter(Boolean).length / checked.length) * 100)}%</div>
+        <div className="text-lg font-bold text-primary">
+          {Math.round((checked.filter(Boolean).length / checked.length) * 100)}%
+        </div>
       </div>
     </div>
   );
@@ -966,7 +1062,7 @@ function InsightCard({ i, idx = 0 }: { i: (typeof insights)[number]; idx?: numbe
   return (
     <div ref={ref} className="reveal h-full" style={{ transitionDelay: `${idx * 90}ms` }}>
       <Link to="/insights/$slug" params={{ slug: i.slug }} className="group block h-full">
-        <article className="relative flex h-full flex-col gap-4 overflow-hidden rounded-2xl border border-white/[0.09] bg-[oklch(0.185_0_0)] p-4 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05),0_2px_10px_-6px_rgba(0,0,0,0.7)] transition-all duration-300 hover:-translate-y-1 hover:border-primary/45 hover:bg-[oklch(0.215_0_0)] hover:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.07),0_14px_32px_-16px_oklch(0.55_0.23_29/0.55)] md:flex-row">
+        <article className="relative flex h-full flex-col gap-4 overflow-hidden rounded-2xl border border-white/[0.09] bg-[oklch(0.185_0_0)] p-4 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05),0_2px_10px_-6px_rgba(0,0,0,0.7)] transition-spring transition-all duration-500 hover:-translate-y-1.5 hover:border-primary/45 hover:bg-[oklch(0.215_0_0)] hover:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.07),0_14px_32px_-16px_oklch(0.55_0.23_29/0.55)] md:flex-row">
           <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/[0.06] to-transparent transition-transform duration-700 group-hover:translate-x-full" />
 
           <div className="relative aspect-[16/10] w-full shrink-0 overflow-hidden rounded-lg md:aspect-auto md:h-[64px] md:w-[88px] md:self-center">
@@ -981,11 +1077,15 @@ function InsightCard({ i, idx = 0 }: { i: (typeof insights)[number]; idx?: numbe
           </div>
           <div className="flex flex-1 flex-col justify-between py-1 pr-1">
             <div>
-              <span className="text-[10px] font-bold uppercase tracking-[0.16em] text-muted-foreground">{i.category}</span>
+              <span className="text-[10px] font-bold uppercase tracking-[0.16em] text-muted-foreground">
+                {i.category}
+              </span>
               <h4 className="font-display mt-1.5 line-clamp-2 text-[15px] font-semibold leading-snug tracking-tight text-foreground">
                 {i.title}
               </h4>
-              <p className="mt-2 line-clamp-2 text-xs leading-relaxed text-muted-foreground">{i.excerpt}</p>
+              <p className="mt-2 line-clamp-2 text-xs leading-relaxed text-muted-foreground">
+                {i.excerpt}
+              </p>
             </div>
             <div className="mt-2 flex items-center justify-between text-[10px] text-muted-foreground">
               <span>
@@ -999,6 +1099,18 @@ function InsightCard({ i, idx = 0 }: { i: (typeof insights)[number]; idx?: numbe
           </div>
         </article>
       </Link>
+    </div>
+  );
+}
+
+function AmbientOrbs({ className }: { className?: string }) {
+  return (
+    <div
+      aria-hidden
+      className={`pointer-events-none absolute inset-0 -z-10 overflow-hidden ${className ?? ""}`}
+    >
+      <div className="orb-float absolute -left-24 top-0 h-72 w-72 rounded-full bg-primary/[0.14] blur-[100px]" />
+      <div className="orb-float-slow absolute -right-16 bottom-0 h-80 w-80 rounded-full bg-white/[0.05] blur-[110px]" />
     </div>
   );
 }
