@@ -1,6 +1,6 @@
 import { Link, useRouter } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import logoAsset from "@/assets/logo.png.asset.json";
+import { Logo } from "@/components/logo";
 
 const nav = [
   { hash: "home", label: "Home" },
@@ -19,7 +19,7 @@ function useActiveSection(enabled: boolean) {
   useEffect(() => {
     if (!enabled) return;
     const elements = SECTION_IDS.map((id) => document.getElementById(id)).filter(
-      (el): el is HTMLElement => Boolean(el)
+      (el): el is HTMLElement => Boolean(el),
     );
     if (elements.length === 0) return;
 
@@ -31,7 +31,7 @@ function useActiveSection(enabled: boolean) {
           }
         });
       },
-      { rootMargin: "-45% 0px -50% 0px", threshold: 0 }
+      { rootMargin: "-45% 0px -50% 0px", threshold: 0 },
     );
     elements.forEach((el) => observer.observe(el));
     return () => observer.disconnect();
@@ -51,12 +51,8 @@ export function SiteHeader() {
     <>
       <header className="sticky top-0 z-40 border-b border-border bg-background/95 backdrop-blur">
         <div className="container-page flex h-16 items-center justify-between">
-          <Link to="/" hash="home" className="flex items-center gap-2">
-            <img
-              src={logoAsset.url}
-              alt="AI Safety Lab"
-              className="h-10 w-auto mix-blend-screen"
-            />
+          <Link to="/" hash="home" className="flex items-center">
+            <Logo />
           </Link>
           <nav className="hidden items-center gap-7 md:flex">
             {nav.map((n) => {
@@ -86,7 +82,16 @@ export function SiteHeader() {
             aria-label="Open menu"
             className="grid h-10 w-10 place-items-center rounded-md text-foreground transition-colors hover:bg-secondary md:hidden"
           >
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <svg
+              width="22"
+              height="22"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
               <line x1="4" y1="6" x2="20" y2="6" />
               <line x1="4" y1="12" x2="20" y2="12" />
               <line x1="4" y1="18" x2="20" y2="18" />
@@ -98,19 +103,24 @@ export function SiteHeader() {
       {open && (
         <div className="fixed inset-0 z-50 flex flex-col bg-background p-6 md:hidden">
           <div className="flex items-center justify-between">
-            <Link to="/" hash="home" onClick={() => setOpen(false)} className="flex items-center gap-2">
-              <img
-                src={logoAsset.url}
-                alt="AI Safety Lab"
-                className="h-10 w-auto mix-blend-screen"
-              />
+            <Link to="/" hash="home" onClick={() => setOpen(false)} className="flex items-center">
+              <Logo />
             </Link>
             <button
               onClick={() => setOpen(false)}
               aria-label="Close menu"
               className="grid h-10 w-10 place-items-center rounded-md text-foreground transition-colors hover:bg-secondary"
             >
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <svg
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
                 <line x1="18" y1="6" x2="6" y2="18" />
                 <line x1="6" y1="6" x2="18" y2="18" />
               </svg>
@@ -147,19 +157,17 @@ export function SiteFooter() {
   return (
     <footer className="border-t border-border bg-background">
       <div className="container-page flex flex-col items-center justify-between gap-3 py-5 md:flex-row">
-        <div className="flex items-center gap-2">
-          <img
-            src={logoAsset.url}
-            alt="AI Safety Lab"
-            className="h-10 w-auto mix-blend-screen"
-          />
-        </div>
+        <Logo iconClassName="h-8 w-8" />
         <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs text-muted-foreground">
           <span>© {new Date().getFullYear()} AI Safety Lab. All rights reserved.</span>
           <span className="opacity-40">|</span>
-          <Link to="/privacy" className="transition-colors hover:text-foreground">Privacy Policy</Link>
+          <Link to="/privacy" className="transition-colors hover:text-foreground">
+            Privacy Policy
+          </Link>
           <span className="opacity-40">|</span>
-          <Link to="/terms" className="transition-colors hover:text-foreground">Terms of Use</Link>
+          <Link to="/terms" className="transition-colors hover:text-foreground">
+            Terms of Use
+          </Link>
         </div>
         <div className="hidden md:block md:w-[150px]" />
       </div>

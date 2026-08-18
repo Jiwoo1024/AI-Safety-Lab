@@ -26,6 +26,8 @@ import {
   X,
 } from "lucide-react";
 import { HeroAnimation } from "@/components/hero-animation";
+import { AmbientOrbs } from "@/components/ambient-orbs";
+import { RevealSection } from "@/components/reveal-section";
 import { useReveal } from "@/hooks/use-reveal";
 
 export const Route = createFileRoute("/")({
@@ -277,9 +279,10 @@ function HomePage() {
         {/* ABOUT */}
         <section
           id="about"
-          className="scroll-mt-16 border-y border-border/60 bg-[oklch(0.145_0_0)]"
+          className="relative scroll-mt-16 overflow-hidden border-y border-border/60 bg-[oklch(0.145_0_0)]"
         >
-          <div className="container-page py-12 md:py-16">
+          <AmbientOrbs />
+          <div className="container-page relative py-12 md:py-16">
             <RevealSection>
               <h2 className="font-display relative inline-block pb-2.5 text-xl font-bold tracking-tight text-foreground md:text-2xl">
                 About
@@ -310,78 +313,81 @@ function HomePage() {
         </section>
 
         {/* CONTACT */}
-        <div id="contact" className="scroll-mt-16 container-page py-12 md:py-16">
-          <RevealSection>
-            <div className="grid gap-10 md:grid-cols-2">
-              <div>
-                <h2 className="font-display relative inline-block pb-2.5 text-xl font-bold tracking-tight text-foreground md:text-2xl">
-                  Contact
-                  <span className="absolute bottom-0 left-0 h-0.5 w-10 rounded-full bg-primary" />
-                </h2>
-                <p className="mt-5 max-w-md text-sm leading-relaxed text-muted-foreground">
-                  프로젝트 협업, 리서치 파트너십, 실무 적용 문의 모두 환영합니다. 편하게 메시지를
-                  남겨주세요.
-                </p>
-                <ul className="mt-8 space-y-3 text-sm">
-                  <li className="flex items-center gap-3 text-foreground/80">
-                    <span className="text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
-                      Email
-                    </span>
-                    <a
-                      href="mailto:song708901@gmail.com"
-                      className="text-foreground transition-colors hover:text-primary"
-                    >
-                      song708901@gmail.com
-                    </a>
-                  </li>
-                  <li className="flex items-center gap-3 text-foreground/80">
-                    <span className="text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
-                      Location
-                    </span>
-                    <span className="text-foreground">Republic of Korea</span>
-                  </li>
-                </ul>
-              </div>
-
-              <form
-                className="rounded-2xl border border-white/[0.09] bg-[oklch(0.185_0_0)] p-5 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05),0_2px_10px_-6px_rgba(0,0,0,0.7)] md:p-6"
-                onSubmit={(e) => e.preventDefault()}
-              >
-                <div className="grid gap-4">
-                  <ContactField label="이름">
-                    <input
-                      type="text"
-                      className="w-full rounded-lg border border-white/10 bg-background px-3 py-2.5 text-sm outline-none focus:border-primary"
-                      placeholder="홍길동"
-                    />
-                  </ContactField>
-                  <ContactField label="이메일">
-                    <input
-                      type="email"
-                      className="w-full rounded-lg border border-white/10 bg-background px-3 py-2.5 text-sm outline-none focus:border-primary"
-                      placeholder="you@company.com"
-                    />
-                  </ContactField>
-                  <ContactField label="메시지">
-                    <textarea
-                      rows={4}
-                      className="w-full resize-none rounded-lg border border-white/10 bg-background px-3 py-2.5 text-sm outline-none focus:border-primary"
-                      placeholder="문의 내용을 작성해주세요."
-                    />
-                  </ContactField>
-                  <button
-                    type="submit"
-                    className="mt-1 inline-flex items-center justify-center rounded-full bg-primary px-5 py-3 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-                  >
-                    메시지 보내기
-                  </button>
-                  <p className="text-xs text-muted-foreground">
-                    * 현재는 UI만 구현되어 있으며 실제 전송은 되지 않습니다.
+        <div id="contact" className="relative scroll-mt-16 overflow-hidden">
+          <AmbientOrbs className="opacity-70" />
+          <div className="container-page relative py-12 md:py-16">
+            <RevealSection>
+              <div className="grid gap-10 md:grid-cols-2">
+                <div>
+                  <h2 className="font-display relative inline-block pb-2.5 text-xl font-bold tracking-tight text-foreground md:text-2xl">
+                    Contact
+                    <span className="absolute bottom-0 left-0 h-0.5 w-10 rounded-full bg-primary" />
+                  </h2>
+                  <p className="mt-5 max-w-md text-sm leading-relaxed text-muted-foreground">
+                    프로젝트 협업, 리서치 파트너십, 실무 적용 문의 모두 환영합니다. 편하게 메시지를
+                    남겨주세요.
                   </p>
+                  <ul className="mt-8 space-y-3 text-sm">
+                    <li className="flex items-center gap-3 text-foreground/80">
+                      <span className="text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
+                        Email
+                      </span>
+                      <a
+                        href="mailto:song708901@gmail.com"
+                        className="text-foreground transition-colors hover:text-primary"
+                      >
+                        song708901@gmail.com
+                      </a>
+                    </li>
+                    <li className="flex items-center gap-3 text-foreground/80">
+                      <span className="text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
+                        Location
+                      </span>
+                      <span className="text-foreground">Republic of Korea</span>
+                    </li>
+                  </ul>
                 </div>
-              </form>
-            </div>
-          </RevealSection>
+
+                <form
+                  className="rounded-2xl border border-white/[0.09] bg-[oklch(0.185_0_0)] p-5 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05),0_2px_10px_-6px_rgba(0,0,0,0.7)] md:p-6"
+                  onSubmit={(e) => e.preventDefault()}
+                >
+                  <div className="grid gap-4">
+                    <ContactField label="이름">
+                      <input
+                        type="text"
+                        className="w-full rounded-lg border border-white/10 bg-background px-3 py-2.5 text-sm outline-none focus:border-primary"
+                        placeholder="홍길동"
+                      />
+                    </ContactField>
+                    <ContactField label="이메일">
+                      <input
+                        type="email"
+                        className="w-full rounded-lg border border-white/10 bg-background px-3 py-2.5 text-sm outline-none focus:border-primary"
+                        placeholder="you@company.com"
+                      />
+                    </ContactField>
+                    <ContactField label="메시지">
+                      <textarea
+                        rows={4}
+                        className="w-full resize-none rounded-lg border border-white/10 bg-background px-3 py-2.5 text-sm outline-none focus:border-primary"
+                        placeholder="문의 내용을 작성해주세요."
+                      />
+                    </ContactField>
+                    <button
+                      type="submit"
+                      className="mt-1 inline-flex items-center justify-center rounded-full bg-primary px-5 py-3 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+                    >
+                      메시지 보내기
+                    </button>
+                    <p className="text-xs text-muted-foreground">
+                      * 현재는 UI만 구현되어 있으며 실제 전송은 되지 않습니다.
+                    </p>
+                  </div>
+                </form>
+              </div>
+            </RevealSection>
+          </div>
         </div>
       </main>
 
@@ -1100,26 +1106,5 @@ function InsightCard({ i, idx = 0 }: { i: (typeof insights)[number]; idx?: numbe
         </article>
       </Link>
     </div>
-  );
-}
-
-function AmbientOrbs({ className }: { className?: string }) {
-  return (
-    <div
-      aria-hidden
-      className={`pointer-events-none absolute inset-0 -z-10 overflow-hidden ${className ?? ""}`}
-    >
-      <div className="orb-float absolute -left-24 top-0 h-72 w-72 rounded-full bg-primary/[0.14] blur-[100px]" />
-      <div className="orb-float-slow absolute -right-16 bottom-0 h-80 w-80 rounded-full bg-white/[0.05] blur-[110px]" />
-    </div>
-  );
-}
-
-function RevealSection({ className, children }: { className?: string; children: React.ReactNode }) {
-  const ref = useReveal<HTMLElement>();
-  return (
-    <section ref={ref} className={`reveal ${className ?? ""}`}>
-      {children}
-    </section>
   );
 }
