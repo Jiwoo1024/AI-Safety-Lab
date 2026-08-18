@@ -1,20 +1,124 @@
-import heroFab from "@/assets/hero-semiconductor-fab.png";
+import { useEffect, useRef } from "react";
+import { heroScrollSprite } from "@/assets/hero-scroll-sprite";
 
 /**
- * 사실적 팹 클린룸 배경 이미지 + 절제된 CSS 모션 오버레이.
- * 8s loop: 0-3s 정상(흰색) → 3-5s 경고(레드) → 5-8s 정상 복귀.
- * 벡터 도형을 그리지 않고 blur된 글로우 바/원형 글로우만 사용.
+ * 스크롤에 반응하는 팹 영상 프레임 시퀀스.
+ * 24프레임 WebP 스프라이트를 캔버스에 그리고, 스크롤 진행도에 따라
+ * 프레임을 보간(lerp)+크로스페이드하여 끊김 없이 부드럽게 재생한다.
+ */
+function HeroScrollCanvas() {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    const { dataUrl, frameWidth, frameHeight, cols, frameCount } = heroScrollSprite;
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    const img = new Image();
+    let imgReady = false;
+    img.onload = () => {
+      imgReady = true;
+    };
+    img.src = dataUrl;
+
+    let cssW = 0;
+    let cssH = 0;
+    let targetProgress = 0;
+    let currentProgress = 0;
+    let rafId = 0;
+
+    function resize() {
+      if (!canvas) return;
+      const rect = canvas.getBoundingClientRect();
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      cssW = rect.width;
+      cssH = rect.height;
+      canvas.width = Math.max(1, Math.round(cssW * dpr));
+      canvas.height = Math.max(1, Math.round(cssH * dpr));
+      ctx!.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+
+    function computeProgress() {
+      const section = canvas!.closest("section");
+      if (!section) return 0;
+      const rect = section.getBoundingClientRect();
+      const raw = -rect.top / (rect.height * 0.85);
+      return Math.min(1, Math.max(0, raw));
+    }
+
+    function drawCover(frameIndex: number, alpha: number) {
+      const i = Math.max(0, Math.min(frameCount - 1, Math.round(frameIndex)));
+      const sx = (i % cols) * frameWidth;
+      const sy = Math.floor(i / cols) * frameHeight;
+      const scale = Math.max(cssW / frameWidth, cssH / frameHeight);
+      const drawW = frameWidth * scale;
+      const drawH = frameHeight * scale;
+      const dx = (cssW - drawW) / 2;
+      const dy = (cssH - drawH) / 2;
+      ctx!.globalAlpha = alpha;
+      ctx!.drawImage(img, sx, sy, frameWidth, frameHeight, dx, dy, drawW, drawH);
+    }
+
+    function render() {
+      if (!imgReady) return;
+      ctx!.clearRect(0, 0, cssW, cssH);
+      const scaled = currentProgress * (frameCount - 1);
+      const lower = Math.floor(scaled);
+      const upper = Math.min(frameCount - 1, lower + 1);
+      const frac = scaled - lower;
+      drawCover(lower, 1);
+      if (frac > 0.01) drawCover(upper, frac);
+      ctx!.globalAlpha = 1;
+    }
+
+    function tick() {
+      targetProgress = computeProgress();
+      currentProgress += (targetProgress - currentProgress) * 0.12;
+      render();
+      rafId = requestAnimationFrame(tick);
+    }
+
+    resize();
+    window.addEventListener("resize", resize);
+
+    if (reduceMotion) {
+      img.onload = () => {
+        imgReady = true;
+        currentProgress = 0.4;
+        render();
+      };
+    } else {
+      rafId = requestAnimationFrame(tick);
+    }
+
+    return () => {
+      cancelAnimationFrame(rafId);
+      window.removeEventListener("resize", resize);
+    };
+  }, []);
+
+  return (
+    <canvas
+      ref={canvasRef}
+      className="absolute inset-0 h-full w-full [filter:brightness(1.1)_contrast(1.1)_saturate(1.12)]"
+      aria-hidden="true"
+    />
+  );
+}
+
+/**
+ * 사실적 팹 클린룸 스크롤 영상 배경 + 절제된 CSS 모션 오버레이.
+ * 스크롤 진행도에 따라 24프레임 시퀀스가 부드럽게 스크럽되고,
+ * 배관/밸브 글로우 오버레이가 8초 루프로 계속 은은하게 움직인다.
  */
 export function HeroAnimation() {
   return (
     <div className="absolute inset-0 overflow-hidden">
-      <img
-        src={heroFab}
-        alt="반도체 팹 클린룸 내부의 가스 배관과 인터록 밸브"
-        width={1920}
-        height={1088}
-        className="absolute inset-0 h-full w-full object-cover [filter:brightness(1.12)_contrast(1.12)_saturate(1.15)]"
-      />
+      <HeroScrollCanvas />
 
       {/* 배관 라인을 따라 흐르는 흰색 글로우 */}
       <div className="motion-layer pointer-events-none absolute inset-x-0 top-[34%] h-[6%] overflow-hidden">
